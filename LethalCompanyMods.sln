@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DougMurphy.LethalCompanyMod.NoLostLoot", "DougMurphy.LethalCompanyMod.NoLostLoot\DougMurphy.LethalCompanyMod.NoLostLoot.csproj", "{5877AEC0-EB0E-4DBF-B37B-75179D765EA3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuysNight.LethalCompanyMod.ReasonableWeights", "GuysNight.LethalCompanyMod.ReasonableWeights\GuysNight.LethalCompanyMod.ReasonableWeights.csproj", "{EF7934CC-185E-4A52-B3FA-F61638C06B41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +8,9 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5877AEC0-EB0E-4DBF-B37B-75179D765EA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5877AEC0-EB0E-4DBF-B37B-75179D765EA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5877AEC0-EB0E-4DBF-B37B-75179D765EA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5877AEC0-EB0E-4DBF-B37B-75179D765EA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF7934CC-185E-4A52-B3FA-F61638C06B41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF7934CC-185E-4A52-B3FA-F61638C06B41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF7934CC-185E-4A52-B3FA-F61638C06B41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF7934CC-185E-4A52-B3FA-F61638C06B41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
