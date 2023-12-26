@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿#pragma warning disable	S1118
+
+using System.Linq;
 using GuysNight.LethalCompanyMod.ReasonableWeights.Utilities;
 using HarmonyLib;
 
@@ -8,8 +10,6 @@ namespace GuysNight.LethalCompanyMod.ReasonableWeights.Patches {
 		[HarmonyPatch("Start")]
 		[HarmonyPostfix]
 		public static void ChangeItemWeights(GrabbableObject __instance) {
-			SharedComponents.Logger.LogInfo("Begin override for GrabbableObject.Start()");
-
 			if (__instance == null)
 			{
 				SharedComponents.Logger.LogInfo("__instance is null for some reason. Exiting override.");
@@ -18,6 +18,7 @@ namespace GuysNight.LethalCompanyMod.ReasonableWeights.Patches {
 			}
 
 			SharedComponents.Logger.LogInfo($"item.itemProperties.name is '{__instance.itemProperties.name}'");
+			SharedComponents.Logger.LogInfo($"item.itemProperties.weight is '{NumericUtilities.DenormalizeWeight(__instance.itemProperties.weight)}'");
 
 			var itemOverride = ItemOverridesContainer.ItemOverrides.FirstOrDefault(itemOverride => itemOverride.Name == __instance.itemProperties.name);
 			if (itemOverride is null)
@@ -27,9 +28,16 @@ namespace GuysNight.LethalCompanyMod.ReasonableWeights.Patches {
 				return;
 			}
 
-			SharedComponents.Logger.LogInfo($"Existing weight for '{__instance.itemProperties.name}' is '{NumericUtilities.DenormalizeWeight(__instance.itemProperties.weight)}'");
-			__instance.itemProperties.weight = itemOverride.Weight;
-			SharedComponents.Logger.LogInfo($"Overrode properties for '{__instance.itemProperties.name}' to be '{itemOverride}'");
+			if (itemOverride.Weight.HasValue)
+			{
+				UpdateItemWeight(__instance, itemOverride.Weight.Value);
+			}
+		}
+
+		private static void UpdateItemWeight(GrabbableObject item, float weight) {
+			SharedComponents.Logger.LogInfo($"Existing weight for '{item.itemProperties.name}' is '{NumericUtilities.DenormalizeWeight(item.itemProperties.weight)}'");
+			item.itemProperties.weight = weight;
+			SharedComponents.Logger.LogInfo($"Successfully overrode weight for '{item.itemProperties.name}' to be '{NumericUtilities.DenormalizeWeight(weight)}'");
 		}
 	}
 }
