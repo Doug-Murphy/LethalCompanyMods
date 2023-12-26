@@ -7,19 +7,19 @@ namespace GuysNight.LethalCompanyMod.ReasonableWeights {
 			new ItemPropertyOverride("Key", 0),
 
 			//purchased items
-			new ItemPropertyOverride("BoomboxWeight", 5),
-			new ItemPropertyOverride("ExtensionLadderWeight", 5),
-			new ItemPropertyOverride("FlashlightWeight", 2),
-			new ItemPropertyOverride("JetpackWeight", 25),
-			new ItemPropertyOverride("LockPickerWeight", 2),
-			new ItemPropertyOverride("ProFlashlightWeight", 2),
-			new ItemPropertyOverride("RadarBoosterWeight", 5),
-			new ItemPropertyOverride("ShovelWeight", 5),
-			new ItemPropertyOverride("SprayPaintWeight", 1),
-			new ItemPropertyOverride("StunGrenadeWeight", 2),
-			new ItemPropertyOverride("TZPInhalantWeight", 2),
-			new ItemPropertyOverride("WalkieTalkieWeight", 2),
-			new ItemPropertyOverride("ZapGunWeight", 4)
+			new ItemPropertyOverride("Boombox", 5),
+			new ItemPropertyOverride("ExtensionLadder", 5),
+			new ItemPropertyOverride("Flashlight", 2),
+			new ItemPropertyOverride("Jetpack", 25),
+			new ItemPropertyOverride("LockPicker", 2),
+			new ItemPropertyOverride("ProFlashlight", 2),
+			new ItemPropertyOverride("RadarBooster", 5),
+			new ItemPropertyOverride("Shovel", 5),
+			new ItemPropertyOverride("SprayPaint", 1),
+			new ItemPropertyOverride("StunGrenade", 2),
+			new ItemPropertyOverride("TZPInhalant", 2),
+			new ItemPropertyOverride("WalkieTalkie", 2),
+			new ItemPropertyOverride("ZapGun", 4)
 		};
 	}
 }
