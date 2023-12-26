@@ -10,7 +10,8 @@
 
     <ItemGroup>
         <Reference Include="lib\Assembly-CSharp.dll"/>
-        <Reference Include="lib\UnityEngine.dll"/>
+        <Reference Include="lib\Unity.NetCode.Runtime.dll"/>
+        <Reference Include="lib\UnityEngine.CoreModule.dll"/>
     </ItemGroup>
 
     <ItemGroup>
