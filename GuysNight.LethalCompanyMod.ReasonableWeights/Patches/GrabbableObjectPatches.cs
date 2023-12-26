@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using GuysNight.LethalCompanyMod.ReasonableWeights.Utilities;
 using HarmonyLib;
 
 namespace GuysNight.LethalCompanyMod.ReasonableWeights.Patches {
@@ -26,8 +27,9 @@ namespace GuysNight.LethalCompanyMod.ReasonableWeights.Patches {
 				return;
 			}
 
+			SharedComponents.Logger.LogInfo($"Existing weight for '{__instance.itemProperties.name}' is '{NumericUtilities.DenormalizeWeight(__instance.itemProperties.weight)}'");
 			__instance.itemProperties.weight = itemOverride.Weight;
-			SharedComponents.Logger.LogInfo($"Overrode properties for '{__instance.itemProperties.name}' to be {itemOverride}");
+			SharedComponents.Logger.LogInfo($"Overrode properties for '{__instance.itemProperties.name}' to be '{itemOverride}'");
 		}
 	}
 }
