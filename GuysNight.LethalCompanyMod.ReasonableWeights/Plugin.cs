@@ -9,8 +9,9 @@ namespace GuysNight.LethalCompanyMod.ReasonableWeights
     {
         private void Awake()
         {
-            Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
-            new Harmony(PluginInfo.PLUGIN_GUID).PatchAll(Assembly.GetExecutingAssembly());
+            SharedComponents.Logger = Logger;
+            Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
+            SharedComponents.Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
         }
     }
 }
