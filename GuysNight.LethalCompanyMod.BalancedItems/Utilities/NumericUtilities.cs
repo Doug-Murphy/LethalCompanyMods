@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GuysNight.LethalCompanyMod.ReasonableWeights.Utilities {
+namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 	public static class NumericUtilities {
 		public static float NormalizeWeight(float denormalizedWeight) {
 			var normalizedWeight = (float)Math.Round(denormalizedWeight / 100f + 1, 3, MidpointRounding.AwayFromZero);

@@ -6,7 +6,6 @@
         <Description>Set reasonable weights for the various loot items.</Description>
         <Version>1.0.0</Version>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <RootNamespace>GuysNight.LethalCompanyMod.ReasonableWeights</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

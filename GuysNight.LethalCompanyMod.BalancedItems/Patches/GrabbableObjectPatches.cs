@@ -1,10 +1,10 @@
 ﻿#pragma warning disable	S1118
 
 using System.Linq;
-using GuysNight.LethalCompanyMod.ReasonableWeights.Utilities;
+using GuysNight.LethalCompanyMod.BalancedItems.Utilities;
 using HarmonyLib;
 
-namespace GuysNight.LethalCompanyMod.ReasonableWeights.Patches {
+namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 	[HarmonyPatch(typeof(GrabbableObject))]
 	public class GrabbableObjectPatches {
 		[HarmonyPatch("Start")]

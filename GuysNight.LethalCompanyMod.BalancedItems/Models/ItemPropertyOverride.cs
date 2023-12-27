@@ -1,6 +1,6 @@
-﻿using GuysNight.LethalCompanyMod.ReasonableWeights.Utilities;
+﻿using GuysNight.LethalCompanyMod.BalancedItems.Utilities;
 
-namespace GuysNight.LethalCompanyMod.ReasonableWeights.Models {
+namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 	/// <summary>
 	/// Contains the data required for overriding various aspects of an item.
 	/// </summary>

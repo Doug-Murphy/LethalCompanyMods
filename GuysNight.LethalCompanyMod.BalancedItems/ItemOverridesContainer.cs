@@ -1,6 +1,6 @@
-﻿using GuysNight.LethalCompanyMod.ReasonableWeights.Models;
+﻿using GuysNight.LethalCompanyMod.BalancedItems.Models;
 
-namespace GuysNight.LethalCompanyMod.ReasonableWeights {
+namespace GuysNight.LethalCompanyMod.BalancedItems {
 	public static class ItemOverridesContainer {
 		public static ItemPropertyOverride[] ItemOverrides { get; } = {
 			//spawned loot items
