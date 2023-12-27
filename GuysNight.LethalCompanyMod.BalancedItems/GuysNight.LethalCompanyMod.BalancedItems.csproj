@@ -3,8 +3,8 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <AssemblyName>GuysNight.LethalCompanyMod.BalancedItems</AssemblyName>
-        <Description>Set reasonable weights for the various loot items.</Description>
-        <Version>1.0.0</Version>
+        <Description>Balance out various aspects of the items in the game.</Description>
+        <Version>1.0.1</Version>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 
