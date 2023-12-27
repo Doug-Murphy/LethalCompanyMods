@@ -1,4 +1,4 @@
-﻿# Introduction
+# Introduction
 Balanced Items is a simple mod designed to give more realistic weights and values to all of the items in Lethal Company.
 This mod includes item adjustments for all scrap/loot items as well as those purchasable from the terminal.
 
