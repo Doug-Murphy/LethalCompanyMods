@@ -6,6 +6,8 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 	/// Contains the data required for overriding various aspects of an item.
 	/// </summary>
 	public sealed class ItemPropertyOverride {
+		private float? _weight;
+
 		/// <summary>
 		/// The constructor to use when no overriding is desired.
 		/// </summary>
@@ -26,7 +28,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 				throw new ArgumentOutOfRangeException(nameof(weight), "You cannot set a negative weight value.");
 			}
 			Name = name;
-			Weight = NumericUtilities.NormalizeWeight(weight);
+			Weight = weight;
 		}
 
 		/// <summary>
@@ -96,7 +98,16 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		/// The weight to set for the item. This value should be normalized to the game's representation.
 		/// </summary>
 		/// <remarks>If the desired weight is 5 pounds, the normalized representation is 1.05</remarks>
-		public float? Weight { get; }
+		public float? Weight {
+			get => _weight;
+
+			private set {
+				if (value.HasValue)
+				{
+					_weight = NumericUtilities.NormalizeWeight(value.Value);
+				}
+			}
+		}
 
 		public override string ToString() {
 			return $"Name: {Name}; MinValue: {MinValue}; MaxValue {MaxValue}; Weight: {(Weight.HasValue ? NumericUtilities.DenormalizeWeight(Weight.Value) : (float?)null)};";
