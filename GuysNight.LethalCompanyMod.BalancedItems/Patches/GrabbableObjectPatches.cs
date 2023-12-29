@@ -19,6 +19,8 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 
 			SharedComponents.Logger.LogInfo($"item.itemProperties.name is '{__instance.itemProperties.name}'");
 			SharedComponents.Logger.LogInfo($"item.itemProperties.weight is '{NumericUtilities.DenormalizeWeight(__instance.itemProperties.weight)}'");
+			SharedComponents.Logger.LogInfo($"item.itemProperties.minValue is '{__instance.itemProperties.minValue}'");
+			SharedComponents.Logger.LogInfo($"item.itemProperties.maxValue is '{__instance.itemProperties.maxValue}'");
 
 			var itemOverride = Array.Find(ItemOverridesContainer.ItemOverrides, itemOverride => itemOverride.Name == __instance.itemProperties.name);
 			if (itemOverride is null)
@@ -28,10 +30,22 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				return;
 			}
 
+			if (itemOverride.MinValue.HasValue && itemOverride.MaxValue.HasValue)
+			{
+				UpdateItemValue(__instance, itemOverride.MinValue.Value, itemOverride.MaxValue.Value);
+			}
+
 			if (itemOverride.Weight.HasValue)
 			{
 				UpdateItemWeight(__instance, itemOverride.Weight.Value);
 			}
+		}
+
+		private static void UpdateItemValue(GrabbableObject item, int minValue, int maxValue) {
+			SharedComponents.Logger.LogInfo($"Existing sell value range for '{item.itemProperties.name}' is '{item.itemProperties.minValue}' - '{item.itemProperties.maxValue}'");
+			item.itemProperties.minValue = minValue;
+			item.itemProperties.maxValue = maxValue;
+			SharedComponents.Logger.LogInfo($"Successfully override sell value range for '{item.itemProperties.name}' to be '{minValue}' - '{maxValue}'");
 		}
 
 		private static void UpdateItemWeight(GrabbableObject item, float weight) {
