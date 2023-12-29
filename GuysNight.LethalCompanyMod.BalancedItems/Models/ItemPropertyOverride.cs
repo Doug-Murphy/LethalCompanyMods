@@ -19,7 +19,12 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		/// </summary>
 		/// <param name="name">The item name.</param>
 		/// <param name="weight">How much you want the item to weigh.</param>
+		/// <exception cref="ArgumentOutOfRangeException">Thrown when weight is negative.</exception>
 		public ItemPropertyOverride(string name, float weight) {
+			if (weight < 0)
+			{
+				throw new ArgumentOutOfRangeException(nameof(weight), "You cannot set a negative weight value.");
+			}
 			Name = name;
 			Weight = NumericUtilities.NormalizeWeight(weight);
 		}
