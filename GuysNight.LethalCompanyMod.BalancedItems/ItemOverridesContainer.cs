@@ -11,7 +11,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems {
 			new ItemPropertyOverride("BottleBin"),
 			new ItemPropertyOverride("Brush", 1),
 			new ItemPropertyOverride("Candy", 1),
-			new ItemPropertyOverride("CashReg", 20),
+			new ItemPropertyOverride("CashRegister", 20),
 			new ItemPropertyOverride("ChemicalJug", 20),
 			new ItemPropertyOverride("Clipboard", 0.1f),
 			new ItemPropertyOverride("ClownHorn", 1),
