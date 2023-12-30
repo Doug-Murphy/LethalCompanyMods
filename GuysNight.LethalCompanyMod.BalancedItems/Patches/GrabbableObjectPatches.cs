@@ -10,8 +10,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 		[HarmonyPatch("Start")]
 		[HarmonyPostfix]
 		public static void ChangeItemWeights(GrabbableObject __instance) {
-			if (__instance == null)
-			{
+			if (__instance == null) {
 				SharedComponents.Logger.LogInfo("__instance is null for some reason. Exiting override.");
 
 				return;
@@ -21,15 +20,13 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 			SharedComponents.Logger.LogInfo($"item.itemProperties.weight is '{NumericUtilities.DenormalizeWeight(__instance.itemProperties.weight)}'");
 
 			var itemOverride = Array.Find(ItemOverridesContainer.ItemOverrides, itemOverride => itemOverride.Name == __instance.itemProperties.name);
-			if (itemOverride is null)
-			{
+			if (itemOverride is null) {
 				SharedComponents.Logger.LogInfo("No override exists for this item. Making no changes.");
 
 				return;
 			}
 
-			if (!itemOverride.Weight.HasValue)
-			{
+			if (!itemOverride.Weight.HasValue) {
 				SharedComponents.Logger.LogInfo("An item override was found, but it did not have a weight specified.");
 
 				return;
