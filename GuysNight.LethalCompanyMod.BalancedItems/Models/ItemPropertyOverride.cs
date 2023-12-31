@@ -9,50 +9,36 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		private float? _weight;
 
 		/// <summary>
-		/// The constructor to use when no overriding is desired.
+		/// The constructor to use when you do not want to override anything about the item.
 		/// </summary>
-		/// <param name="name">The item name.</param>
-		public ItemPropertyOverride(string name) {
-			Name = name;
+		public ItemPropertyOverride() {
 		}
 
 		/// <summary>
 		/// The constructor to use when overriding only the item's weight is desired.
 		/// </summary>
-		/// <param name="name">The item name.</param>
 		/// <param name="weight">How much you want the item to weigh.</param>
-		/// <exception cref="ArgumentOutOfRangeException">Thrown when weight is negative.</exception>
-		public ItemPropertyOverride(string name, float weight) {
-			Name = name;
-			Weight = weight;
-		}
-
-		/// <summary>
-		/// The constructor to use when overriding the item's weight and value is desired.
-		/// </summary>
-		/// <param name="name">The item name.</param>
-		/// <param name="weight">How much you want the item to weigh.</param>
-		/// <param name="averageValue">The average price that you want the scrap item to be worth.</param>
-		public ItemPropertyOverride(string name, float weight, ushort averageValue) {
-			AverageValue = averageValue;
-			Name = name;
+		public ItemPropertyOverride(float weight) {
 			Weight = weight;
 		}
 
 		/// <summary>
 		/// The constructor to use when overriding only the item's value is desired.
 		/// </summary>
-		/// <param name="name">The item name.</param>
 		/// <param name="averageValue">The average price that you want the scrap item to be worth.</param>
-		public ItemPropertyOverride(string name, ushort averageValue) {
+		public ItemPropertyOverride(ushort averageValue) {
 			AverageValue = averageValue;
-			Name = name;
 		}
 
 		/// <summary>
-		/// The name of the item to override.
+		/// The constructor to use when overriding the item's weight and value is desired.
 		/// </summary>
-		public string Name { get; }
+		/// <param name="weight">How much you want the item to weigh.</param>
+		/// <param name="averageValue">The average price that you want the scrap item to be worth.</param>
+		public ItemPropertyOverride(float weight, ushort averageValue) {
+			AverageValue = averageValue;
+			Weight = weight;
+		}
 
 		/// <summary>
 		/// The average value of the item to override the default.
@@ -106,7 +92,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		}
 
 		public override string ToString() {
-			return $"Name: {Name}; MinValue: {MinValue}; AverageValue: {AverageValue}; MaxValue {MaxValue}; Weight: {(Weight.HasValue ? NumericUtilities.DenormalizeWeight(Weight.Value) : (float?)null)};";
+			return $"MinValue: {MinValue}; AverageValue: {AverageValue}; MaxValue {MaxValue}; Weight: {(Weight.HasValue ? NumericUtilities.DenormalizeWeight(Weight.Value) : (float?)null)};";
 		}
 	}
 }

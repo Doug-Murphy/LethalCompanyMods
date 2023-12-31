@@ -1,6 +1,5 @@
 ﻿#pragma warning disable	S1118
 
-using System;
 using GuysNight.LethalCompanyMod.BalancedItems.Utilities;
 using HarmonyLib;
 
@@ -19,8 +18,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 			SharedComponents.Logger.LogInfo($"item.itemProperties.name is '{__instance.itemProperties.name}'");
 			SharedComponents.Logger.LogInfo($"item.itemProperties.weight is '{NumericUtilities.DenormalizeWeight(__instance.itemProperties.weight)}'");
 
-			var itemOverride = Array.Find(ItemOverridesContainer.ItemOverrides, itemOverride => itemOverride.Name == __instance.itemProperties.name);
-			if (itemOverride is null) {
+			if (!ItemOverridesContainer.ItemOverrides.TryGetValue(__instance.itemProperties.name, out var itemOverride)) {
 				SharedComponents.Logger.LogInfo("No override exists for this item. Making no changes.");
 
 				return;

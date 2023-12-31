@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using BepInEx;
+using GuysNight.LethalCompanyMod.BalancedItems.Extensions;
 using HarmonyLib;
 
 namespace GuysNight.LethalCompanyMod.BalancedItems {
@@ -10,11 +11,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems {
 			Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
 			SharedComponents.Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
 
-			SharedComponents.Logger.LogInfo("Item overrides specified:");
-			foreach (var itemOverrideLog in ItemOverridesContainer.ItemOverrides)
-			{
-				SharedComponents.Logger.LogInfo($"{itemOverrideLog}");
-			}
+			SharedComponents.Logger.LogInfo(ItemOverridesContainer.ItemOverrides.ToDebugString());
 		}
 	}
 }

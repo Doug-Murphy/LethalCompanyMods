@@ -1,6 +1,5 @@
 ﻿#pragma warning disable	S1118
 
-using System;
 using System.Linq;
 using GuysNight.LethalCompanyMod.BalancedItems.Models;
 using HarmonyLib;
@@ -22,11 +21,10 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				SharedComponents.Logger.LogInfo($"spawnableScrap.minValue is '{spawnableScrap.minValue}'");
 				SharedComponents.Logger.LogInfo($"spawnableScrap.maxValue is '{spawnableScrap.maxValue}'");
 
-				var itemOverride = Array.Find(ItemOverridesContainer.ItemOverrides, itemOverride => itemOverride.Name == spawnableScrap.name);
-				if (itemOverride is null) {
+				if (!ItemOverridesContainer.ItemOverrides.TryGetValue(spawnableScrap.name, out var itemOverride)) {
 					SharedComponents.Logger.LogInfo("No override exists for this item. Making no changes.");
 
-					continue;
+					return;
 				}
 
 				if (!itemOverride.MinValue.HasValue || !itemOverride.MaxValue.HasValue) {
