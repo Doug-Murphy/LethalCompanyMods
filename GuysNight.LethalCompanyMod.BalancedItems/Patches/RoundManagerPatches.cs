@@ -28,7 +28,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				}
 
 				if (!itemOverride.MinValue.HasValue || !itemOverride.MaxValue.HasValue) {
-					SharedComponents.Logger.LogInfo(@$"An item override was found, but it did not have both a {nameof(ItemPropertyOverride.MinValue)} and {nameof(ItemPropertyOverride.MaxValue)} specified. {nameof(ItemPropertyOverride.MinValue)} = '{itemOverride.MinValue}' {nameof(ItemPropertyOverride.MaxValue)} = '{itemOverride.MaxValue}'");
+					SharedComponents.Logger.LogInfo(@$"An item override was found, but it did not have both a {nameof(OverrideProperties.MinValue)} and {nameof(OverrideProperties.MaxValue)} specified. {nameof(OverrideProperties.MinValue)} = '{itemOverride.MinValue}' {nameof(OverrideProperties.MaxValue)} = '{itemOverride.MaxValue}'");
 
 					continue;
 				}

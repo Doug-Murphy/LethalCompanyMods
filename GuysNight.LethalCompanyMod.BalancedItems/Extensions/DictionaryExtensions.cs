@@ -5,7 +5,7 @@ using GuysNight.LethalCompanyMod.BalancedItems.Models;
 
 namespace GuysNight.LethalCompanyMod.BalancedItems.Extensions {
 	public static class DictionaryExtensions {
-		public static string ToDebugString(this Dictionary<string, ItemPropertyOverride> sourceDictionary) {
+		public static string ToDebugString(this Dictionary<string, OverrideProperties> sourceDictionary) {
 			var stringBuilder = new StringBuilder();
 
 			stringBuilder.AppendLine("Item overrides specified:");

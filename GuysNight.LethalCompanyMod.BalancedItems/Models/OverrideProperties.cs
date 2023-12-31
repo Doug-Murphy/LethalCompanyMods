@@ -5,20 +5,20 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 	/// <summary>
 	/// Contains the data required for overriding various aspects of an item.
 	/// </summary>
-	public sealed class ItemPropertyOverride {
+	public sealed class OverrideProperties {
 		private float? _weight;
 
 		/// <summary>
 		/// The constructor to use when you do not want to override anything about the item.
 		/// </summary>
-		public ItemPropertyOverride() {
+		public OverrideProperties() {
 		}
 
 		/// <summary>
 		/// The constructor to use when overriding only the item's weight is desired.
 		/// </summary>
 		/// <param name="weight">How much you want the item to weigh.</param>
-		public ItemPropertyOverride(float weight) {
+		public OverrideProperties(float weight) {
 			Weight = weight;
 		}
 
@@ -26,7 +26,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		/// The constructor to use when overriding only the item's value is desired.
 		/// </summary>
 		/// <param name="averageValue">The average price that you want the scrap item to be worth.</param>
-		public ItemPropertyOverride(ushort averageValue) {
+		public OverrideProperties(ushort averageValue) {
 			AverageValue = averageValue;
 		}
 
@@ -35,7 +35,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		/// </summary>
 		/// <param name="weight">How much you want the item to weigh.</param>
 		/// <param name="averageValue">The average price that you want the scrap item to be worth.</param>
-		public ItemPropertyOverride(float weight, ushort averageValue) {
+		public OverrideProperties(float weight, ushort averageValue) {
 			AverageValue = averageValue;
 			Weight = weight;
 		}
