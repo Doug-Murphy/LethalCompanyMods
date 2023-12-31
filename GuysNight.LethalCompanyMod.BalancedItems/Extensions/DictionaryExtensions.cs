@@ -9,9 +9,11 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Extensions {
 			var stringBuilder = new StringBuilder();
 
 			stringBuilder.AppendLine("Item overrides specified:");
+
+			var longestItemNameLength = sourceDictionary.Keys.Select(name => name.Length).Max();
 			
 			foreach (var (itemName, itemOverride) in sourceDictionary.OrderBy(itemOverride => itemOverride.Key)) {
-				stringBuilder.AppendLine($"Name: {itemName} -> {itemOverride}");
+				stringBuilder.AppendLine($"Name: {itemName.PadRight(longestItemNameLength)} -> {itemOverride}");
 			}
 
 			return stringBuilder.ToString();

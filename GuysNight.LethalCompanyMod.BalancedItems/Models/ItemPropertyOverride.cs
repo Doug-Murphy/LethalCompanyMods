@@ -92,7 +92,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		}
 
 		public override string ToString() {
-			return $"MinValue: {MinValue}; AverageValue: {AverageValue}; MaxValue {MaxValue}; Weight: {(Weight.HasValue ? NumericUtilities.DenormalizeWeight(Weight.Value) : (float?)null)};";
+			return $"MinValue: {MinValue.ToString().PadLeft(3)}; AverageValue: {AverageValue.ToString().PadLeft(3)}; MaxValue {MaxValue.ToString().PadLeft(3)}; Weight: {(Weight.HasValue ? NumericUtilities.DenormalizeWeight(Weight.Value).ToString().PadLeft(5) : null)};";
 		}
 	}
 }
