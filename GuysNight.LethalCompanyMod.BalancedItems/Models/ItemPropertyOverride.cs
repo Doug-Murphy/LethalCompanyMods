@@ -6,7 +6,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 	/// Contains the data required for overriding various aspects of an item.
 	/// </summary>
 	public sealed class ItemPropertyOverride {
-		private ushort _averageValue;
+		private ushort? _averageValue;
 		private float? _weight;
 
 		/// <summary>
@@ -56,6 +56,8 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		public string Name { get; }
 
 		private ushort? AverageValue {
+			get => _averageValue;
+
 			set {
 				if (!value.HasValue) {
 					return;
@@ -72,12 +74,28 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		/// <summary>
 		/// The minimum value that the item can sell for.
 		/// </summary>
-		public int? MinValue => (int)Math.Round(_averageValue - _averageValue * .2, MidpointRounding.AwayFromZero);
+		public int? MinValue {
+			get {
+				if (!_averageValue.HasValue) {
+					return null;
+				}
+
+				return (int)Math.Round(_averageValue.Value - _averageValue.Value * .2, MidpointRounding.AwayFromZero);
+			}
+		}
 
 		/// <summary>
 		/// The maximum value that the item can sell for.
 		/// </summary>
-		public int? MaxValue => (int)Math.Round(_averageValue + _averageValue * .2, MidpointRounding.AwayFromZero);
+		public int? MaxValue {
+			get {
+				if (!_averageValue.HasValue) {
+					return null;
+				}
+
+				return (int)Math.Round(_averageValue.Value + _averageValue.Value * .2, MidpointRounding.AwayFromZero);
+			}
+		}
 
 		/// <summary>
 		/// The weight to set for the item. This value is normalized to the game's representation when setting.
