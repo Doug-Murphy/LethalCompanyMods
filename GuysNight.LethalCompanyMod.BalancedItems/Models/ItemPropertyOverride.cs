@@ -6,7 +6,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 	/// Contains the data required for overriding various aspects of an item.
 	/// </summary>
 	public sealed class ItemPropertyOverride {
-		private readonly ushort _averageValue;
+		private ushort _averageValue;
 		private float? _weight;
 
 		/// <summary>
@@ -24,10 +24,6 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		/// <param name="weight">How much you want the item to weigh.</param>
 		/// <exception cref="ArgumentOutOfRangeException">Thrown when weight is negative.</exception>
 		public ItemPropertyOverride(string name, float weight) {
-			if (weight < 0) {
-				throw new ArgumentOutOfRangeException(nameof(weight), "You cannot set a negative weight value.");
-			}
-
 			Name = name;
 			Weight = weight;
 		}
@@ -39,7 +35,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		/// <param name="weight">How much you want the item to weigh.</param>
 		/// <param name="averageValue">The average price that you want the scrap item to be worth.</param>
 		public ItemPropertyOverride(string name, float weight, ushort averageValue) {
-			_averageValue = averageValue;
+			AverageValue = averageValue;
 			Name = name;
 			Weight = weight;
 		}
@@ -50,7 +46,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		/// <param name="name">The item name.</param>
 		/// <param name="averageValue">The average price that you want the scrap item to be worth.</param>
 		public ItemPropertyOverride(string name, ushort averageValue) {
-			_averageValue = averageValue;
+			AverageValue = averageValue;
 			Name = name;
 		}
 
@@ -58,6 +54,20 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		/// The name of the item to override.
 		/// </summary>
 		public string Name { get; }
+
+		private ushort? AverageValue {
+			set {
+				if (!value.HasValue) {
+					return;
+				}
+
+				if (value < 0) {
+					throw new ArgumentOutOfRangeException(nameof(value), "You cannot set a negative average value.");
+				}
+
+				_averageValue = value.Value;
+			}
+		}
 
 		/// <summary>
 		/// The minimum value that the item can sell for.
@@ -77,9 +87,15 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 			get => _weight;
 
 			private set {
-				if (value.HasValue) {
-					_weight = NumericUtilities.NormalizeWeight(value.Value);
+				if (!value.HasValue) {
+					return;
 				}
+
+				if (value < 0) {
+					throw new ArgumentOutOfRangeException(nameof(value), "You cannot set a negative weight.");
+				}
+
+				_weight = NumericUtilities.NormalizeWeight(value.Value);
 			}
 		}
 
