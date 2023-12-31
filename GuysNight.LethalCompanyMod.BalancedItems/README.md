@@ -4,59 +4,62 @@ This mod includes item adjustments for all scrap/loot items as well as those pur
 
 # Adjustments
 ## Scrap
+> The values listed below are the average value that the item will be worth. The min/max values are +/- 20% from this average value.
+> These values are currently the average vanilla value, just with a tighter variance of the min and max values.
+
 | Item Name            | Weight (Pounds) | Value     |
 |----------------------|-----------------|-----------|
-| Airhorn              | 1.5             | Unchanged |
-| Apparatus            | 50              | Unchanged |
-| Bee Hive             | 0.5             | Unchanged |
-| Big Bolt             | 7               | Unchanged |
-| Bottles              | Unchanged       | Unchanged |
-| Brass Bell           | 5               | Unchanged |
-| Candy                | 1               | Unchanged |
-| Cash Register        | 20              | Unchanged |
-| Chemical Jug         | 20              | Unchanged |
-| Clown Horn           | 1               | Unchanged |
-| Coffee Mug           | 2               | Unchanged |
-| Comedy Mask          | 2               | Unchanged |
-| Cookie Mold Pan      | 3               | Unchanged |
-| DIY Flashbang        | 1.5             | Unchanged |
+| Airhorn              | 1.5             | 155       |
+| Apparatus            | 50              | 80        |
+| Bee Hive             | 0.5             | 115       |
+| Big Bolt             | 7               | 65        |
+| Bottles              | Unchanged       | 125       |
+| Brass Bell           | 5               | 160       |
+| Candy                | 1               | 53        |
+| Cash Register        | 20              | 300       |
+| Chemical Jug         | 20              | 145       |
+| Clown Horn           | 1               | 155       |
+| Coffee Mug           | 2               | 115       |
+| Comedy Mask          | 2               | 100       |
+| Cookie Mold Pan      | 3               | 65        |
+| DIY Flashbang        | 1.5             | 48        |
 | Double-barrel        | 15              | Unchanged |
-| Dust Pan             | 1               | Unchanged |
-| Egg Beater           | 0.5             | Unchanged |
-| Fancy Lamp           | 10              | Unchanged |
-| Flask                | 2               | Unchanged |
-| Gift Box             | Unchanged       | Unchanged |
-| Gold Bar             | 27.5            | Unchanged |
-| Golden Cup           | 4               | Unchanged |
-| Hair Brush           | 1               | Unchanged |
-| Hairdryer            | Unchanged       | Unchanged |
-| Jar of Pickles       | 3               | Unchanged |
-| Large axle           | 25              | Unchanged |
-| Laser Pointer        | 1               | Unchanged |
-| Magic 7 Ball         | 0.5             | Unchanged |
-| Magnifying Glass     | 4               | Unchanged |
-| Old Phone            | Unchanged       | Unchanged |
-| Painting             | Unchanged       | Unchanged |
-| Perfume Bottle       | 0.5             | Unchanged |
-| Pill Bottle          | 1               | Unchanged |
-| Plastic Fish         | 0.5             | Unchanged |
+| Dust Pan             | 1               | 55        |
+| Egg Beater           | 0.5             | 70        |
+| Fancy Lamp           | 10              | 235       |
+| Flask                | 2               | 75        |
+| Gift Box             | Unchanged       | 50        |
+| Gold Bar             | 27.5            | 390       |
+| Golden Cup           | 4               | 150       |
+| Hair Brush           | 1               | 55        |
+| Hairdryer            | Unchanged       | 200       |
+| Jar of Pickles       | 3               | 115       |
+| Large axle           | 25              | 115       |
+| Laser Pointer        | 1               | 165       |
+| Magic 7 Ball         | 0.5             | 135       |
+| Magnifying Glass     | 4               | 130       |
+| Old Phone            | Unchanged       | 140       |
+| Painting             | Unchanged       | 230       |
+| Perfume Bottle       | 0.5             | 190       |
+| Pill Bottle          | 1               | 70        |
+| Plastic Fish         | 0.5             | 85        |
 | Player Body          | 100             | Unchanged |
-| Red Soda             | 0.5             | Unchanged |
-| Remote               | 1               | Unchanged |
-| Ring                 | 0.2             | Unchanged |
-| Robot Toy            | 5               | Unchanged |
-| Rubber Ducky         | 0.5             | Unchanged |
-| Steering Wheel       | 5               | Unchanged |
-| Stop Sign            | 6               | Unchanged |
-| Tattered Metal Sheet | 7               | Unchanged |
-| Tea Kettle           | 5               | Unchanged |
-| Teeth                | 1.5             | Unchanged |
-| Toothpaste           | 1               | Unchanged |
-| Toy Cube             | 1               | Unchanged |
-| Tragedy Mask         | 2               | Unchanged |
-| V-Type Engine        | 30              | Unchanged |
-| Whoopie Cushion      | 0.5             | Unchanged |
-| Yield Sign           | 6               | Unchanged |
+| Red Soda             | 0.5             | 135       |
+| Remote               | 1               | 85        |
+| Ring                 | 0.2             | 165       |
+| Robot Toy            | 5               | 180       |
+| Rubber Ducky         | 0.5             | 128       |
+| Steering Wheel       | 5               | 60        |
+| Stop Sign            | 6               | 90        |
+| Tattered Metal Sheet | 7               | 40        |
+| Tea Kettle           | 5               | 110       |
+| Teeth                | 1.5             | 180       |
+| Toothpaste           | 1               | 78        |
+| Toy Cube             | 1               | 85        |
+| Tragedy Mask         | 2               | 100       |
+| V-Type Engine        | 30              | 95        |
+| Whoopie Cushion      | 0.5             | 33        |
+| Yield Sign           | 6               | 90        |
 
 ## Equipment
 | Item Name        | Weight (Pounds) | Value     |
