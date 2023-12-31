@@ -6,8 +6,10 @@ using GuysNight.LethalCompanyMod.BalancedItems.Models;
 namespace GuysNight.LethalCompanyMod.BalancedItems.Extensions {
 	public static class DictionaryExtensions {
 		public static string ToDebugString(this Dictionary<string, ItemPropertyOverride> sourceDictionary) {
-			var stringBuilder = new StringBuilder("Item overrides specified:");
+			var stringBuilder = new StringBuilder();
 
+			stringBuilder.AppendLine("Item overrides specified:");
+			
 			foreach (var (itemName, itemOverride) in sourceDictionary.OrderBy(itemOverride => itemOverride.Key)) {
 				stringBuilder.AppendLine($"Name: {itemName} -> {itemOverride}");
 			}
