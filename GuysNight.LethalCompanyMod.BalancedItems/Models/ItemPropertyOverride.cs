@@ -6,7 +6,6 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 	/// Contains the data required for overriding various aspects of an item.
 	/// </summary>
 	public sealed class ItemPropertyOverride {
-		private ushort? _averageValue;
 		private float? _weight;
 
 		/// <summary>
@@ -29,7 +28,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		}
 
 		/// <summary>
-		/// The constructor to use when overriding only the item's value is desired.
+		/// The constructor to use when overriding the item's weight and value is desired.
 		/// </summary>
 		/// <param name="name">The item name.</param>
 		/// <param name="weight">How much you want the item to weigh.</param>
@@ -55,32 +54,21 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		/// </summary>
 		public string Name { get; }
 
-		private ushort? AverageValue {
-			get => _averageValue;
-
-			set {
-				if (!value.HasValue) {
-					return;
-				}
-
-				if (value < 0) {
-					throw new ArgumentOutOfRangeException(nameof(value), "You cannot set a negative average value.");
-				}
-
-				_averageValue = value.Value;
-			}
-		}
+		/// <summary>
+		/// The average value of the item to override the default.
+		/// </summary>
+		private ushort? AverageValue { get; }
 
 		/// <summary>
 		/// The minimum value that the item can sell for.
 		/// </summary>
 		public int? MinValue {
 			get {
-				if (!_averageValue.HasValue) {
+				if (!AverageValue.HasValue) {
 					return null;
 				}
 
-				return (int)Math.Round(_averageValue.Value - _averageValue.Value * .2, MidpointRounding.AwayFromZero);
+				return (int)Math.Round(AverageValue.Value - AverageValue.Value * .2, MidpointRounding.AwayFromZero);
 			}
 		}
 
@@ -89,11 +77,11 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		/// </summary>
 		public int? MaxValue {
 			get {
-				if (!_averageValue.HasValue) {
+				if (!AverageValue.HasValue) {
 					return null;
 				}
 
-				return (int)Math.Round(_averageValue.Value + _averageValue.Value * .2, MidpointRounding.AwayFromZero);
+				return (int)Math.Round(AverageValue.Value + AverageValue.Value * .2, MidpointRounding.AwayFromZero);
 			}
 		}
 
