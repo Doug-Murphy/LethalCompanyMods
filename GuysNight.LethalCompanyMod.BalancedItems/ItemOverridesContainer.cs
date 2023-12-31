@@ -30,7 +30,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems {
 			new ItemPropertyOverride("GiftBox", 50),
 			new ItemPropertyOverride("GoldBar", 27.5f, 390),
 			new ItemPropertyOverride("Hairdryer", 200),
-			new ItemPropertyOverride("LungApparatus", 50f),
+			new ItemPropertyOverride("LungApparatus", 50f, 80),
 			new ItemPropertyOverride("MagnifyingGlass", 4f, 130),
 			new ItemPropertyOverride("MetalSheet", 7f, 40),
 			new ItemPropertyOverride("MoldPan", 3f, 65),
@@ -57,7 +57,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems {
 			new ItemPropertyOverride("Clipboard", 0.1f),
 			new ItemPropertyOverride("Key", 0.1f),
 			new ItemPropertyOverride("Ragdoll", 100f),
-			new ItemPropertyOverride("RedLocustHive", 0.5f),
+			new ItemPropertyOverride("RedLocustHive", 0.5f, 115),
 			new ItemPropertyOverride("Shotgun", 15f),
 			new ItemPropertyOverride("StickyNote", 0.1f),
 

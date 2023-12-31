@@ -10,8 +10,8 @@ This mod includes item adjustments for all scrap/loot items as well as those pur
 | Item Name            | Weight (Pounds) | Value     |
 |----------------------|-----------------|-----------|
 | Airhorn              | 1.5             | 155       |
-| Apparatus            | 50              | Unchanged |
-| Bee Hive             | 0.5             | Unchanged |
+| Apparatus            | 50              | 80        |
+| Bee Hive             | 0.5             | 115       |
 | Big Bolt             | 7               | 65        |
 | Bottles              | Unchanged       | 125       |
 | Brass Bell           | 5               | 160       |
