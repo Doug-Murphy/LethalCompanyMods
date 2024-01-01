@@ -24,13 +24,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				return;
 			}
 
-			if (!itemOverride.Weight.HasValue) {
-				SharedComponents.Logger.LogInfo("An item override was found, but it did not have a weight specified.");
-
-				return;
-			}
-
-			UpdateItemWeight(__instance, itemOverride.Weight.Value);
+			UpdateItemWeight(__instance, itemOverride.Weight);
 		}
 
 		private static void UpdateItemWeight(GrabbableObject item, float weight) {

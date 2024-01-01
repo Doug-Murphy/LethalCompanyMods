@@ -21,19 +21,13 @@ namespace GuysNight.LethalCompanyMod.BalancedItems {
 
 		private void LoadConfigValues() {
 			var configFile = new ConfigFile(Path.Combine(Paths.ConfigPath, $"{PluginInfo.PLUGIN_NAME}.cfg"), true);
-			//TODO: How to handle items with no override
 
 			//weights
 			foreach (var (itemName, itemOverrides) in ItemOverridesContainer.ItemOverrides) {
-				//TODO: Remove this skip logic
-				if (!itemOverrides.Weight.HasValue) {
-					continue;
-				}
-				
 				//TODO: make this dynamic to where it fetches the displayed item name based on the internal item name
 				itemOverrides.Weight = configFile.Bind("Weights",
 					itemName,
-					NumericUtilities.DenormalizeWeight(itemOverrides.Weight ?? -1f),
+					NumericUtilities.DenormalizeWeight(itemOverrides.Weight),
 					$"The weight for the {itemName} item.").Value;
 			}
 
