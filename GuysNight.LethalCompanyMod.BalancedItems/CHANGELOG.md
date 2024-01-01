@@ -1,4 +1,14 @@
-﻿# Version 1.1.0
+﻿# Version 1.2.0
+## Added
+1. Config file support. Huzzah!
+
+## Changed
+Nothing.
+
+## Removed
+Nothing.
+
+# Version 1.1.0
 ## Added
 1. Print debug output in the game's log when starting a session to display all spawnable scrap on all levels with the name and vanilla min/max values from the game.
 2. Server-side overrides of item sell values. The values are currently the vanilla values, but the min/max range in the value is set to +/- 20% of the average value instead of an arbitrary min/max range.
