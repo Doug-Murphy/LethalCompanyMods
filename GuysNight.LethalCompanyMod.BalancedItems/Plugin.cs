@@ -20,18 +20,21 @@ namespace GuysNight.LethalCompanyMod.BalancedItems {
 		}
 
 		private void LoadConfigValues() {
-			var configFile = new ConfigFile(Path.Combine(Paths.ConfigPath, $"{PluginInfo.PLUGIN_NAME}.cfg"), true);
+			SharedComponents.ConfigFile = new ConfigFile(Path.Combine(Paths.ConfigPath, $"{PluginInfo.PLUGIN_NAME}.cfg"), true);
 
 			//weights
 			foreach (var (itemName, itemOverrides) in ItemOverridesContainer.ItemOverrides) {
 				//TODO: make this dynamic to where it fetches the displayed item name based on the internal item name
-				itemOverrides.Weight = configFile.Bind("Weights",
+				itemOverrides.Weight = SharedComponents.ConfigFile.Bind("Weights",
 					itemName,
 					NumericUtilities.DenormalizeWeight(itemOverrides.Weight),
 					$"The weight for the {itemName} item.").Value;
-			}
 
-			//sell values
+				itemOverrides.AverageValue = SharedComponents.ConfigFile.Bind("Average Sell Values",
+					itemName,
+					itemOverrides.AverageValue,
+					$"The average sell value for the {itemName} item.").Value;
+			}
 		}
 	}
 }
