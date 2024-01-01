@@ -4,8 +4,9 @@ This mod includes item adjustments for all scrap/loot items as well as those pur
 
 # Adjustments
 ## Scrap
-> The values listed below are the average value that the item will be worth. The min/max values are +/- 20% from this average value.
-> These values are currently the average vanilla value, just with a tighter variance of the min and max values.
+> The values listed below are the average value that the item will be worth. The max and min values are +/- 20% from this average value.
+> These values are currently the average vanilla value, just with a tighter variance of the min and max values. So there shouldn't be any game-breaking imbalance making it too easy or too hard.
+> Keep in mind that different levels in the game have different scrap multipliers applied to the value. Therefore, these values are likely higher than what you will see in-game.
 
 | Item Name            | Weight (Pounds) | Value     |
 |----------------------|-----------------|-----------|
@@ -23,7 +24,6 @@ This mod includes item adjustments for all scrap/loot items as well as those pur
 | Comedy Mask          | 2               | 100       |
 | Cookie Mold Pan      | 3               | 65        |
 | DIY Flashbang        | 1.5             | 48        |
-| Double-barrel        | 15              | Unchanged |
 | Dust Pan             | 1               | 55        |
 | Egg Beater           | 0.5             | 70        |
 | Fancy Lamp           | 10              | 235       |
@@ -43,7 +43,6 @@ This mod includes item adjustments for all scrap/loot items as well as those pur
 | Perfume Bottle       | 0.5             | 190       |
 | Pill Bottle          | 1               | 70        |
 | Plastic Fish         | 0.5             | 85        |
-| Player Body          | 100             | Unchanged |
 | Red Soda             | 0.5             | 135       |
 | Remote               | 1               | 85        |
 | Ring                 | 0.2             | 165       |
@@ -79,11 +78,13 @@ This mod includes item adjustments for all scrap/loot items as well as those pur
 | Zap Gun          | 7               | Unchanged |
 
 ## Miscellaneous
-| Item Name   | Weight (Pounds) | Value     |
-|-------------|-----------------|-----------|
-| Clipboard   | 0.1             | Unchanged |
-| Key         | 0.1             | Unchanged |
-| Sticky Note | 0.1             | Unchanged |
+| Item Name     | Weight (Pounds) | Value     |
+|---------------|-----------------|-----------|
+| Clipboard     | 0.1             | Unchanged |
+| Double-barrel | 15              | Unchanged |
+| Key           | 0.1             | Unchanged |
+| Player Body   | 100             | Unchanged |
+| Sticky Note   | 0.1             | Unchanged |
 
 # Issues / Requests
 If you have any feature requests, questions, or encounter any issues like item weights not being changed correctly you can [open an issue on GitHub](https://github.com/Doug-Murphy/LethalCompanyMods/issues).
@@ -91,5 +92,5 @@ Before opening an issue, please search to see if your request, question, or issu
 Alternatively, feel free to open up a PR to address your inquiry yourself. PRs are welcome!
 
 ## Known Issues / Roadmap
-1. The mod is currently a client-side only mod. The item values are changed for you only, and not for anyone that you are playing with. We plan to address this eventually.
-2. (Potentially) If there is enough demand, we'll look to make these values driven by a config file that you can modify.
+1. The weight overrides are currently client-side only. They are changed for you only, and not for anyone that you are playing with. We may address this eventually by making it sync to everyone, but that would remove someone's ability to opt-out of the weight overrides.
+2. Create a config file to let you set the item overrides how you want them.
