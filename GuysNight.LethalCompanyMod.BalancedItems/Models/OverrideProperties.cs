@@ -17,16 +17,6 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		}
 
 		/// <summary>
-		/// The constructor to use when overriding the item's weight and value is desired.
-		/// </summary>
-		/// <param name="weight">How much you want the item to weigh.</param>
-		/// <param name="averageValue">The average price that you want the scrap item to be worth.</param>
-		public OverrideProperties(float weight, ushort averageValue) {
-			AverageValue = averageValue;
-			Weight = weight;
-		}
-
-		/// <summary>
 		/// The average value of the item to override the default.
 		/// </summary>
 		public ushort AverageValue { get; set; }
