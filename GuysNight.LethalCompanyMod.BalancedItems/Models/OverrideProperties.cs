@@ -78,7 +78,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		public float? Weight {
 			get => _weight;
 
-			private set {
+			internal set {
 				if (!value.HasValue) {
 					return;
 				}
