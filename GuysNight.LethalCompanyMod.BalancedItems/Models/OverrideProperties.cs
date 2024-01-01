@@ -29,33 +29,17 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		/// <summary>
 		/// The average value of the item to override the default.
 		/// </summary>
-		private ushort? AverageValue { get; }
+		public ushort AverageValue { get; set; }
 
 		/// <summary>
 		/// The minimum value that the item can sell for.
 		/// </summary>
-		public int? MinValue {
-			get {
-				if (!AverageValue.HasValue) {
-					return null;
-				}
-
-				return (int)Math.Round(AverageValue.Value - AverageValue.Value * .2, MidpointRounding.AwayFromZero);
-			}
-		}
+		public int MinValue => (int)Math.Round(AverageValue - AverageValue * .2, MidpointRounding.AwayFromZero);
 
 		/// <summary>
 		/// The maximum value that the item can sell for.
 		/// </summary>
-		public int? MaxValue {
-			get {
-				if (!AverageValue.HasValue) {
-					return null;
-				}
-
-				return (int)Math.Round(AverageValue.Value + AverageValue.Value * .2, MidpointRounding.AwayFromZero);
-			}
-		}
+		public int MaxValue => (int)Math.Round(AverageValue + AverageValue * .2, MidpointRounding.AwayFromZero);
 
 		/// <summary>
 		/// The weight to set for the item. This value is normalized to the game's representation when setting.
