@@ -4,9 +4,12 @@ This mod includes item adjustments for all scrap/loot items as well as those pur
 
 # Adjustments
 ## Scrap
-> The values listed below are the average value that the item will be worth. The max and min values are +/- 20% from this average value.
-> These values are currently the average vanilla value, just with a tighter variance of the min and max values. So there shouldn't be any game-breaking imbalance making it too easy or too hard.
-> Keep in mind that different levels in the game have different scrap multipliers applied to the value. Therefore, these values are likely higher than what you will see in-game.
+> The default values provided below represent the average worth of each item. These averages are subject to a variance, 
+> with the maximum and minimum values fluctuating by +/- 20% from the average. These figures are based on the default, 
+> or 'vanilla', values but are adjusted to have a narrower range between the minimum and maximum. This adjustment 
+> ensures that there won't be any significant imbalances in the game, avoiding scenarios that are either too easy or 
+> too difficult. It's important to note that the game applies different scrap multipliers at various levels, which 
+> means the actual in-game values might be higher than these listed averages.
 
 | Item Name            | Weight (Pounds) | Value     |
 |----------------------|-----------------|-----------|
