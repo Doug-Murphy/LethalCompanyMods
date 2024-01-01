@@ -25,15 +25,15 @@ namespace GuysNight.LethalCompanyMod.BalancedItems {
 			//weights
 			foreach (var (itemName, itemOverrides) in ItemOverridesContainer.ItemOverrides) {
 				//TODO: make this dynamic to where it fetches the displayed item name based on the internal item name
-				itemOverrides.Weight = SharedComponents.ConfigFile.Bind("Weights",
+				itemOverrides.Weight = SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderWeight,
 					itemName,
 					NumericUtilities.DenormalizeWeight(itemOverrides.Weight),
-					$"The weight for the {itemName} item.").Value;
+					string.Format(Constants.ConfigDescriptionWeight, itemName)).Value;
 
-				itemOverrides.AverageValue = SharedComponents.ConfigFile.Bind("Average Sell Values",
+				itemOverrides.AverageValue = SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderAverageSellValues,
 					itemName,
 					itemOverrides.AverageValue,
-					$"The average sell value for the {itemName} item.").Value;
+					string.Format(Constants.ConfigDescriptionAverageSellValues, itemName)).Value;
 			}
 		}
 	}
