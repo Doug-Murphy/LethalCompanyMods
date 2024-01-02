@@ -18,6 +18,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 
 			foreach (var spawnableScrap in __instance.currentLevel.spawnableScrap.Select(x => x.spawnableItem)) {
 				SharedComponents.Logger.LogInfo($"spawnableScrap.name is '{spawnableScrap.name}'");
+				SharedComponents.Logger.LogInfo($"spawnableScrap.itemName is '{spawnableScrap.itemName}'");
 				SharedComponents.Logger.LogInfo($"spawnableScrap.minValue is '{spawnableScrap.minValue}'");
 				SharedComponents.Logger.LogInfo($"spawnableScrap.maxValue is '{spawnableScrap.maxValue}'");
 

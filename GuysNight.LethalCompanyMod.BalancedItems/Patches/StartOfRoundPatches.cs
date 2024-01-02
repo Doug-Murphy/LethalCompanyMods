@@ -18,7 +18,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 			SharedComponents.Logger.LogInfo($"Found {__instance.levels.Length} levels.");
 			foreach (var level in __instance.levels) {
 				foreach (var spawnableScrap in level.spawnableScrap.OrderBy(s => s.spawnableItem.name)) {
-					SharedComponents.Logger.LogInfo($"On level '{level.name}' we found a spawnable scrap item named '{spawnableScrap.spawnableItem.name}' with weight '{NumericUtilities.DenormalizeWeight(spawnableScrap.spawnableItem.weight)}' pounds, rarity '{spawnableScrap.rarity}', min value '{spawnableScrap.spawnableItem.minValue}', and max value '{spawnableScrap.spawnableItem.maxValue}'");
+					SharedComponents.Logger.LogInfo($"On level '{level.name}' we found a spawnable scrap item with name '{spawnableScrap.spawnableItem.name}', itemName '{spawnableScrap.spawnableItem.itemName}', weight '{NumericUtilities.DenormalizeWeight(spawnableScrap.spawnableItem.weight)}' pounds, rarity '{spawnableScrap.rarity}', min value '{spawnableScrap.spawnableItem.minValue}', and max value '{spawnableScrap.spawnableItem.maxValue}'");
 					SharedComponents.Logger.LogInfo($"Begin adding config entries and setting override values for '{spawnableScrap.spawnableItem.name}'");
 
 					ConfigUtilities.SyncConfigForItemOverrides(spawnableScrap.spawnableItem, out _);
