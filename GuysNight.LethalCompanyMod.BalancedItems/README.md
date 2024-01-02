@@ -5,32 +5,30 @@ This mod includes item adjustments for all scrap/loot items as well as those pur
 
 # Configuration
 
-While most mods create their configuration file when the mod loads upon game start, this mod does it a bit differently.
-The config file is created dynamically as you play the game.
-When you start a round, the mod retrieves all spawnable scrap items across all moons and creates config entries for
-those. _This is done for all scrap on all moons before you land your ship._
-When the mod creates config entries, it first checks if an override for the weight or average sell value is preset in
-the mod.
-If so, that value is created into the config. If not, the vanilla value is created into the config.
-Config values that you specify will always be respected above all else. The vanilla values and the preset overrides in
-this mod will be ignored.
+This mod introduces a unique approach to configuration file creation. Unlike most mods that generate their config file
+upon the game's initial load, this mod dynamically creates its configuration as you play. Specifically, at the start of
+each round, the mod compiles a list of all spawnable scrap items from all moons and generates corresponding config
+entries. This process encompasses all scrap on all moons and is completed before your ship lands.
+
+If there's an existing override for the item's weight or average sell value specified in the mod, these values are set
+into the config. Otherwise, default (vanilla) values are used. Please note that any values you manually set in the
+config file will always take precedence over both the vanilla values and any preset overrides within this mod.
 
 ## Weights
 
-When specifying a weight, enter how many pounds you want the item to weigh.
-> NOTE: The game has some oddities with weights to where sometimes items weigh 1-2 pounds more than you specify.
+For weight specification, simply input the desired weight of the item in pounds.
+> NOTE: Due to some peculiarities in the game's mechanics, item weights may sometimes be 1-2 pounds heavier than the
+> specified value.
 
 ## Average Sell Value
 
-The average sell value is just that - the average. The mod will calculate the min and max sell values to be +/- 20% of
-this average sell value.
-> NOTE: The game always sells equipment for 0 credits despite what you set in the config.
+The average sell value you set serves as the basis for calculating the item's minimum and maximum sell values, which are
+determined to be +/- 20% of this average.
+> NOTE: Regardless of your configuration, the game will always assign a sale value of 0 credits to equipment.
 
-> NOTE: This adjustment causes items to have a narrower range between the minimum and maximum compared to vanilla
-> gameplay. This adjustment
-> ensures that there won't be any significant imbalances in the game, avoiding scenarios that are either too easy or
-> too difficult. It's important to keep in mind that the game applies different scrap multipliers for various moons,
-> which means the actual in-game values will likely be lower than the averages you specify.
+> NOTE: This approach narrows the variance between the minimum and maximum values compared to standard gameplay,
+> ensuring balanced gameplay without overly easy or difficult scenarios. Be aware that different moons in the game have
+> varying scrap multipliers, potentially resulting in actual in-game values being lower than your specified averages.
 
 # Adjustments
 
