@@ -22,7 +22,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 			itemOverrides.Weight = SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderWeight,
 				item.name,
 				NumericUtilities.DenormalizeWeight(Math.Abs(itemOverrides.Weight - default(float)) > 0 ? itemOverrides.Weight : itemWeight),
-				string.Format(Constants.ConfigDescriptionWeight, item.name)
+				string.Format(Constants.ConfigDescriptionWeight, item.itemName)
 			).Value;
 
 			//if sell value is not added in the config, add it for future
@@ -30,7 +30,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 			itemOverrides.AverageValue = SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderAverageSellValues,
 				item.name,
 				itemOverrides.AverageValue != default ? itemOverrides.AverageValue : itemAverageValue,
-				string.Format(Constants.ConfigDescriptionAverageSellValues, item.name)).Value;
+				string.Format(Constants.ConfigDescriptionAverageSellValues, item.itemName)).Value;
 
 			overrideProperties = itemOverrides;
 		}
