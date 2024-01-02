@@ -17,6 +17,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 
 			var itemOverrides = ItemOverridesContainer.ItemOverrides[item.name];
 
+			SharedComponents.ConfigFile.Reload();
 			//if weight is not added in the config, add it for future
 			//if weight is added in the config, retrieve the value and set it in the overrides
 			itemOverrides.Weight = SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderWeight,
