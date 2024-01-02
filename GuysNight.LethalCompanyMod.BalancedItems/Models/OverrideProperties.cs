@@ -9,6 +9,13 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		private float _weight;
 
 		/// <summary>
+		/// Default constructor for programmatically adding new overrides to our collection.
+		/// </summary>
+		public OverrideProperties() {
+			
+		}
+
+		/// <summary>
 		/// The constructor to use when overriding only the item's weight is desired.
 		/// </summary>
 		/// <param name="weight">How much you want the item to weigh.</param>
