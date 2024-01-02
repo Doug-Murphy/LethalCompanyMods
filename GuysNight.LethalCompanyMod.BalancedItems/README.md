@@ -1,69 +1,95 @@
 # Introduction
+
 Balanced Items is a simple mod designed to give more realistic weights and values to all of the items in Lethal Company.
 This mod includes item adjustments for all scrap/loot items as well as those purchasable from the terminal.
 
+# Configuration
+
+While most mods create their configuration file when the mod loads upon game start, this mod does it a bit differently.
+The config file is created dynamically as you play the game.
+When you start a round, the mod retrieves all spawnable scrap items across all moons and creates config entries for
+those. _This is done for all scrap on all moons before you land your ship._
+When the mod creates config entries, it first checks if an override for the weight or average sell value is preset in
+the mod.
+If so, that value is created into the config. If not, the vanilla value is created into the config.
+Config values that you specify will always be respected above all else. The vanilla values and the preset overrides in
+this mod will be ignored.
+
+## Weights
+
+When specifying a weight, enter how many pounds you want the item to weigh.
+> NOTE: The game has some oddities with weights to where sometimes items weigh 1-2 pounds more than you specify.
+
+## Average Sell Value
+
+The average sell value is just that - the average. The mod will calculate the min and max sell values to be +/- 20% of
+this average sell value.
+> NOTE: The game always sells equipment for 0 credits despite what you set in the config.
+
+> NOTE: This adjustment causes items to have a narrower range between the minimum and maximum compared to vanilla
+> gameplay. This adjustment
+> ensures that there won't be any significant imbalances in the game, avoiding scenarios that are either too easy or
+> too difficult. It's important to keep in mind that the game applies different scrap multipliers for various moons,
+> which means the actual in-game values will likely be lower than the averages you specify.
+
 # Adjustments
+
 ## Scrap
-> The default values provided below represent the average worth of each item. These averages are subject to a variance, 
-> with the maximum and minimum values fluctuating by +/- 20% from the average. These figures are based on the default, 
-> or 'vanilla', values but are adjusted to have a narrower range between the minimum and maximum. This adjustment 
-> ensures that there won't be any significant imbalances in the game, avoiding scenarios that are either too easy or 
-> too difficult. It's important to note that the game applies different scrap multipliers at various levels, which 
-> means the actual in-game values might be higher than these listed averages.
 
 | Item Name            | Weight (Pounds) | Value     |
 |----------------------|-----------------|-----------|
-| Airhorn              | 1.5             | 155       |
-| Apparatus            | 50              | 80        |
-| Bee Hive             | 0.5             | 115       |
-| Big Bolt             | 7               | 65        |
-| Bottles              | Unchanged       | 125       |
-| Brass Bell           | 5               | 160       |
-| Candy                | 1               | 53        |
-| Cash Register        | 20              | 300       |
-| Chemical Jug         | 20              | 145       |
-| Clown Horn           | 1               | 155       |
-| Coffee Mug           | 2               | 115       |
-| Comedy Mask          | 2               | 100       |
-| Cookie Mold Pan      | 3               | 65        |
-| DIY Flashbang        | 1.5             | 48        |
-| Dust Pan             | 1               | 55        |
-| Egg Beater           | 0.5             | 70        |
-| Fancy Lamp           | 10              | 235       |
-| Flask                | 2               | 75        |
-| Gift Box             | Unchanged       | 50        |
-| Gold Bar             | 27.5            | 390       |
-| Golden Cup           | 4               | 150       |
-| Hair Brush           | 1               | 55        |
-| Hairdryer            | Unchanged       | 200       |
-| Jar of Pickles       | 3               | 115       |
-| Large axle           | 25              | 115       |
-| Laser Pointer        | 1               | 165       |
-| Magic 7 Ball         | 0.5             | 135       |
-| Magnifying Glass     | 4               | 130       |
-| Old Phone            | Unchanged       | 140       |
-| Painting             | Unchanged       | 230       |
-| Perfume Bottle       | 0.5             | 190       |
-| Pill Bottle          | 1               | 70        |
-| Plastic Fish         | 0.5             | 85        |
-| Red Soda             | 0.5             | 135       |
-| Remote               | 1               | 85        |
-| Ring                 | 0.2             | 165       |
-| Robot Toy            | 5               | 180       |
-| Rubber Ducky         | 0.5             | 128       |
-| Steering Wheel       | 5               | 60        |
-| Stop Sign            | 6               | 90        |
-| Tattered Metal Sheet | 7               | 40        |
-| Tea Kettle           | 5               | 110       |
-| Teeth                | 1.5             | 180       |
-| Toothpaste           | 1               | 78        |
-| Toy Cube             | 1               | 85        |
-| Tragedy Mask         | 2               | 100       |
-| V-Type Engine        | 30              | 95        |
-| Whoopie Cushion      | 0.5             | 33        |
-| Yield Sign           | 6               | 90        |
+| Airhorn              | 1.5             | Unchanged |
+| Apparatus            | 50              | Unchanged |
+| Bee Hive             | 0.5             | Unchanged |
+| Big Bolt             | 7               | Unchanged |
+| Bottles              | Unchanged       | Unchanged |
+| Brass Bell           | 5               | Unchanged |
+| Candy                | 1               | Unchanged |
+| Cash Register        | 20              | Unchanged |
+| Chemical Jug         | 20              | Unchanged |
+| Clown Horn           | 1               | Unchanged |
+| Coffee Mug           | 2               | Unchanged |
+| Comedy Mask          | 2               | Unchanged |
+| Cookie Mold Pan      | 3               | Unchanged |
+| DIY Flashbang        | 1.5             | Unchanged |
+| Dust Pan             | 1               | Unchanged |
+| Egg Beater           | 0.5             | Unchanged |
+| Fancy Lamp           | 10              | Unchanged |
+| Flask                | 2               | Unchanged |
+| Gift Box             | Unchanged       | Unchanged |
+| Gold Bar             | 27.5            | Unchanged |
+| Golden Cup           | 4               | Unchanged |
+| Hair Brush           | 1               | Unchanged |
+| Hairdryer            | Unchanged       | Unchanged |
+| Jar of Pickles       | 3               | Unchanged |
+| Large axle           | 25              | Unchanged |
+| Laser Pointer        | 1               | Unchanged |
+| Magic 7 Ball         | 0.5             | Unchanged |
+| Magnifying Glass     | 4               | Unchanged |
+| Old Phone            | Unchanged       | Unchanged |
+| Painting             | Unchanged       | Unchanged |
+| Perfume Bottle       | 0.5             | Unchanged |
+| Pill Bottle          | 1               | Unchanged |
+| Plastic Fish         | 0.5             | Unchanged |
+| Red Soda             | 0.5             | Unchanged |
+| Remote               | 1               | Unchanged |
+| Ring                 | 0.2             | Unchanged |
+| Robot Toy            | 5               | Unchanged |
+| Rubber Ducky         | 0.5             | Unchanged |
+| Steering Wheel       | 5               | Unchanged |
+| Stop Sign            | 6               | Unchanged |
+| Tattered Metal Sheet | 7               | Unchanged |
+| Tea Kettle           | 5               | Unchanged |
+| Teeth                | 1.5             | Unchanged |
+| Toothpaste           | 1               | Unchanged |
+| Toy Cube             | 1               | Unchanged |
+| Tragedy Mask         | 2               | Unchanged |
+| V-Type Engine        | 30              | Unchanged |
+| Whoopie Cushion      | 0.5             | Unchanged |
+| Yield Sign           | 6               | Unchanged |
 
 ## Equipment
+
 | Item Name        | Weight (Pounds) | Value     |
 |------------------|-----------------|-----------|
 | Boombox          | 10              | Unchanged |
@@ -81,6 +107,7 @@ This mod includes item adjustments for all scrap/loot items as well as those pur
 | Zap Gun          | 7               | Unchanged |
 
 ## Miscellaneous
+
 | Item Name     | Weight (Pounds) | Value     |
 |---------------|-----------------|-----------|
 | Clipboard     | 0.1             | Unchanged |
@@ -90,10 +117,13 @@ This mod includes item adjustments for all scrap/loot items as well as those pur
 | Sticky Note   | 0.1             | Unchanged |
 
 # Issues / Requests
-If you have any feature requests, questions, or encounter any issues like item weights not being changed correctly you can [open an issue on GitHub](https://github.com/Doug-Murphy/LethalCompanyMods/issues).
+
+If you have any feature requests, questions, or encounter any issues like item weights not being changed correctly you
+can [open an issue on GitHub](https://github.com/Doug-Murphy/LethalCompanyMods/issues).
 Before opening an issue, please search to see if your request, question, or issue already has an open issue.
 Alternatively, feel free to open up a PR to address your inquiry yourself. PRs are welcome!
 
-## Known Issues / Roadmap
-1. The weight overrides are currently client-side only. They are changed for you only, and not for anyone that you are playing with. We may address this eventually by making it sync to everyone, but that would remove someone's ability to opt-out of the weight overrides.
-2. Create a config file to let you set the item overrides how you want them.
+## Known Issues / Roadmap / Oddities
+
+1. Given how the game handles item weights and item values, the item weights _are not_ synced across players while the
+   item values _are_ synced.
