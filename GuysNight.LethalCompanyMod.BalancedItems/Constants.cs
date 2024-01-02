@@ -5,5 +5,7 @@
 		
 		public const string ConfigDescriptionAverageSellValues = "The average sell value for the {0} item.";
 		public const string ConfigDescriptionWeight = "The weight for the {0} item.";
+
+		public const double SellValueVariance = 0.2;
 	}
 }
