@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using GuysNight.LethalCompanyMod.BalancedItems.Models;
+﻿using GuysNight.LethalCompanyMod.BalancedItems.Models;
+using System.Collections.Generic;
 
 namespace GuysNight.LethalCompanyMod.BalancedItems {
 	public static class ItemOverridesContainer {
@@ -9,7 +9,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems {
 			{ "Airhorn", new OverrideProperties(1.5f) },
 			{ "Bell", new OverrideProperties(5f) },
 			{ "BigBolt", new OverrideProperties(7f) },
-			// { "BottleBin", new OverrideProperties(18f) },
+			{ "BottleBin", new OverrideProperties() },
 			{ "Brush", new OverrideProperties(1f) },
 			{ "Candy", new OverrideProperties(1f) },
 			{ "CashRegister", new OverrideProperties(20f) },
@@ -24,20 +24,20 @@ namespace GuysNight.LethalCompanyMod.BalancedItems {
 			{ "EnginePart1", new OverrideProperties(30f) },
 			{ "FancyCup", new OverrideProperties(4f) },
 			{ "FancyLamp", new OverrideProperties(10f) },
-			// { "FancyPainting", new OverrideProperties(30f) },
+			{ "FancyPainting", new OverrideProperties() },
 			{ "FishTestProp", new OverrideProperties(0.5f) },
 			{ "FlashLaserPointer", new OverrideProperties(1f) },
 			{ "Flask", new OverrideProperties(2f) },
-			// { "GiftBox", new OverrideProperties(18f) },
+			{ "GiftBox", new OverrideProperties() },
 			{ "GoldBar", new OverrideProperties(27.5f) },
-			// { "Hairdryer", new OverrideProperties(7f) },
+			{ "Hairdryer", new OverrideProperties() },
 			{ "LungApparatus", new OverrideProperties(50f) },
 			{ "MagnifyingGlass", new OverrideProperties(4f) },
 			{ "MetalSheet", new OverrideProperties(7f) },
 			{ "MoldPan", new OverrideProperties(3f) },
 			{ "Mug", new OverrideProperties(2f) },
 			{ "PerfumeBottle", new OverrideProperties(0.5f) },
-			// { "Phone", new OverrideProperties(5f) },
+			{ "Phone", new OverrideProperties() },
 			{ "PickleJar", new OverrideProperties(3f) },
 			{ "PillBottle", new OverrideProperties(1f) },
 			{ "Remote", new OverrideProperties(1f) },
@@ -66,10 +66,10 @@ namespace GuysNight.LethalCompanyMod.BalancedItems {
 			{ "Boombox", new OverrideProperties(10f) },
 			{ "ExtensionLadder", new OverrideProperties(10f) },
 			{ "Flashlight", new OverrideProperties(2f) },
-			// { "Jetpack", new OverrideProperties(50f) },
+			{ "Jetpack", new OverrideProperties() },
 			{ "LockPicker", new OverrideProperties(10f) },
 			{ "ProFlashlight", new OverrideProperties(2f) },
-			// { "RadarBooster", new OverrideProperties(18f) },
+			{ "RadarBooster", new OverrideProperties() },
 			{ "Shovel", new OverrideProperties(5f) },
 			{ "SprayPaint", new OverrideProperties(1f) },
 			{ "StunGrenade", new OverrideProperties(2f) },
