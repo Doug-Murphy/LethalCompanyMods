@@ -10,7 +10,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 			var itemMaxValue = item.maxValue;
 			var itemAverageValue = (ushort)Math.Round(new[] { itemMinValue, itemMaxValue }.Average(), MidpointRounding.AwayFromZero);
 
-			//if the overrides container does not contain an override for the current scrap item, add an entry
+			//if the overrides container does not contain an override for the current item, add an entry
 			if (!ItemOverridesContainer.ItemOverrides.ContainsKey(item.name)) {
 				ItemOverridesContainer.ItemOverrides[item.name] = new OverrideProperties();
 			}
@@ -21,7 +21,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 			//if weight is added in the config, retrieve the value and set it in the overrides
 			itemOverrides.Weight = SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderWeight,
 				item.name,
-				Math.Abs(itemOverrides.Weight - default(float)) > 0 ? NumericUtilities.DenormalizeWeight(itemOverrides.Weight) : NumericUtilities.DenormalizeWeight(itemWeight),
+				NumericUtilities.DenormalizeWeight(Math.Abs(itemOverrides.Weight - default(float)) > 0 ? itemOverrides.Weight : itemWeight),
 				string.Format(Constants.ConfigDescriptionWeight, item.name)
 			).Value;
 
