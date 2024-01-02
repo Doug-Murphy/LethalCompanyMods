@@ -39,17 +39,17 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 
 			//if weight is not added in the config, add it for future
 			//if weight is added in the config, retrieve the value and set it in the overrides
-			itemOverrides.Weight = NumericUtilities.NormalizeWeight(SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderWeight,
+			itemOverrides.Weight = SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderWeight,
 				__instance.itemProperties.name,
-				NumericUtilities.DenormalizeWeight(itemWeight),
+				Math.Abs(itemOverrides.Weight - default(float)) > 0 ? NumericUtilities.DenormalizeWeight(itemOverrides.Weight) : NumericUtilities.DenormalizeWeight(itemWeight),
 				string.Format(Constants.ConfigDescriptionWeight, __instance.itemProperties.name)
-			).Value);
+			).Value;
 
 			//if sell value is not added in the config, add it for future
 			//if sell value is added in the config, retrieve the value and set it in the overrides
 			itemOverrides.AverageValue = SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderAverageSellValues,
 				__instance.itemProperties.name,
-				itemAverageValue,
+				itemOverrides.AverageValue != default ? itemOverrides.AverageValue : itemAverageValue,
 				string.Format(Constants.ConfigDescriptionAverageSellValues, __instance.itemProperties.name)).Value;
 
 			SharedComponents.Logger.LogInfo($"Finish adding config entries and setting override values for '{__instance.itemProperties.name}'");

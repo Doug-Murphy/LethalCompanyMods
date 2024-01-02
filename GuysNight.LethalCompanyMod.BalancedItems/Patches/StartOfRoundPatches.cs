@@ -22,7 +22,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				foreach (var spawnableScrap in level.spawnableScrap.OrderBy(s => s.spawnableItem.name)) {
 					SharedComponents.Logger.LogInfo($"On level '{level.name}' we found a spawnable scrap item named '{spawnableScrap.spawnableItem.name}' with weight '{NumericUtilities.DenormalizeWeight(spawnableScrap.spawnableItem.weight)}' pounds, rarity '{spawnableScrap.rarity}', min value '{spawnableScrap.spawnableItem.minValue}', and max value '{spawnableScrap.spawnableItem.maxValue}'");
 					SharedComponents.Logger.LogInfo($"Begin adding config entries and setting override values for '{spawnableScrap.spawnableItem.name}'");
-					
+
 					var itemWeight = spawnableScrap.spawnableItem.weight;
 					var itemMinValue = spawnableScrap.spawnableItem.minValue;
 					var itemMaxValue = spawnableScrap.spawnableItem.maxValue;
@@ -37,19 +37,19 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 
 					//if weight is not added in the config, add it for future
 					//if weight is added in the config, retrieve the value and set it in the overrides
-					itemOverrides.Weight = NumericUtilities.NormalizeWeight(SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderWeight,
+					itemOverrides.Weight = SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderWeight,
 						spawnableScrap.spawnableItem.name,
-						NumericUtilities.DenormalizeWeight(itemWeight),
+						Math.Abs(itemOverrides.Weight - default(float)) > 0 ? NumericUtilities.DenormalizeWeight(itemOverrides.Weight) : NumericUtilities.DenormalizeWeight(itemWeight),
 						string.Format(Constants.ConfigDescriptionWeight, spawnableScrap.spawnableItem.name)
-					).Value);
+					).Value;
 
 					//if sell value is not added in the config, add it for future
 					//if sell value is added in the config, retrieve the value and set it in the overrides
 					itemOverrides.AverageValue = SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderAverageSellValues,
 						spawnableScrap.spawnableItem.name,
-						itemAverageValue,
+						itemOverrides.AverageValue != default ? itemOverrides.AverageValue : itemAverageValue,
 						string.Format(Constants.ConfigDescriptionAverageSellValues, spawnableScrap.spawnableItem.name)).Value;
-					
+
 					SharedComponents.Logger.LogInfo($"Finish adding config entries and setting override values for '{spawnableScrap.spawnableItem.name}'");
 				}
 			}
