@@ -24,7 +24,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				if (!ItemOverridesContainer.ItemOverrides.TryGetValue(spawnableScrap.name, out var itemOverride)) {
 					SharedComponents.Logger.LogInfo("No override exists for this item. Making no changes.");
 
-					return;
+					continue;
 				}
 
 				UpdateItemValue(spawnableScrap, itemOverride.MinValue, itemOverride.MaxValue);
