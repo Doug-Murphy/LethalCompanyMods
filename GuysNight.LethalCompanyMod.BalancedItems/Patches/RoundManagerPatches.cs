@@ -1,8 +1,8 @@
 ﻿#pragma warning disable	S1118
 
-using System.Linq;
-using GuysNight.LethalCompanyMod.BalancedItems.Models;
+using GuysNight.LethalCompanyMod.BalancedItems.Utilities;
 using HarmonyLib;
+using System.Linq;
 
 namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 	[HarmonyPatch(typeof(RoundManager))]
@@ -22,7 +22,10 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				SharedComponents.Logger.LogInfo($"spawnableScrap.minValue is '{spawnableScrap.minValue}'");
 				SharedComponents.Logger.LogInfo($"spawnableScrap.maxValue is '{spawnableScrap.maxValue}'");
 
-				if (!ItemOverridesContainer.ItemOverrides.TryGetValue(spawnableScrap.name, out var itemOverride)) {
+				ConfigUtilities.SyncConfigForItemOverrides(spawnableScrap, out var itemOverride);
+
+				if (!ItemOverridesContainer.ItemOverrides.ContainsKey(spawnableScrap.name)) {
+					//should be impossible so long as we sync with config before this check
 					SharedComponents.Logger.LogInfo("No override exists for this item. Making no changes.");
 
 					continue;
