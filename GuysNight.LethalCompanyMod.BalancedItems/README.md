@@ -1,14 +1,15 @@
 # Introduction
 
-Balanced Items is a simple mod designed to give more realistic weights and values to all of the items in Lethal Company.
-This mod includes item adjustments for all scrap/loot items as well as those purchasable from the terminal.
+Balanced Items is a simple mod designed to give configurable, more realistic weights and values to all of the items in
+Lethal Company. This mod includes item adjustments for all scrap/loot items as well as equipment from the terminal.
 
 # Configuration
 
 This mod introduces a unique approach to configuration file creation. Unlike most mods that generate their config file
 upon the game's initial load, this mod dynamically creates its configuration as you play. Specifically, at the start of
-each round, the mod compiles a list of all spawnable scrap items from all moons and generates corresponding config
-entries. This process encompasses all scrap on all moons and is completed before your ship lands.
+each round, the mod compiles a list of all equipment and spawnable scrap items and generates corresponding config
+entries. This process encompasses all scrap on all moons and is completed before your ship lands. Furthermore, the
+config values can be changed mid-game and be reflected when you start a new session or start the next day.
 
 If there's an existing override for the item's weight or average sell value specified in the mod, these values are set
 into the config. Otherwise, default (vanilla) values are used. Please note that any values you manually set in the
