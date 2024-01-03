@@ -1,7 +1,7 @@
 ﻿#pragma warning disable S1118
-using System.Linq;
 using GuysNight.LethalCompanyMod.BalancedItems.Utilities;
 using HarmonyLib;
+using System.Linq;
 
 namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 	[HarmonyPatch(typeof(StartOfRound))]
@@ -15,15 +15,23 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				return;
 			}
 
+			SharedComponents.Logger.LogInfo($"Found {__instance.allItemsList.itemsList.Count} items in __instance.allItemsList.itemsList.");
+			foreach (var item in __instance.allItemsList.itemsList) {
+				SharedComponents.Logger.LogInfo("allItemsListEntry: " +
+				                                $"name = '{item.name}', " +
+				                                $"itemName = '{item.itemName}', " +
+				                                $"weight = '{item.weight}', " +
+				                                $"minValue = '{item.minValue}', " +
+				                                $"maxValue = '{item.maxValue}', " +
+				                                $"isScrap = '{item.isScrap}'");
+
+				ConfigUtilities.SyncConfigForItemOverrides(item, out _);
+			}
+
 			SharedComponents.Logger.LogInfo($"Found {__instance.levels.Length} levels.");
 			foreach (var level in __instance.levels) {
 				foreach (var spawnableScrap in level.spawnableScrap.OrderBy(s => s.spawnableItem.name)) {
 					SharedComponents.Logger.LogInfo($"On level '{level.name}' we found a spawnable scrap item with name '{spawnableScrap.spawnableItem.name}', itemName '{spawnableScrap.spawnableItem.itemName}', weight '{NumericUtilities.DenormalizeWeight(spawnableScrap.spawnableItem.weight)}' pounds, rarity '{spawnableScrap.rarity}', min value '{spawnableScrap.spawnableItem.minValue}', and max value '{spawnableScrap.spawnableItem.maxValue}'");
-					SharedComponents.Logger.LogInfo($"Begin adding config entries and setting override values for '{spawnableScrap.spawnableItem.name}'");
-
-					ConfigUtilities.SyncConfigForItemOverrides(spawnableScrap.spawnableItem, out _);
-
-					SharedComponents.Logger.LogInfo($"Finish adding config entries and setting override values for '{spawnableScrap.spawnableItem.name}'");
 				}
 			}
 		}

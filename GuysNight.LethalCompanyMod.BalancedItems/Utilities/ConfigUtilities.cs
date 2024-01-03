@@ -1,6 +1,6 @@
-﻿using System;
+﻿using GuysNight.LethalCompanyMod.BalancedItems.Models;
+using System;
 using System.Linq;
-using GuysNight.LethalCompanyMod.BalancedItems.Models;
 
 namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 	public static class ConfigUtilities {
@@ -34,6 +34,10 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 				string.Format(Constants.ConfigDescriptionAverageSellValues, item.itemName)).Value;
 
 			overrideProperties = itemOverrides;
+
+			SharedComponents.Logger.LogInfo($"Finish adding config entries and setting override values for '{item.name}' to have " +
+			                                $"average sell value = '{itemOverrides.AverageValue}', " +
+			                                $"weight = '{itemOverrides.Weight}'");
 		}
 	}
 }
