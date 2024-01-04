@@ -37,7 +37,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 
 			SharedComponents.Logger.LogInfo($"Finish adding config entries and setting override values for '{item.name}' to have " +
 			                                $"average sell value = '{itemOverrides.AverageValue}', " +
-			                                $"weight = '{itemOverrides.Weight}'");
+			                                $"weight = '{NumericUtilities.DenormalizeWeight(itemOverrides.Weight)}'");
 		}
 	}
 }
