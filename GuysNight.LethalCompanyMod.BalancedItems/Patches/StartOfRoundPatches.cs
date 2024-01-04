@@ -16,7 +16,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 			}
 
 			SharedComponents.Logger.LogInfo($"Found {__instance.allItemsList.itemsList.Count} items in __instance.allItemsList.itemsList.");
-			foreach (var item in __instance.allItemsList.itemsList) {
+			foreach (var item in __instance.allItemsList.itemsList.OrderBy(i => i.itemName)) {
 				SharedComponents.Logger.LogInfo("allItemsListEntry: " +
 				                                $"name = '{item.name}', " +
 				                                $"itemName = '{item.itemName}', " +
