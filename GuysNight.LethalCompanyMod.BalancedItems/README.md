@@ -3,37 +3,44 @@
 Balanced Items is a simple mod designed to give configurable, more realistic weights and values to all of the items in
 Lethal Company. This mod includes item adjustments for all scrap/loot items as well as equipment from the terminal.
 
-This mod also fixes the bug where the current carry weight is being displayed as 5% greater than actual.
+This mod also fixes the bug in the game where the current carry weight is being displayed as 5% greater than actual.
 
 # Configuration
 
 This mod introduces a unique approach to configuration file creation. Unlike most mods that generate their config file
 upon the game's initial load, this mod dynamically creates its configuration as you play. Specifically, at the start of
-each round, the mod compiles a list of all equipment and spawnable scrap items and generates corresponding config
-entries. This process encompasses all scrap on all moons and is completed before your ship lands. Furthermore, the
-config values can be changed mid-game and be reflected when you start a new session or start the next day.
+each round, the mod compiles a list of all equipment and spawnable scrap items (including custom items from other mods)
+and generates corresponding config entries. This process encompasses all scrap on all moons and is completed before you
+even pull the lever on your ship to land. Furthermore, the config values can be changed mid-game and be reflected when
+you start a new session or start the next day.
 
-If there's an existing override for the item's weight or average sell value specified in the mod, these values are set
-into the config. Otherwise, default (vanilla) values are used. Please note that any values you manually set in the
-config file will always take precedence over both the vanilla values and any preset overrides within this mod.
+If there is an existing override for the item's weight or average sell value specified in the mod, these values are set
+into the config during creation. Otherwise, default (vanilla) values are used. Please note that any values you manually
+set in the config file will always take precedence over both the vanilla values and any preset overrides within this
+mod.
 
 ## Weights
 
 For weight specification, simply input the desired weight of the item in pounds.
-> NOTE: Due to some peculiarities in the game's mechanics, item weights may sometimes be 1-2 pounds heavier than the
-> specified value.
 
 ## Average Sell Value
 
-The average sell value you set serves as the basis for calculating the item's minimum and maximum sell values, which are
-determined to be +/- 20% of this average.
-> NOTE: Regardless of your configuration, the game will always assign a sale value of 0 credits to equipment.
+The average sell value you set serves as the basis for calculating the item's minimum and maximum sell values, which
+will be +/- 20% of this average. For example, if you set the average sell value of an item to be 100, then the item's
+value when spawned will be between 80-120.
+> NOTE: Be aware that different moons in the game have different scrap multipliers, potentially resulting in actual
+> in-game values being lower than your specified averages.
 
-> NOTE: This approach narrows the variance between the minimum and maximum values compared to standard gameplay,
-> ensuring balanced gameplay without overly easy or difficult scenarios. Be aware that different moons in the game have
-> varying scrap multipliers, potentially resulting in actual in-game values being lower than your specified averages.
+> NOTE: Regardless of your configuration, the game will always assign a sell value of 0 credits to equipment.
+
+> NOTE: The default approach in this mod is to not override any scrap values, thus this simply narrows the variance
+> between the minimum and maximum values compared to standard gameplay, ensuring balanced gameplay without creating
+> overly easy or difficult scenarios.
 
 # Adjustments
+
+Below are the preset overrides set in this mod by default. Unchanged indicates that no override is set in the mod, thus
+vanilla values are used for config creation.
 
 ## Scrap
 
@@ -127,4 +134,4 @@ Alternatively, feel free to open up a PR to address your inquiry yourself. PRs a
 ## Known Issues / Roadmap / Oddities
 
 1. Given how the game handles item weights and item values, the item weights _are not_ synced across players while the
-   item values _are_ synced.
+   item values _are_ synced across players. Syncing the weights across players is a planned feature.
