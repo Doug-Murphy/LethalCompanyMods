@@ -4,6 +4,7 @@
 
 1. Config file support. Huzzah! All items in the game (including custom items from other mods) will be registered into
    your config when you start a round, and reflected in-game at the start of each day.
+2. Fixed bug in the game where the carry weight was being displayed as 5% higher than actual.
 
 ## Changed
 
