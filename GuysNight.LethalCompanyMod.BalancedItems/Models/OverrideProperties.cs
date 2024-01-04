@@ -1,5 +1,6 @@
-﻿using System;
-using GuysNight.LethalCompanyMod.BalancedItems.Utilities;
+﻿using GuysNight.LethalCompanyMod.BalancedItems.Utilities;
+using System;
+using System.Collections.Generic;
 
 namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 	/// <summary>
@@ -12,7 +13,6 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		/// Default constructor for programmatically adding new overrides to our collection.
 		/// </summary>
 		public OverrideProperties() {
-			
 		}
 
 		/// <summary>
@@ -37,6 +37,11 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		/// The maximum value that the item can sell for.
 		/// </summary>
 		public int MaxValue => (int)Math.Round(AverageValue + AverageValue * Constants.SellValueVariance, MidpointRounding.AwayFromZero);
+
+		/// <summary>
+		/// Contains the rarity attributes for this item on the various moons.
+		/// </summary>
+		public Dictionary<string, int?> MoonRarities { get; } = new Dictionary<string, int?>();
 
 		/// <summary>
 		/// The weight to set for the item. This value is normalized to the game's representation when setting.

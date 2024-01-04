@@ -29,11 +29,19 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 			}
 
 			SharedComponents.Logger.LogInfo($"Found {__instance.levels.Length} levels.");
+
 			foreach (var level in __instance.levels) {
-				foreach (var spawnableScrap in level.spawnableScrap.OrderBy(s => s.spawnableItem.name)) {
+				ConfigUtilities.SyncConfigForItemRarityOverride(level, out var rarityOverrides);
+				foreach (var spawnableScrap in level.spawnableScrap.OrderBy(s => s.spawnableItem.itemName)) {
 					SharedComponents.Logger.LogInfo($"On level '{level.name}' we found a spawnable scrap item with name '{spawnableScrap.spawnableItem.name}', itemName '{spawnableScrap.spawnableItem.itemName}', weight '{NumericUtilities.DenormalizeWeight(spawnableScrap.spawnableItem.weight)}' pounds, rarity '{spawnableScrap.rarity}', min value '{spawnableScrap.spawnableItem.minValue}', and max value '{spawnableScrap.spawnableItem.maxValue}'");
+					UpdateItemRarity(spawnableScrap, rarityOverrides[spawnableScrap.spawnableItem.name]);
 				}
 			}
+		}
+
+		private static void UpdateItemRarity(SpawnableItemWithRarity item, int rarity) {
+			item.rarity = rarity;
+			SharedComponents.Logger.LogInfo($"Successfully overrode rarity to be '{rarity}' for item '{item.spawnableItem.name}'.");
 		}
 	}
 }
