@@ -1,8 +1,8 @@
 ﻿#pragma warning disable	S1118
 
-using System.Linq;
-using GuysNight.LethalCompanyMod.BalancedItems.Models;
+using GuysNight.LethalCompanyMod.BalancedItems.Utilities;
 using HarmonyLib;
+using System.Linq;
 
 namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 	[HarmonyPatch(typeof(RoundManager))]
@@ -18,22 +18,20 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 
 			foreach (var spawnableScrap in __instance.currentLevel.spawnableScrap.Select(x => x.spawnableItem)) {
 				SharedComponents.Logger.LogInfo($"spawnableScrap.name is '{spawnableScrap.name}'");
+				SharedComponents.Logger.LogInfo($"spawnableScrap.itemName is '{spawnableScrap.itemName}'");
 				SharedComponents.Logger.LogInfo($"spawnableScrap.minValue is '{spawnableScrap.minValue}'");
 				SharedComponents.Logger.LogInfo($"spawnableScrap.maxValue is '{spawnableScrap.maxValue}'");
 
-				if (!ItemOverridesContainer.ItemOverrides.TryGetValue(spawnableScrap.name, out var itemOverride)) {
+				ConfigUtilities.SyncConfigForItemOverrides(spawnableScrap, out var itemOverride);
+
+				if (!ItemOverridesContainer.ItemOverrides.ContainsKey(spawnableScrap.name)) {
+					//should be impossible so long as we sync with config before this check
 					SharedComponents.Logger.LogInfo("No override exists for this item. Making no changes.");
-
-					return;
-				}
-
-				if (!itemOverride.MinValue.HasValue || !itemOverride.MaxValue.HasValue) {
-					SharedComponents.Logger.LogInfo(@$"An item override was found, but it did not have both a {nameof(OverrideProperties.MinValue)} and {nameof(OverrideProperties.MaxValue)} specified. {nameof(OverrideProperties.MinValue)} = '{itemOverride.MinValue}' {nameof(OverrideProperties.MaxValue)} = '{itemOverride.MaxValue}'");
 
 					continue;
 				}
 
-				UpdateItemValue(spawnableScrap, itemOverride.MinValue.Value, itemOverride.MaxValue.Value);
+				UpdateItemValue(spawnableScrap, itemOverride.MinValue, itemOverride.MaxValue);
 			}
 		}
 

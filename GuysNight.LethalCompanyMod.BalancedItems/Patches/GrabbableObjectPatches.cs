@@ -1,5 +1,8 @@
 ﻿#pragma warning disable	S1118
 
+using System;
+using System.Linq;
+using GuysNight.LethalCompanyMod.BalancedItems.Models;
 using GuysNight.LethalCompanyMod.BalancedItems.Utilities;
 using HarmonyLib;
 
@@ -8,7 +11,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 	public class GrabbableObjectPatches {
 		[HarmonyPatch("Start")]
 		[HarmonyPostfix]
-		public static void ChangeItemWeights(GrabbableObject __instance) {
+		public static void ChangeItemWeight(GrabbableObject __instance) {
 			if (__instance == null) {
 				SharedComponents.Logger.LogInfo("__instance is null for some reason. Exiting override.");
 
@@ -17,20 +20,14 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 
 			SharedComponents.Logger.LogInfo($"item.itemProperties.name is '{__instance.itemProperties.name}'");
 			SharedComponents.Logger.LogInfo($"item.itemProperties.weight is '{NumericUtilities.DenormalizeWeight(__instance.itemProperties.weight)}'");
+			SharedComponents.Logger.LogInfo($"item.itemProperties.minValue is '{__instance.itemProperties.minValue}'");
+			SharedComponents.Logger.LogInfo($"item.itemProperties.maxValue is '{__instance.itemProperties.maxValue}'");
 
-			if (!ItemOverridesContainer.ItemOverrides.TryGetValue(__instance.itemProperties.name, out var itemOverride)) {
-				SharedComponents.Logger.LogInfo("No override exists for this item. Making no changes.");
+			SharedComponents.Logger.LogInfo($"Begin adding config entries and setting override values for '{__instance.itemProperties.name}'");
 
-				return;
-			}
+			ConfigUtilities.SyncConfigForItemOverrides(__instance.itemProperties, out var itemOverrides);
 
-			if (!itemOverride.Weight.HasValue) {
-				SharedComponents.Logger.LogInfo("An item override was found, but it did not have a weight specified.");
-
-				return;
-			}
-
-			UpdateItemWeight(__instance, itemOverride.Weight.Value);
+			UpdateItemWeight(__instance, itemOverrides.Weight);
 		}
 
 		private static void UpdateItemWeight(GrabbableObject item, float weight) {

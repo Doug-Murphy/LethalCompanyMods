@@ -4,13 +4,14 @@
         <TargetFramework>netstandard2.1</TargetFramework>
         <AssemblyName>GuysNight.LethalCompanyMod.BalancedItems</AssemblyName>
         <Description>Balance out various aspects of the items in the game.</Description>
-        <Version>1.1.0</Version>
+        <Version>1.2.0</Version>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 
     <ItemGroup>
         <Reference Include="lib\Assembly-CSharp.dll"/>
         <Reference Include="lib\Unity.NetCode.Runtime.dll"/>
+        <Reference Include="lib\Unity.TextMeshPro.dll"/>
         <Reference Include="lib\UnityEngine.CoreModule.dll"/>
     </ItemGroup>
 
