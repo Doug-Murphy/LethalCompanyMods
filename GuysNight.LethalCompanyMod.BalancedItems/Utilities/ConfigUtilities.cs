@@ -1,6 +1,5 @@
 ﻿using GuysNight.LethalCompanyMod.BalancedItems.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
@@ -41,37 +40,28 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 			                                $"weight = '{NumericUtilities.DenormalizeWeight(itemOverrides.Weight)}'");
 		}
 
-		public static void SyncConfigForItemRarityOverride(SelectableLevel level, out Dictionary<string, int> itemsWithRarities) {
-			var allItemsWithRarities = new Dictionary<string, int>();
+		public static void SyncConfigForItemRarityOverride(SelectableLevel level, SpawnableItemWithRarity spawnableItemWithRarity, out OverrideProperties itemOverride) {
+			var item = spawnableItemWithRarity.spawnableItem;
+			var itemRarity = spawnableItemWithRarity.rarity;
 
-			foreach (var spawnableItemWithRarity in level.spawnableScrap.OrderBy(s => s.spawnableItem.itemName)) {
-				var item = spawnableItemWithRarity.spawnableItem;
-				var itemRarity = spawnableItemWithRarity.rarity;
+			//if the overrides container does not contain an override for the current item, add an entry
+			ItemOverridesContainer.ItemOverrides.TryAdd(item.name, new OverrideProperties());
 
-				//if the overrides container does not contain an override for the current item, add an entry
-				if (!ItemOverridesContainer.ItemOverrides.ContainsKey(item.name)) {
-					ItemOverridesContainer.ItemOverrides[item.name] = new OverrideProperties();
-				}
+			var itemOverrides = ItemOverridesContainer.ItemOverrides[item.name];
+			itemOverrides.MoonRarities.TryAdd(level.name, null);
 
-				var itemOverrides = ItemOverridesContainer.ItemOverrides[item.name];
+			SharedComponents.ConfigFile.Reload();
+			//if rarity for the moon is not added in the config, add it for future
+			//if it is added in the config, retrieve the value and set it in the overrides
+			itemOverrides.MoonRarities[level.name] = SharedComponents.ConfigFile.Bind(string.Format(Constants.ConfigSectionHeaderMoonRarity, level.PlanetName),
+				item.name,
+				itemOverrides.MoonRarities[level.name].HasValue ? itemOverrides.MoonRarities[level.name].Value : itemRarity,
+				string.Format(Constants.ConfigDescriptionMoonRarity, item.itemName)
+			).Value;
 
-				itemOverrides.MoonRarities.TryAdd(level.name, null);
+			itemOverride = itemOverrides;
 
-				SharedComponents.ConfigFile.Reload();
-				//if rarity for the moon is not added in the config, add it for future
-				//if it is added in the config, retrieve the value and set it in the overrides
-				itemOverrides.MoonRarities[level.name] = SharedComponents.ConfigFile.Bind(string.Format(Constants.ConfigSectionHeaderMoonRarity, level.PlanetName),
-					item.name,
-					itemOverrides.MoonRarities[level.name].HasValue ? itemOverrides.MoonRarities[level.name].Value : itemRarity,
-					string.Format(Constants.ConfigDescriptionMoonRarity, item.itemName)
-				).Value;
-
-				allItemsWithRarities.TryAdd(item.name, itemOverrides.MoonRarities[level.name].GetValueOrDefault());
-
-				SharedComponents.Logger.LogInfo($"Finish adding config entry and setting override value for '{item.name}' to have rarity = '{itemOverrides.MoonRarities[level.name]}' on moon '{level.name}'");
-			}
-
-			itemsWithRarities = allItemsWithRarities;
+			SharedComponents.Logger.LogInfo($"Finish adding config entry and setting override value for '{item.name}' to have rarity = '{itemOverrides.MoonRarities[level.name]}' on moon '{level.name}'");
 		}
 	}
 }
