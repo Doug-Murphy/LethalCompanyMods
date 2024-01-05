@@ -66,8 +66,8 @@ of an item spawning. Here are a few examples to help that make sense.
 > NOTE: Keep in mind that due to the randomness of scrap spawns, the specified values represent the relative weighting
 > of items for that moon, not a guaranteed outcome.
 
-> NOTE: Also, note that the Apparatus doesn't spawn like regular scrap. It's part of a room generated inside the moon's
-> building, making its spawn rate uncontrollable.
+> NOTE: The Apparatus doesn't spawn like regular scrap. It's part of a room generated inside the moon's building, making
+> its spawn rate uncontrollable.
 
 # Adjustments
 
