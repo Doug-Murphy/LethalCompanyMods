@@ -48,29 +48,26 @@ be 100, then the item's value when spawned will be between 80-120.
 The spawn rarity of an item on a moon can be changed mid-game but will not be reflected at the start of the next day.
 You must restart your session (but not the game) for these changes to take effect.
 
-The way that Lethal Company handles spawn rarities is by a relative weighting system. This makes it rather difficult to
-understand the likelihood that your item will spawn. If you don't want an item to spawn on a specific moon at all, set
-the item's rarity for that moon to be 0. The examples below should help understand this system.
+Lethal Company uses a relative weighting system to handle spawn rarities, making it a bit tricky to grasp the likelihood
+of an item spawning. Here are a few examples to help that make sense.
 
-> Example 1: You want only clown horns to spawn on Experimentation. In the config file for Experimentation, set all
-> items except the clown horn to have a 0 rarity. The clown horn item can have any value except for 0. Since it is the
-> only value set, it accounts for 100% of the spawn weighting and will account for 100% of the scrap spawned.
+> Example 1: Let's say you want only clown horns to spawn on Experimentation. In the config file for Experimentation,
+> set the rarity of all items, except the clown horn, to 0. The clown horn's rarity can be any value except 0. Since
+> it's the only one set, it represents 100% of the spawn weighting, accounting for all the scrap spawned.
 
-> Example 2: You want 1/3 of the generated scrap to be clown horns, 1/3 to be bottles, and the last 1/3
-> to be candy on Assurance. Set the rarity for those 3 items to be the same value (you can just use 1 for simplicity)
-> and all other items to 0.
+> Example 2: If you want 1/3 of the generated scrap on Assurance to be clown horns, 1/3 bottles, and the last 1/3 candy,
+> set the rarity for those 3 items to the same value (let's say 1), and set all other items to 0.
 
-> Example 3: You want 1/2 of the generated scrap to be clown horns, 1/4 to be bottles, and the last 1/4
-> to be candy on Titan. Set the clown horn rarity to be 2, bottles to be 1, and candy to be 1. The sum of these values
-> is 4. Since clown horns account for 2 of the 4, they account for half of the generated scrap. The other two account
-> for only 1 of the 4, so they account for roughly a fourth of the generated scrap.
+> Example 3: For Titan, suppose you want 1/2 of the scrap to be clown horns, 1/4 bottles, and the remaining 1/4 candy.
+> Set the rarity for clown horns to 2, bottles to 1, and candy to 1. The sum of these values is 4. Since clown horns
+> account for 2 out of 4, they represent half of the generated scrap. The other two account for only 1 of the 4, making
+> them roughly a quarter of the generated scrap.
 
-> NOTE: Given that scrap spawns are random, there is no guarantee that the values you set will be exactly what you have
-> spawned in the game. The values you specify are merely the relative weighting of that item for that moon.
+> NOTE: Keep in mind that due to the randomness of scrap spawns, the specified values represent the relative weighting
+> of items for that moon, not a guaranteed outcome.
 
-> NOTE: The Apparatus is an odd scrap item because it is not spawned in the same way that other scrap items are.
-> "Regular" scrap items spawn randomly across the ground, but the Apparatus spawns as part of a room that is generated
-> for the inside of the moon's building. Therefore, the apparatus spawn rate cannot be controlled.
+> NOTE: Also, note that the Apparatus doesn't spawn like regular scrap. It's part of a room generated inside the moon's
+> building, making its spawn rate uncontrollable.
 
 # Adjustments
 
