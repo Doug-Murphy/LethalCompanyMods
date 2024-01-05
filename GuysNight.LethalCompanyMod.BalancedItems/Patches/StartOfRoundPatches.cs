@@ -8,9 +8,9 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 	public class StartOfRoundPatches {
 		[HarmonyPrefix]
 		[HarmonyPatch("Start")]
-		public static void PrintAllLevelsAndSpawnableScrap(StartOfRound __instance) {
+		public static void InitializeAllLevelsAndSpawnableScrap(StartOfRound __instance) {
 			if (__instance is null) {
-				SharedComponents.Logger.LogInfo($"__instance is null in '{nameof(PrintAllLevelsAndSpawnableScrap)}'. Aborting.");
+				SharedComponents.Logger.LogInfo($"__instance is null in '{nameof(InitializeAllLevelsAndSpawnableScrap)}'. Aborting.");
 
 				return;
 			}

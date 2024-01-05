@@ -1,8 +1,5 @@
 ﻿#pragma warning disable	S1118
 
-using System;
-using System.Linq;
-using GuysNight.LethalCompanyMod.BalancedItems.Models;
 using GuysNight.LethalCompanyMod.BalancedItems.Utilities;
 using HarmonyLib;
 
@@ -12,8 +9,8 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 		[HarmonyPatch("Start")]
 		[HarmonyPostfix]
 		public static void ChangeItemWeight(GrabbableObject __instance) {
-			if (__instance == null) {
-				SharedComponents.Logger.LogInfo("__instance is null for some reason. Exiting override.");
+			if (__instance is null) {
+				SharedComponents.Logger.LogInfo($"__instance is null in '{nameof(ChangeItemWeight)}'. Aborting.");
 
 				return;
 			}
