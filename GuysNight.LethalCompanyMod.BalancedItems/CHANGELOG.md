@@ -1,3 +1,13 @@
+# Version 1.3.0
+
+## Added
+
+1. Allow specifying the item rarity values per item per moon.
+
+## Changed
+
+## Removed
+
 # Version 1.2.0
 
 ## Added
