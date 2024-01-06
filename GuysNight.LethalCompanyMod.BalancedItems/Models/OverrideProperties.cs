@@ -41,7 +41,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		/// <summary>
 		/// Contains the rarity attributes for this item on the various moons.
 		/// </summary>
-		public Dictionary<string, int?> MoonRarities { get; } = new Dictionary<string, int?>();
+		public Dictionary<string, byte?> MoonRarities { get; } = new Dictionary<string, byte?>();
 
 		/// <summary>
 		/// The weight to set for the item. This value is normalized to the game's representation when setting.

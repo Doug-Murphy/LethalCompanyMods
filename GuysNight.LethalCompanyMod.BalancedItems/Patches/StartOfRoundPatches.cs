@@ -34,23 +34,15 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				foreach (var spawnableScrap in level.spawnableScrap.OrderBy(s => s.spawnableItem.itemName)) {
 					SharedComponents.Logger.LogInfo($"On level '{level.name}' we found a spawnable scrap item with name '{spawnableScrap.spawnableItem.name}', itemName '{spawnableScrap.spawnableItem.itemName}', weight '{NumericUtilities.DenormalizeWeight(spawnableScrap.spawnableItem.weight)}' pounds, rarity '{spawnableScrap.rarity}', min value '{spawnableScrap.spawnableItem.minValue}', and max value '{spawnableScrap.spawnableItem.maxValue}'");
 					ConfigUtilities.SyncConfigForItemRarityOverride(level, spawnableScrap, out var itemOverride);
-					UpdateItemRarity(spawnableScrap, itemOverride.MoonRarities[level.name]);
+					UpdateItemRarity(spawnableScrap, itemOverride.MoonRarities[level.name].GetValueOrDefault());
 				}
 			}
 
 			SharedComponents.ConfigFile.Save();
 		}
 
-		private static void UpdateItemRarity(SpawnableItemWithRarity item, int? rarity) {
-			if (!rarity.HasValue) {
-				SharedComponents.Logger.LogInfo($"Rarity for item '{item.spawnableItem.name}' is null for some reason. Setting rarity to 0.");
-
-				item.rarity = 0;
-
-				return;
-			}
-
-			item.rarity = rarity.Value;
+		private static void UpdateItemRarity(SpawnableItemWithRarity item, byte rarity) {
+			item.rarity = rarity;
 			SharedComponents.Logger.LogInfo($"Successfully overrode rarity to be '{rarity}' for item '{item.spawnableItem.name}'.");
 		}
 	}
