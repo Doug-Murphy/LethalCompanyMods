@@ -6,7 +6,11 @@
 
 ## Changed
 
+1. Set allowable ranges for config entries to help with setting valid values.
+
 ## Removed
+
+Nothing.
 
 # Version 1.2.0
 
