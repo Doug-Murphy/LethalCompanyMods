@@ -16,6 +16,12 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				return;
 			}
 
+			if (GameNetworkManager.Instance?.localPlayerController is null) {
+				SharedComponents.Logger.LogInfo($"Instance or localPlayerController is null in '{nameof(DisplayCorrectCarryWeight)}'. Aborting.");
+
+				return;
+			}
+
 			var num = (float)Math.Round(Math.Clamp(GameNetworkManager.Instance.localPlayerController.carryWeight - 1f, 0.0f, 100f) * 100f);
 			__instance.weightCounter.text = $"{num} lb";
 		}
