@@ -37,6 +37,8 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 					UpdateItemRarity(spawnableScrap, itemOverride.MoonRarities[level.name]);
 				}
 			}
+
+			SharedComponents.ConfigFile.Save();
 		}
 
 		private static void UpdateItemRarity(SpawnableItemWithRarity item, int? rarity) {

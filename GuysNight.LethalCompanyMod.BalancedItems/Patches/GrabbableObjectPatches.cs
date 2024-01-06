@@ -25,6 +25,8 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 			ConfigUtilities.SyncConfigForItemOverrides(__instance.itemProperties, out var itemOverrides);
 
 			UpdateItemWeight(__instance, itemOverrides.Weight);
+
+			SharedComponents.ConfigFile.Save();
 		}
 
 		private static void UpdateItemWeight(GrabbableObject item, float weight) {

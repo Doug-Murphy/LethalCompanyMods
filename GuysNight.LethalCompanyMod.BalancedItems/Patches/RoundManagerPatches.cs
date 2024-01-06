@@ -33,6 +33,8 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 
 				UpdateItemValue(spawnableScrap, itemOverride.MinValue, itemOverride.MaxValue);
 			}
+
+			SharedComponents.ConfigFile.Save();
 		}
 
 		private static void UpdateItemValue(Item item, int minValue, int maxValue) {
