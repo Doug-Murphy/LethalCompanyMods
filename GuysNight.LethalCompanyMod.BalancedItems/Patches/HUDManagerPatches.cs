@@ -35,12 +35,10 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 		[HarmonyPatch("Update")]
 		[HarmonyPrefix]
 		public static void StoreVariablesBeforeUpdateChanges(HUDManager __instance) {
-			if (_originalFontSize.HasValue) {
-				return;
+			if (!_originalFontSize.HasValue) {
+				SharedComponents.Logger.LogInfo($"Original totalValueText.fontSize was '{__instance.totalValueText.fontSize}'");
+				_originalFontSize = __instance.totalValueText.fontSize; //default is 21.48
 			}
-
-			SharedComponents.Logger.LogInfo($"Previous fontSize was '{__instance.totalValueText.fontSize}'");
-			_originalFontSize = __instance.totalValueText.fontSize;
 		}
 
 		/// <summary>
@@ -50,18 +48,10 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 		[HarmonyPatch("Update")]
 		[HarmonyPostfix]
 		public static void DisplayFormattedTotalScrapValue(HUDManager __instance) {
-			var totalScrapScannedDisplayNumFieldInfo = AccessTools.Field(typeof(HUDManager), "totalScrapScannedDisplayNum");
-			var fieldRef = AccessTools.FieldRefAccess<HUDManager, int>(totalScrapScannedDisplayNumFieldInfo);
-			var totalScrapScannedDisplayNum = fieldRef(__instance);
-			totalScrapScannedDisplayNum = Math.Clamp(totalScrapScannedDisplayNum, 0, 999_999);
-			if (totalScrapScannedDisplayNum > 9_950) {
-				SharedComponents.Logger.LogInfo($"Setting __instance.totalValueText.text to {totalScrapScannedDisplayNum}");
-			}
-
-			if (totalScrapScannedDisplayNum >= 10_000) {
+			if (__instance.totalScrapScanned >= 10_000) {
 				__instance.totalValueText.fontSize = 16;
 			}
-			else if (totalScrapScannedDisplayNum >= 1_000) {
+			else if (__instance.totalScrapScanned >= 1_000) {
 				__instance.totalValueText.fontSize = 18.5f;
 			}
 			else {
@@ -71,7 +61,10 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 			//helpful, but doesn't seem to size itself small enough to stay fitting on one line
 			// __instance.totalValueText.enableAutoSizing = true;
 
-			__instance.totalValueText.text = $"${totalScrapScannedDisplayNum:N0}";
+			__instance.totalValueText.text = $"${__instance.totalScrapScanned:N0}";
+			// if (__instance.totalScrapScanned > 0 && __instance.totalScrapScanned % 500 == 0) {
+			// __instance.UIAudio.PlayOneShot(__instance.addToScrapTotalSFX);
+			// }
 		}
 	}
 }
