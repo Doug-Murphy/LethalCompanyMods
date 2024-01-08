@@ -11,7 +11,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems {
 			SharedComponents.Logger = Logger;
 			Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
 			SharedComponents.Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
-			SharedComponents.ConfigFile = new ConfigFile(Path.Combine(Paths.ConfigPath, $"{PluginInfo.PLUGIN_NAME}.cfg"), true);
+			SharedComponents.ConfigFile = new ConfigFile(Path.Combine(Paths.ConfigPath, $"{PluginInfo.PLUGIN_NAME}.cfg"), true) { SaveOnConfigSet = false };
 		}
 	}
 }

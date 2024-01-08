@@ -3,23 +3,21 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <AssemblyName>GuysNight.LethalCompanyMod.BalancedItems</AssemblyName>
-        <Description>Balance out various aspects of the items in the game.</Description>
-        <Version>1.2.0</Version>
+        <Description>Balance out various aspects of the items in the game by giving you control of certain properties of those items.</Description>
+        <Version>1.3.0</Version>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 
     <ItemGroup>
         <Reference Include="lib\Assembly-CSharp.dll"/>
-        <Reference Include="lib\Unity.NetCode.Runtime.dll"/>
         <Reference Include="lib\Unity.TextMeshPro.dll"/>
-        <Reference Include="lib\UnityEngine.CoreModule.dll"/>
     </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all"/>
         <PackageReference Include="BepInEx.Core" Version="5.*"/>
         <PackageReference Include="BepInEx.PluginInfoProps" Version="1.*"/>
-        <PackageReference Include="UnityEngine.Modules" Version="5.6.0" IncludeAssets="compile"/>
+        <PackageReference Include="UnityEngine.Modules" Version="2023.2.4" IncludeAssets="compile"/>
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">

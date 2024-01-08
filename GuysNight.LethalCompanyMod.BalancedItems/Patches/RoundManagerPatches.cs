@@ -10,8 +10,8 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 		[HarmonyPrefix]
 		[HarmonyPatch("SpawnScrapInLevel")]
 		public static void ChangeScrapValues(RoundManager __instance) {
-			if (__instance == null) {
-				SharedComponents.Logger.LogInfo("__instance is null for some reason. Exiting override.");
+			if (__instance is null) {
+				SharedComponents.Logger.LogInfo($"__instance is null in '{nameof(ChangeScrapValues)}'. Aborting.");
 
 				return;
 			}
@@ -33,6 +33,8 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 
 				UpdateItemValue(spawnableScrap, itemOverride.MinValue, itemOverride.MaxValue);
 			}
+
+			SharedComponents.ConfigFile.Save();
 		}
 
 		private static void UpdateItemValue(Item item, int minValue, int maxValue) {
