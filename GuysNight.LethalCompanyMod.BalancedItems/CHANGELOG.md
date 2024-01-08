@@ -3,6 +3,8 @@
 ## Added
 
 1. Allow specifying the item rarity values per item per moon.
+2. Change total scrap value to instantly display instead of counting up.
+3. Change total scrap value to display values > 10,000 and shrink font size as needed so that it doesn't wrap.
 
 ## Changed
 
