@@ -48,11 +48,17 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 		[HarmonyPatch("Update")]
 		[HarmonyPostfix]
 		public static void DisplayFormattedTotalScrapValue(HUDManager __instance) {
-			if (__instance.totalScrapScanned >= 10_000) {
+			if (__instance.totalScrapScanned >= 1_000_000) {
+				__instance.totalValueText.fontSize = 12;
+			}
+			else if (__instance.totalScrapScanned >= 100_000) {
+				__instance.totalValueText.fontSize = 14;
+			}
+			else if (__instance.totalScrapScanned >= 10_000) {
 				__instance.totalValueText.fontSize = 16;
 			}
 			else if (__instance.totalScrapScanned >= 1_000) {
-				__instance.totalValueText.fontSize = 18.5f;
+				__instance.totalValueText.fontSize = 18;
 			}
 			else {
 				__instance.totalValueText.fontSize = _originalFontSize.Value;
