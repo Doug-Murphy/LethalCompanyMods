@@ -9,6 +9,8 @@
 ## Changed
 
 1. Set allowable ranges for config entries to help with setting valid values.
+2. The mod now only saves to the config file when needed instead of _everytime_ we bind a value to the config. This
+   increases performance by reducing the number of save requests to your disk.
 
 ## Removed
 
