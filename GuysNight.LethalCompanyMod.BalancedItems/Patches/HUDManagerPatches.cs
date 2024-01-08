@@ -64,13 +64,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				__instance.totalValueText.fontSize = _originalFontSize.Value;
 			}
 
-			//helpful, but doesn't seem to size itself small enough to stay fitting on one line
-			// __instance.totalValueText.enableAutoSizing = true;
-
 			__instance.totalValueText.text = $"${__instance.totalScrapScanned:N0}";
-			// if (__instance.totalScrapScanned > 0 && __instance.totalScrapScanned % 500 == 0) {
-			// __instance.UIAudio.PlayOneShot(__instance.addToScrapTotalSFX);
-			// }
 		}
 	}
 }
