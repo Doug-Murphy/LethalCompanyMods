@@ -22,9 +22,16 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 
 			SharedComponents.Logger.LogInfo($"Begin adding config entries and setting override values for '{__instance.itemProperties.name}'");
 
-			ConfigUtilities.SyncConfigForItemOverrides(__instance.itemProperties, out var itemOverrides);
+			var itemEntry = ConfigUtilities.SyncConfigForItemOverrides(__instance.itemProperties);
 
-			UpdateItemWeight(__instance, itemOverrides.Weight);
+			if (!ItemsContainer.Items.ContainsKey(__instance.itemProperties.name)) {
+				//should be impossible so long as we sync with config before this check
+				SharedComponents.Logger.LogWarning($"No item entry exists for item '{__instance.itemProperties.name}'. Making no changes to item weight.");
+
+				return;
+			}
+
+			UpdateItemWeight(__instance, itemEntry.Overrides.Weight);
 
 			SharedComponents.ConfigFile.Save();
 		}

@@ -22,16 +22,16 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				SharedComponents.Logger.LogInfo($"spawnableScrap.minValue is '{spawnableScrap.minValue}'");
 				SharedComponents.Logger.LogInfo($"spawnableScrap.maxValue is '{spawnableScrap.maxValue}'");
 
-				ConfigUtilities.SyncConfigForItemOverrides(spawnableScrap, out var itemOverride);
+				var itemEntry = ConfigUtilities.SyncConfigForItemOverrides(spawnableScrap);
 
-				if (!ItemOverridesContainer.ItemOverrides.ContainsKey(spawnableScrap.name)) {
+				if (!ItemsContainer.Items.ContainsKey(spawnableScrap.name)) {
 					//should be impossible so long as we sync with config before this check
-					SharedComponents.Logger.LogInfo("No override exists for this item. Making no changes.");
+					SharedComponents.Logger.LogWarning($"No item entry exists for item '{spawnableScrap.name}'. Making no changes to item value.");
 
 					continue;
 				}
 
-				UpdateItemValue(spawnableScrap, itemOverride.MinValue, itemOverride.MaxValue);
+				UpdateItemValue(spawnableScrap, itemEntry.Overrides.MinValue, itemEntry.Overrides.MaxValue);
 			}
 
 			SharedComponents.ConfigFile.Save();
