@@ -1,3 +1,17 @@
+# Version 1.4.0
+
+## Added
+
+Nothing.
+
+## Changed
+
+1. Config description entries now list the default vanilla values for that override.
+
+## Removed
+
+Nothing.
+
 # Version 1.3.0
 
 ## Added
