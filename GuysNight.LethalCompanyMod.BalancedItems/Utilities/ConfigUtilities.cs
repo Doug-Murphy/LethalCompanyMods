@@ -24,7 +24,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 			itemOverrides.Weight = SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderWeight,
 				item.name,
 				NumericUtilities.DenormalizeWeight(Math.Abs(itemOverrides.Weight - default(float)) > 0 ? itemOverrides.Weight : itemWeight),
-				new ConfigDescription(string.Format(Constants.ConfigDescriptionWeight, item.itemName), new AcceptableValueRange<float>(0, 1_000))
+				new ConfigDescription(string.Format(Constants.ConfigDescriptionWeight, item.itemName, NumericUtilities.DenormalizeWeight(itemWeight)), new AcceptableValueRange<float>(0, 1_000))
 			).Value;
 
 			//if sell value is not added in the config, add it for future
@@ -32,7 +32,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 			itemOverrides.AverageValue = SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderAverageSellValues,
 				item.name,
 				itemOverrides.AverageValue != default ? itemOverrides.AverageValue : itemAverageValue,
-				new ConfigDescription(string.Format(Constants.ConfigDescriptionAverageSellValues, item.itemName), new AcceptableValueRange<ushort>(ushort.MinValue, ushort.MaxValue))
+				new ConfigDescription(string.Format(Constants.ConfigDescriptionAverageSellValues, item.itemName, itemAverageValue), new AcceptableValueRange<ushort>(ushort.MinValue, ushort.MaxValue))
 			).Value;
 
 			overrideProperties = itemOverrides;
@@ -58,7 +58,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 			itemOverrides.MoonRarities[level.name] = SharedComponents.ConfigFile.Bind(string.Format(Constants.ConfigSectionHeaderMoonRarity, level.PlanetName),
 				item.name,
 				itemOverrides.MoonRarities[level.name].HasValue ? itemOverrides.MoonRarities[level.name].Value : (byte)itemRarity,
-				new ConfigDescription(string.Format(Constants.ConfigDescriptionMoonRarity, item.itemName), new AcceptableValueRange<byte>(0, 100)) //100 is the max in the game
+				new ConfigDescription(string.Format(Constants.ConfigDescriptionMoonRarity, item.itemName, itemRarity), new AcceptableValueRange<byte>(0, 100)) //100 is the max in the game
 			).Value;
 
 			itemOverride = itemOverrides;
