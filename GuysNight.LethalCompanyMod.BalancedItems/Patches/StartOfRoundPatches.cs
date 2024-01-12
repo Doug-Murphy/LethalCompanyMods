@@ -1,4 +1,5 @@
 ﻿#pragma warning disable S1118
+using GuysNight.LethalCompanyMod.BalancedItems.Models;
 using GuysNight.LethalCompanyMod.BalancedItems.Utilities;
 using HarmonyLib;
 using System.Linq;
@@ -25,6 +26,8 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				                                $"maxValue = '{item.maxValue}', " +
 				                                $"isScrap = '{item.isScrap}'");
 
+				ItemsContainer.SetVanillaValues(item.name, new VanillaValues(item.minValue, item.maxValue, item.weight));
+
 				ConfigUtilities.SyncConfigForItemOverrides(item);
 			}
 
@@ -33,15 +36,23 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 			foreach (var level in __instance.levels) {
 				foreach (var spawnableScrap in level.spawnableScrap.OrderBy(s => s.spawnableItem.itemName)) {
 					SharedComponents.Logger.LogInfo($"On level '{level.name}' we found a spawnable scrap item with name '{spawnableScrap.spawnableItem.name}', itemName '{spawnableScrap.spawnableItem.itemName}', weight '{NumericUtilities.DenormalizeWeight(spawnableScrap.spawnableItem.weight)}' pounds, rarity '{spawnableScrap.rarity}', min value '{spawnableScrap.spawnableItem.minValue}', and max value '{spawnableScrap.spawnableItem.maxValue}'");
-					var itemEntry = ConfigUtilities.SyncConfigForItemRarityOverride(level, spawnableScrap);
-					if (!ItemsContainer.Items.ContainsKey(spawnableScrap.spawnableItem.name)) {
-						//should be impossible so long as we sync with config before this check
-						SharedComponents.Logger.LogWarning($"No item entry exists for item '{spawnableScrap.spawnableItem.name}'. Making no changes to item spawn rarity on moon '{level.name}'.");
+					ItemsContainer.SetVanillaValues(spawnableScrap.spawnableItem.name, new VanillaValues(spawnableScrap.spawnableItem.minValue, spawnableScrap.spawnableItem.maxValue, spawnableScrap.spawnableItem.weight));
 
-						continue;
+					if (bool.TryParse(SharedComponents.ConfigFile[Constants.ConfigSectionHeaderToggles, Constants.ConfigKeyToggleMoonRarity].GetSerializedValue(), out var isMoonRarityFeatureEnabled)) {
+						SharedComponents.Logger.LogDebug($"Successfully retrieved moon rarity override feature toggle. Value is '{isMoonRarityFeatureEnabled}'");
+					}
+					else {
+						SharedComponents.Logger.LogWarning("Could not retrieve moon rarity override feature toggle from config. Assuming it was set to true.");
+						isMoonRarityFeatureEnabled = true;
 					}
 
-					UpdateItemRarity(level.name, spawnableScrap, itemEntry.Overrides.MoonRarities[level.name].GetValueOrDefault());
+					var itemEntry = ConfigUtilities.SyncConfigForItemRarityOverride(level, spawnableScrap);
+					if (isMoonRarityFeatureEnabled) {
+						UpdateItemRarity(level.name, spawnableScrap, itemEntry.Overrides.MoonRarities[level.name].GetValueOrDefault());
+					}
+					else {
+						UpdateItemRarity(level.name, spawnableScrap, itemEntry.VanillaValues.MoonRarities[level.name]);
+					}
 				}
 			}
 

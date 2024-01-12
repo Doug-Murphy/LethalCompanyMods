@@ -2,7 +2,8 @@
 
 ## Added
 
-Nothing.
+1. You can now enable or disable entire sections of the config to better tweak how you want the game to be. Some
+   settings will require exiting to menu and restarting your session.
 
 ## Changed
 

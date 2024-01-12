@@ -12,6 +12,26 @@ namespace GuysNight.LethalCompanyMod.BalancedItems {
 			Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
 			SharedComponents.Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
 			SharedComponents.ConfigFile = new ConfigFile(Path.Combine(Paths.ConfigPath, $"{PluginInfo.PLUGIN_NAME}.cfg"), true) { SaveOnConfigSet = false };
+
+			SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderToggles,
+				Constants.ConfigKeyToggleAverageSellValues,
+				true,
+				"Whether or not your specified average sell value overrides should be applied. If set to false, vanilla values will be used."
+			);
+
+			SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderToggles,
+				Constants.ConfigKeyToggleMoonRarity,
+				true,
+				"Whether or not your specified moon rarity overrides should be applied. If set to false, vanilla values will be used."
+			);
+
+			SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderToggles,
+				Constants.ConfigKeyToggleWeights,
+				true,
+				"Whether or not your specified weight overrides should be applied. If set to false, vanilla values will be used."
+			);
+
+			SharedComponents.ConfigFile.Save();
 		}
 	}
 }

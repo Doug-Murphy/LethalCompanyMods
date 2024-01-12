@@ -15,5 +15,9 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 		public Dictionary<string, byte> MoonRarities { get; } = new Dictionary<string, byte>();
 
 		public float Weight { get; }
+
+		public override string ToString() {
+			return $"MinValue: '{MinValue}' MaxValue: '{MaxValue}' Weight:'{Weight}'";
+		}
 	}
 }

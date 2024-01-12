@@ -77,5 +77,26 @@ namespace GuysNight.LethalCompanyMod.BalancedItems {
 			{ "WalkieTalkie", (null, new OverrideProperties(2f)) },
 			{ "ZapGun", (null, new OverrideProperties(7f)) }
 		};
+
+		public static bool SetVanillaValues(string itemName, VanillaValues vanillaValues) {
+			if (Items.TryGetValue(itemName, out var itemEntry)) {
+				if (itemEntry.VanillaValues is null) {
+					itemEntry.VanillaValues = vanillaValues;
+					Items[itemName] = itemEntry;
+
+					SharedComponents.Logger.LogDebug($"Vanilla values have been set for item '{itemName}' to be '{itemEntry.VanillaValues}'.");
+
+					return true;
+				}
+
+				SharedComponents.Logger.LogDebug($"Vanilla values were already set for item '{itemName}' to be '{itemEntry.VanillaValues}'.");
+
+				return false;
+			}
+
+			Items.Add(itemName, (vanillaValues, null));
+
+			return true;
+		}
 	}
 }

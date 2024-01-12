@@ -31,7 +31,20 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				return;
 			}
 
-			UpdateItemWeight(__instance, itemEntry.Overrides.Weight);
+			if (bool.TryParse(SharedComponents.ConfigFile[Constants.ConfigSectionHeaderToggles, Constants.ConfigKeyToggleWeights].GetSerializedValue(), out var isWeightFeatureEnabled)) {
+				SharedComponents.Logger.LogDebug($"Successfully retrieved weight override feature toggle. Value is '{isWeightFeatureEnabled}'");
+			}
+			else {
+				SharedComponents.Logger.LogWarning("Could not retrieve weight override feature toggle from config. Assuming it was set to true.");
+				isWeightFeatureEnabled = true;
+			}
+
+			if (isWeightFeatureEnabled) {
+				UpdateItemWeight(__instance, itemEntry.Overrides.Weight);
+			}
+			else {
+				UpdateItemWeight(__instance, itemEntry.VanillaValues.Weight);
+			}
 
 			SharedComponents.ConfigFile.Save();
 		}

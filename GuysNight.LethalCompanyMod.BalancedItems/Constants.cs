@@ -1,5 +1,11 @@
 ﻿namespace GuysNight.LethalCompanyMod.BalancedItems {
 	public static class Constants {
+		public const string ConfigSectionHeaderToggles = "Feature Toggles";
+
+		public const string ConfigKeyToggleAverageSellValues = "EnableAverageSellValueOverrides";
+		public const string ConfigKeyToggleMoonRarity = "EnableMoonRarityOverrides";
+		public const string ConfigKeyToggleWeights = "EnableWeightOverrides";
+
 		public const string ConfigSectionHeaderAverageSellValues = "Average Sell Values";
 		public const string ConfigSectionHeaderMoonRarity = "Rarities for {0}";
 		public const string ConfigSectionHeaderWeight = "Weight";
