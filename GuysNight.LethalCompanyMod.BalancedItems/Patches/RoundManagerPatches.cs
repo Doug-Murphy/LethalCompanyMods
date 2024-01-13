@@ -11,27 +11,40 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 		[HarmonyPatch("SpawnScrapInLevel")]
 		public static void ChangeScrapValues(RoundManager __instance) {
 			if (__instance is null) {
-				SharedComponents.Logger.LogInfo($"__instance is null in '{nameof(ChangeScrapValues)}'. Aborting.");
+				SharedComponents.Logger.LogWarning($"__instance is null in '{nameof(ChangeScrapValues)}'. Aborting.");
 
 				return;
 			}
 
 			foreach (var spawnableScrap in __instance.currentLevel.spawnableScrap.Select(x => x.spawnableItem)) {
-				SharedComponents.Logger.LogInfo($"spawnableScrap.name is '{spawnableScrap.name}'");
-				SharedComponents.Logger.LogInfo($"spawnableScrap.itemName is '{spawnableScrap.itemName}'");
-				SharedComponents.Logger.LogInfo($"spawnableScrap.minValue is '{spawnableScrap.minValue}'");
-				SharedComponents.Logger.LogInfo($"spawnableScrap.maxValue is '{spawnableScrap.maxValue}'");
+				SharedComponents.Logger.LogDebug($"spawnableScrap.name is '{spawnableScrap.name}'");
+				SharedComponents.Logger.LogDebug($"spawnableScrap.itemName is '{spawnableScrap.itemName}'");
+				SharedComponents.Logger.LogDebug($"spawnableScrap.minValue is '{spawnableScrap.minValue}'");
+				SharedComponents.Logger.LogDebug($"spawnableScrap.maxValue is '{spawnableScrap.maxValue}'");
 
-				ConfigUtilities.SyncConfigForItemOverrides(spawnableScrap, out var itemOverride);
+				var itemEntry = ConfigUtilities.SyncConfigForItemOverrides(spawnableScrap);
 
-				if (!ItemOverridesContainer.ItemOverrides.ContainsKey(spawnableScrap.name)) {
+				if (!ItemsContainer.Items.ContainsKey(spawnableScrap.name)) {
 					//should be impossible so long as we sync with config before this check
-					SharedComponents.Logger.LogInfo("No override exists for this item. Making no changes.");
+					SharedComponents.Logger.LogWarning($"No item entry exists for item '{spawnableScrap.name}'. Making no changes to item value.");
 
 					continue;
 				}
 
-				UpdateItemValue(spawnableScrap, itemOverride.MinValue, itemOverride.MaxValue);
+				if (bool.TryParse(SharedComponents.ConfigFile[Constants.ConfigSectionHeaderToggles, Constants.ConfigKeyToggleAverageSellValues].GetSerializedValue(), out var isSellValueFeatureEnabled)) {
+					SharedComponents.Logger.LogDebug($"Successfully retrieved sell value override feature toggle. Value is '{isSellValueFeatureEnabled}'");
+				}
+				else {
+					SharedComponents.Logger.LogWarning("Could not retrieve sell value override feature toggle from config. Assuming it was set to true.");
+					isSellValueFeatureEnabled = true;
+				}
+
+				if (isSellValueFeatureEnabled) {
+					UpdateItemValue(spawnableScrap, itemEntry.Overrides.MinValue, itemEntry.Overrides.MaxValue);
+				}
+				else {
+					UpdateItemValue(spawnableScrap, itemEntry.VanillaValues.MinValue, itemEntry.VanillaValues.MaxValue);
+				}
 			}
 
 			SharedComponents.ConfigFile.Save();
@@ -40,7 +53,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 		private static void UpdateItemValue(Item item, int minValue, int maxValue) {
 			item.minValue = minValue;
 			item.maxValue = maxValue;
-			SharedComponents.Logger.LogInfo($"Successfully override sell value range for '{item.name}' to be '{minValue}' - '{maxValue}'");
+			SharedComponents.Logger.LogInfo($"Successfully set sell value range for '{item.name}' to be '{minValue}' - '{maxValue}'");
 		}
 	}
 }

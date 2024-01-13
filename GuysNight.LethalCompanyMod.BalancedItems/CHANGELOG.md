@@ -1,3 +1,19 @@
+# Version 1.4.0
+
+## Added
+
+1. You can now enable or disable entire sections of the config to better tweak how you want the game to be. Some
+   settings will require exiting to menu and restarting your session. View the config description for more information.
+2. Add feature toggle for allowing you to sell equipment items for their average value instead of for 0 credits.
+
+## Changed
+
+1. Config description entries now list the default vanilla values for that override.
+
+## Removed
+
+Nothing.
+
 # Version 1.3.1
 
 1. Fix issue when another mod is loaded that adds moons that have invalid characters for BepInEx configuration in their
