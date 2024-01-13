@@ -11,16 +11,16 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 		[HarmonyPatch("SpawnScrapInLevel")]
 		public static void ChangeScrapValues(RoundManager __instance) {
 			if (__instance is null) {
-				SharedComponents.Logger.LogInfo($"__instance is null in '{nameof(ChangeScrapValues)}'. Aborting.");
+				SharedComponents.Logger.LogWarning($"__instance is null in '{nameof(ChangeScrapValues)}'. Aborting.");
 
 				return;
 			}
 
 			foreach (var spawnableScrap in __instance.currentLevel.spawnableScrap.Select(x => x.spawnableItem)) {
-				SharedComponents.Logger.LogInfo($"spawnableScrap.name is '{spawnableScrap.name}'");
-				SharedComponents.Logger.LogInfo($"spawnableScrap.itemName is '{spawnableScrap.itemName}'");
-				SharedComponents.Logger.LogInfo($"spawnableScrap.minValue is '{spawnableScrap.minValue}'");
-				SharedComponents.Logger.LogInfo($"spawnableScrap.maxValue is '{spawnableScrap.maxValue}'");
+				SharedComponents.Logger.LogDebug($"spawnableScrap.name is '{spawnableScrap.name}'");
+				SharedComponents.Logger.LogDebug($"spawnableScrap.itemName is '{spawnableScrap.itemName}'");
+				SharedComponents.Logger.LogDebug($"spawnableScrap.minValue is '{spawnableScrap.minValue}'");
+				SharedComponents.Logger.LogDebug($"spawnableScrap.maxValue is '{spawnableScrap.maxValue}'");
 
 				var itemEntry = ConfigUtilities.SyncConfigForItemOverrides(spawnableScrap);
 
@@ -53,7 +53,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 		private static void UpdateItemValue(Item item, int minValue, int maxValue) {
 			item.minValue = minValue;
 			item.maxValue = maxValue;
-			SharedComponents.Logger.LogInfo($"Successfully override sell value range for '{item.name}' to be '{minValue}' - '{maxValue}'");
+			SharedComponents.Logger.LogInfo($"Successfully set sell value range for '{item.name}' to be '{minValue}' - '{maxValue}'");
 		}
 	}
 }

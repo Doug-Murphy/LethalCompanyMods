@@ -13,13 +13,13 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 		[HarmonyPostfix]
 		public static void DisplayCorrectCarryWeight(HUDManager __instance) {
 			if (__instance is null) {
-				SharedComponents.Logger.LogInfo($"__instance is null in '{nameof(DisplayCorrectCarryWeight)}'. Aborting.");
+				SharedComponents.Logger.LogWarning($"__instance is null in '{nameof(DisplayCorrectCarryWeight)}'. Aborting.");
 
 				return;
 			}
 
 			if (GameNetworkManager.Instance?.localPlayerController is null) {
-				SharedComponents.Logger.LogInfo($"Instance or localPlayerController is null in '{nameof(DisplayCorrectCarryWeight)}'. Aborting.");
+				SharedComponents.Logger.LogWarning($"Instance or localPlayerController is null in '{nameof(DisplayCorrectCarryWeight)}'. Aborting.");
 
 				return;
 			}
@@ -36,7 +36,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 		[HarmonyPrefix]
 		public static void StoreVariablesBeforeUpdateChanges(HUDManager __instance) {
 			if (!_originalFontSize.HasValue) {
-				SharedComponents.Logger.LogInfo($"Original totalValueText.fontSize was '{__instance.totalValueText.fontSize}'");
+				SharedComponents.Logger.LogDebug($"Original totalValueText.fontSize was '{__instance.totalValueText.fontSize}'");
 				_originalFontSize = __instance.totalValueText.fontSize; //default is 21.48
 			}
 		}
