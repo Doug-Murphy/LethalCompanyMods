@@ -1,9 +1,9 @@
 {
-  "name": "Balanced_Items",
-  "version_number": "1.3.1",
-  "website_url": "https://github.com/Doug-Murphy/LethalCompanyMods/tree/main/GuysNight.LethalCompanyMod.BalancedItems",
-  "description": "Balanced Items is a simple mod designed to give more realistic weights and values to all of the items in Lethal Company. This mod includes item adjustments for all scrap/loot items as well as those purchasable from the terminal.",
-  "dependencies": [
-    "BepInEx-BepInExPack-5.4.2100"
-  ]
+    "name": "Balanced_Items",
+    "version_number": "1.4.0",
+    "website_url": "https://github.com/Doug-Murphy/LethalCompanyMods/tree/main/GuysNight.LethalCompanyMod.BalancedItems",
+    "description": "Balanced Items is a simple mod designed to give more realistic weights and values to all of the items in Lethal Company. This mod includes item adjustments for all scrap/loot items as well as those purchasable from the terminal.",
+    "dependencies": [
+        "BepInEx-BepInExPack-5.4.2100"
+    ]
 }
