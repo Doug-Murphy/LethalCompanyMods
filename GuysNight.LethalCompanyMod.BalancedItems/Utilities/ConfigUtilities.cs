@@ -2,9 +2,40 @@
 using GuysNight.LethalCompanyMod.BalancedItems.Models;
 using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 	public static class ConfigUtilities {
+		/// <summary>
+		/// The list of invalid characters for BepInEx configs. Taken from their decompiled DLL.
+		/// </summary>
+		private static readonly char[] InvalidConfigChars = {
+			'=',
+			'\n',
+			'\t',
+			'\\',
+			'"',
+			'\'',
+			'[',
+			']'
+		};
+
+		//create a regex pattern from the invalid characters. Manually escape ] since it apparently isn't considered special in .NET Standard 2.1.
+		private static readonly string Pattern = "[" + Regex.Escape(new string(InvalidConfigChars)).Replace("]", "\\]") + "]";
+
+		//use that pattern to compile a Regex replacement.
+		private static readonly Regex InvalidConfigCharsRegex = new Regex(Pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+		/// <summary>
+		/// Sanitize the config entry so that it is allowed by BepInEx
+		/// </summary>
+		/// <param name="rawEntry">The entry to sanitize.</param>
+		/// <returns></returns>
+		private static string SanitizeConfigEntry(string rawEntry) {
+			//replace invalid characters with '_'
+			return InvalidConfigCharsRegex.Replace(rawEntry, "_");
+		}
+
 		public static (VanillaValues VanillaValues, OverrideProperties Overrides) SyncConfigForItemOverrides(Item gameItem) {
 			//if the items container does not contain an entry for the current item, add one
 			ItemsContainer.Items.TryAdd(gameItem.name, (null, null));
@@ -16,8 +47,8 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 			SharedComponents.ConfigFile.Reload();
 			//if weight is not added in the config, add it for future
 			//if weight is added in the config, retrieve the value and set it in the overrides
-			itemEntry.Overrides.Weight = SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderWeight,
-				gameItem.name,
+			itemEntry.Overrides.Weight = SharedComponents.ConfigFile.Bind(SanitizeConfigEntry(Constants.ConfigSectionHeaderWeight),
+				SanitizeConfigEntry(gameItem.name),
 				NumericUtilities.DenormalizeWeight(Math.Abs(itemEntry.Overrides.Weight - default(float)) > 0 ? itemEntry.Overrides.Weight : itemEntry.VanillaValues.Weight),
 				new ConfigDescription(string.Format(Constants.ConfigDescriptionWeight, gameItem.itemName, NumericUtilities.DenormalizeWeight(itemEntry.VanillaValues.Weight)), new AcceptableValueRange<float>(0, 1_000))
 			).Value;
@@ -25,8 +56,8 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 			var gameItemCalculatedAverageValue = (ushort)Math.Round(new[] { gameItem.minValue, gameItem.maxValue }.Average(), MidpointRounding.AwayFromZero);
 			//if sell value is not added in the config, add it for future
 			//if sell value is added in the config, retrieve the value and set it in the overrides
-			itemEntry.Overrides.AverageValue = SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderAverageSellValues,
-				gameItem.name,
+			itemEntry.Overrides.AverageValue = SharedComponents.ConfigFile.Bind(SanitizeConfigEntry(Constants.ConfigSectionHeaderAverageSellValues),
+				SanitizeConfigEntry(gameItem.name),
 				itemEntry.Overrides.AverageValue != default ? itemEntry.Overrides.AverageValue : gameItemCalculatedAverageValue,
 				new ConfigDescription(string.Format(Constants.ConfigDescriptionAverageSellValues, gameItem.itemName, gameItemCalculatedAverageValue), new AcceptableValueRange<ushort>(ushort.MinValue, ushort.MaxValue))
 			).Value;
@@ -57,8 +88,8 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 			SharedComponents.ConfigFile.Reload();
 			//if rarity for the moon is not added in the config, add it for future
 			//if it is added in the config, retrieve the value and set it in the overrides
-			itemEntry.Overrides.MoonRarities[level.name] = SharedComponents.ConfigFile.Bind(string.Format(Constants.ConfigSectionHeaderMoonRarity, level.PlanetName),
-				gameItem.name,
+			itemEntry.Overrides.MoonRarities[level.name] = SharedComponents.ConfigFile.Bind(SanitizeConfigEntry(string.Format(Constants.ConfigSectionHeaderMoonRarity, level.PlanetName)),
+				SanitizeConfigEntry(gameItem.name),
 				itemEntry.Overrides.MoonRarities[level.name].HasValue ? itemEntry.Overrides.MoonRarities[level.name].Value : itemEntry.VanillaValues.MoonRarities[level.name],
 				new ConfigDescription(string.Format(Constants.ConfigDescriptionMoonRarity, gameItem.itemName, gameItemRarity), new AcceptableValueRange<byte>(0, 100)) //100 is the max in the game
 			).Value;

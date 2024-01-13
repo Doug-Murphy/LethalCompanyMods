@@ -13,6 +13,11 @@
 
 Nothing.
 
+# Version 1.3.1
+
+1. Fix issue when another mod is loaded that adds moons that have invalid characters for BepInEx configuration in their
+   names.
+
 # Version 1.3.0
 
 ## Added
