@@ -16,7 +16,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems {
 			SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderToggles,
 				Constants.ConfigKeyToggleAverageSellValues,
 				true,
-				"Whether or not your specified average sell value overrides should be applied. If set to false, vanilla values will be used. Changes to this value are reflected only when new items are spawned, or when restarting your session.."
+				"Whether or not your specified average sell value overrides should be applied. If set to false, vanilla values will be used. Changes to this value are reflected only when new items are spawned."
 			);
 
 			SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderToggles,
