@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿#pragma warning disable S1118
+using HarmonyLib;
 
 namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 	[HarmonyPatch(typeof(DepositItemsDesk))]
@@ -26,6 +27,12 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 					continue;
 				}
 
+				//check if it's already listed as scrap. If it is, then we don't need to do anything about it.
+				if (itemOnCounter.itemProperties.isScrap) {
+					return;
+				}
+
+				SharedComponents.Logger.LogInfo($"Setting '{itemOnCounter.itemProperties.name}' to be sellable equipment for '{itemEntry.Overrides.AverageValue}' credits.");
 				itemOnCounter.itemProperties.isScrap = true;
 				itemOnCounter.scrapValue = itemEntry.Overrides.AverageValue;
 			}
