@@ -3,6 +3,7 @@
 		public const string ConfigSectionHeaderToggles = "Feature Toggles";
 
 		public const string ConfigKeyToggleAverageSellValues = "EnableAverageSellValueOverrides";
+		public const string ConfigKeyToggleSellableEquipment = "EnableSellingEquipment";
 		public const string ConfigKeyToggleMoonRarity = "EnableMoonRarityOverrides";
 		public const string ConfigKeyToggleWeights = "EnableWeightOverrides";
 
