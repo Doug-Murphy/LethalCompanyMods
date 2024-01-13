@@ -1,43 +1,46 @@
 # Introduction
 
-Balanced Items is a simple mod designed to give configurable, more realistic weights and values to all of the items in
-Lethal Company. This mod includes item adjustments for all scrap/loot items as well as equipment from the terminal. This
-includes all custom items that come from other mods you have added.
+Balanced Items is a mod designed to give you complete control over the items in the game. You can set the weight of
+items, the scrap value of items, control which items spawn (and their likelihood of spawning) on every moon, as well as
+make equipment items sellable to the company! This even includes all custom items that come from other mods you have
+added!
 
-This mod also fixes the bug in the game where the current carry weight is being displayed as 5% greater than actual.
+This mod also fixes some bugs in the game like your current carry weight being displayed as 5% greater than your actual
+carry weight.
 
 # Configuration
 
 This mod introduces a unique approach to configuration file creation. Unlike most mods that generate their config file
-upon the game's initial load, this mod dynamically creates its configuration as you play. Specifically, at the start of
-each round, a list of all equipment and spawnable scrap items is compiled and corresponding config entries are
-generated. This process encompasses all scrap on all moons and is completed before you even pull the lever on your ship
-to land. Furthermore, the config values for some properties can be changed mid-game and be reflected when you start a
-new session or start the next day.
+upon the game's initial load, this mod dynamically creates its configuration as you play. At the start of each round, a
+list of all equipment and spawnable scrap items is compiled and corresponding config entries are generated. This process
+encompasses all scrap on all moons and is completed before you even pull the lever on your ship to land.
+
+You can even change certain config entries as you play! Some config entries are reflected on the next day, some require
+a session restart, and others are even more immediate. Read the config entries for more details on that.
 
 If there is an existing override for an item's property specified in the mod, those values are set into the config
 during creation. Otherwise, default (vanilla) values are used. Please note that any values you manually set in the
 config file will always take precedence over both the vanilla values and any preset overrides within this mod.
 
-## Weights
+# Features
+
+## Item Weights
 
 The weight of an item can be changed mid-game and be reflected at the start of the next day without restarting your
 session.
 
-For weight specification, simply input the desired weight of the item in pounds.
+For weight specification, simply input the desired weight of the item in pounds in the config file.
 
-## Average Sell Value
+## Item Average Sell Value
 
 The average sell value of an item can be changed mid-game and be reflected at the start of the next day without
 restarting your session.
 
-The average sell value you set serves as the basis for calculating the item's minimum and
-maximum sell values, which will be +/- 20% of this average. For example, if you set the average sell value of an item to
-be 100, then the item's value when spawned will be between 80-120.
+The average sell value you set serves as the basis for calculating the item's minimum and maximum sell values, which
+will be +/- 20% of this average. For example, if you set the average sell value of an item to be 100, then the item's
+value when spawned will be between 80-120.
 > NOTE: Be aware that different moons in the game have different scrap multipliers, potentially resulting in actual
-> in-game values being lower than your specified averages.
-
-> NOTE: Regardless of your configuration, equipment will always be sold for 0 credits.
+> in-game values being lower or higher than your specified averages.
 
 > NOTE: There are no preset overrides for item values in this mod, thus this mod simply narrows the variance between the
 > minimum and maximum values compared to standard gameplay by default, ensuring balanced gameplay without creating
@@ -68,6 +71,15 @@ of an item spawning. Here are a few examples to help that make sense.
 
 > NOTE: The Apparatus doesn't spawn like regular scrap. It's part of a room generated inside the moon's building, making
 > its spawn rate uncontrollable.
+
+## Selling Equipment
+
+The config toggle for making equipment sellable can be changed mid-game as you are selling items to the company and be
+reflected each time you sell items.
+
+Are you annoyed that equipment items cannot be sold for any credits? Maybe you're only 10 credits shy of quota and need
+just that little bit more to meet it! You can now sell equipment items to the company! The average value you set in the
+config is the value that the equipment will sell for.
 
 # Adjustments
 
