@@ -22,6 +22,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 
 			SharedComponents.Logger.LogDebug($"Begin adding config entries and setting override values for '{__instance.itemProperties.name}'");
 
+			SharedComponents.ConfigFile.Reload();
 			var itemEntry = ConfigUtilities.SyncConfigForItemOverrides(__instance.itemProperties);
 
 			if (bool.TryParse(SharedComponents.ConfigFile[Constants.ConfigSectionHeaderToggles, Constants.ConfigKeyToggleWeights].GetSerializedValue(), out var isWeightFeatureEnabled)) {

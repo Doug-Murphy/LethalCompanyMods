@@ -44,7 +44,6 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 			itemEntry.VanillaValues ??= new VanillaValues(gameItem.minValue, gameItem.maxValue, gameItem.weight);
 			itemEntry.Overrides ??= new OverrideProperties();
 
-			SharedComponents.ConfigFile.Reload();
 			//if weight is not added in the config, add it for future
 			//if weight is added in the config, retrieve the value and set it in the overrides
 			itemEntry.Overrides.Weight = SharedComponents.ConfigFile.Bind(SanitizeConfigEntry(Constants.ConfigSectionHeaderWeight),
@@ -85,7 +84,6 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 			SharedComponents.Logger.LogDebug($"Set itemEntry.VanillaValues.MoonRarities for item '{gameItem.name}' on level '{level.name}' to be '{gameItemRarity}'");
 			itemEntry.Overrides.MoonRarities.TryAdd(level.name, null);
 
-			SharedComponents.ConfigFile.Reload();
 			//if rarity for the moon is not added in the config, add it for future
 			//if it is added in the config, retrieve the value and set it in the overrides
 			itemEntry.Overrides.MoonRarities[level.name] = SharedComponents.ConfigFile.Bind(SanitizeConfigEntry(string.Format(Constants.ConfigSectionHeaderMoonRarity, level.PlanetName)),
