@@ -47,8 +47,16 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 						isMoonRarityFeatureEnabled = true;
 					}
 
-					var itemEntry = ConfigUtilities.SyncConfigForItemRarityOverride(level, spawnableScrap);
+					if (!ItemsContainer.Items.TryGetValue(spawnableScrap.spawnableItem.name, out var itemEntry)) {
+						//should be impossible so long we initialize the collection in StartOfRoundPatches
+						SharedComponents.Logger.LogWarning($"No item entry exists for item '{spawnableScrap.spawnableItem.name}'. Making no changes to item moon rarity.");
+
+						continue;
+					}
+
 					if (isMoonRarityFeatureEnabled) {
+						//retrieve latest value from config
+						itemEntry = ConfigUtilities.SyncConfigForItemRarityOverride(level, spawnableScrap);
 						UpdateItemRarity(level.name, spawnableScrap, itemEntry.Overrides.MoonRarities[level.name].GetValueOrDefault());
 					}
 					else {

@@ -23,10 +23,8 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				SharedComponents.Logger.LogDebug($"spawnableScrap.minValue is '{spawnableScrap.minValue}'");
 				SharedComponents.Logger.LogDebug($"spawnableScrap.maxValue is '{spawnableScrap.maxValue}'");
 
-				var itemEntry = ConfigUtilities.SyncConfigForItemOverrides(spawnableScrap);
-
-				if (!ItemsContainer.Items.ContainsKey(spawnableScrap.name)) {
-					//should be impossible so long as we sync with config before this check
+				if (!ItemsContainer.Items.TryGetValue(spawnableScrap.name, out var itemEntry)) {
+					//should be impossible so long we initialize the collection in StartOfRoundPatches
 					SharedComponents.Logger.LogWarning($"No item entry exists for item '{spawnableScrap.name}'. Making no changes to item value.");
 
 					continue;
@@ -41,6 +39,8 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				}
 
 				if (isSellValueFeatureEnabled) {
+					//retrieve latest value from config
+					itemEntry = ConfigUtilities.SyncConfigForItemOverrides(spawnableScrap);
 					UpdateItemValue(spawnableScrap, itemEntry.Overrides.MinValue, itemEntry.Overrides.MaxValue);
 				}
 				else {
