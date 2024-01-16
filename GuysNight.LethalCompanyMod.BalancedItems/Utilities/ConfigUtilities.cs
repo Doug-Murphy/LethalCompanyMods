@@ -61,9 +61,9 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 				new ConfigDescription(string.Format(Constants.ConfigDescriptionAverageSellValues, gameItem.itemName, gameItemCalculatedAverageValue), new AcceptableValueRange<ushort>(ushort.MinValue, ushort.MaxValue))
 			).Value;
 
-			SharedComponents.Logger.LogInfo($"Finish adding config entries and setting override values for '{gameItem.name}' to have " +
-			                                $"average sell value = '{itemEntry.Overrides.AverageValue}', " +
-			                                $"weight = '{NumericUtilities.DenormalizeWeight(itemEntry.Overrides.Weight)}'");
+			SharedComponents.Logger.LogDebug($"Finish adding config entries and setting override values for '{gameItem.name}' to have " +
+			                                 $"average sell value = '{itemEntry.Overrides.AverageValue}', " +
+			                                 $"weight = '{NumericUtilities.DenormalizeWeight(itemEntry.Overrides.Weight)}'");
 
 			ItemsContainer.Items[gameItem.name] = itemEntry;
 
@@ -92,7 +92,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 				new ConfigDescription(string.Format(Constants.ConfigDescriptionMoonRarity, gameItem.itemName, gameItemRarity), new AcceptableValueRange<byte>(0, 100)) //100 is the max in the game
 			).Value;
 
-			SharedComponents.Logger.LogInfo($"Finish adding config entry and setting override value for '{gameItem.name}' to have rarity = '{itemEntry.Overrides.MoonRarities[level.name]}' on moon '{level.name}'");
+			SharedComponents.Logger.LogDebug($"Finish adding config entry and setting override value for '{gameItem.name}' to have rarity = '{itemEntry.Overrides.MoonRarities[level.name]}' on moon '{level.name}'");
 
 			ItemsContainer.Items[gameItem.name] = itemEntry;
 
