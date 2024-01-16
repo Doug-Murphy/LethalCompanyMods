@@ -44,7 +44,6 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 			itemEntry.VanillaValues ??= new VanillaValues(gameItem.minValue, gameItem.maxValue, gameItem.weight);
 			itemEntry.Overrides ??= new OverrideProperties();
 
-			SharedComponents.ConfigFile.Reload();
 			//if weight is not added in the config, add it for future
 			//if weight is added in the config, retrieve the value and set it in the overrides
 			itemEntry.Overrides.Weight = SharedComponents.ConfigFile.Bind(SanitizeConfigEntry(Constants.ConfigSectionHeaderWeight),
@@ -62,9 +61,9 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 				new ConfigDescription(string.Format(Constants.ConfigDescriptionAverageSellValues, gameItem.itemName, gameItemCalculatedAverageValue), new AcceptableValueRange<ushort>(ushort.MinValue, ushort.MaxValue))
 			).Value;
 
-			SharedComponents.Logger.LogInfo($"Finish adding config entries and setting override values for '{gameItem.name}' to have " +
-			                                $"average sell value = '{itemEntry.Overrides.AverageValue}', " +
-			                                $"weight = '{NumericUtilities.DenormalizeWeight(itemEntry.Overrides.Weight)}'");
+			SharedComponents.Logger.LogDebug($"Finish adding config entries and setting override values for '{gameItem.name}' to have " +
+			                                 $"average sell value = '{itemEntry.Overrides.AverageValue}', " +
+			                                 $"weight = '{NumericUtilities.DenormalizeWeight(itemEntry.Overrides.Weight)}'");
 
 			ItemsContainer.Items[gameItem.name] = itemEntry;
 
@@ -85,7 +84,6 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 			SharedComponents.Logger.LogDebug($"Set itemEntry.VanillaValues.MoonRarities for item '{gameItem.name}' on level '{level.name}' to be '{gameItemRarity}'");
 			itemEntry.Overrides.MoonRarities.TryAdd(level.name, null);
 
-			SharedComponents.ConfigFile.Reload();
 			//if rarity for the moon is not added in the config, add it for future
 			//if it is added in the config, retrieve the value and set it in the overrides
 			itemEntry.Overrides.MoonRarities[level.name] = SharedComponents.ConfigFile.Bind(SanitizeConfigEntry(string.Format(Constants.ConfigSectionHeaderMoonRarity, level.PlanetName)),
@@ -94,7 +92,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 				new ConfigDescription(string.Format(Constants.ConfigDescriptionMoonRarity, gameItem.itemName, gameItemRarity), new AcceptableValueRange<byte>(0, 100)) //100 is the max in the game
 			).Value;
 
-			SharedComponents.Logger.LogInfo($"Finish adding config entry and setting override value for '{gameItem.name}' to have rarity = '{itemEntry.Overrides.MoonRarities[level.name]}' on moon '{level.name}'");
+			SharedComponents.Logger.LogDebug($"Finish adding config entry and setting override value for '{gameItem.name}' to have rarity = '{itemEntry.Overrides.MoonRarities[level.name]}' on moon '{level.name}'");
 
 			ItemsContainer.Items[gameItem.name] = itemEntry;
 
