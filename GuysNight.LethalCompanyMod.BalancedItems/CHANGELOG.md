@@ -1,3 +1,11 @@
+# Version 1.4.1
+
+This release fixes some very serious performance issues when you have other mods that add a bunch of moons and/or scrap.
+Thanks to NiranV for the report!
+
+For additional performance improvements, I recommend setting your console log level to "None" in your BepInEx.cfg file.
+Under "Logging.Console" section in your BepInEx.cfg file, set "LogLevels" to "None".
+
 # Version 1.4.0
 
 ## Added
