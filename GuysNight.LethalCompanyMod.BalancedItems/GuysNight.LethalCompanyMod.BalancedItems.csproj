@@ -9,8 +9,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Reference Include="lib\Assembly-CSharp.dll"/>
-        <Reference Include="lib\Unity.TextMeshPro.dll"/>
+        <Reference Include="..\libs\Assembly-CSharp.dll"/>
+        <Reference Include="..\libs\Unity.TextMeshPro.dll"/>
     </ItemGroup>
 
     <ItemGroup>
