@@ -1,0 +1,9 @@
+{
+    "name": "Invincible Bridge",
+    "version_number": "1.0.0",
+    "website_url": "https://github.com/Doug-Murphy/LethalCompanyMods/tree/main/GuysNight.LethalCompanyMod.InvincibleBridge",
+    "description": "Makes the bridge invincible! It will never collapse, no matter what.",
+    "dependencies": [
+        "BepInEx-BepInExPack-5.4.2100"
+    ]
+}
