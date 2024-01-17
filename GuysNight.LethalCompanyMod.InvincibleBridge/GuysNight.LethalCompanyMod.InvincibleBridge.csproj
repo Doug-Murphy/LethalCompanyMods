@@ -2,15 +2,15 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
-        <AssemblyName>GuysNight.LethalCompanyMod.BalancedItems</AssemblyName>
-        <Description>Balance out various aspects of the items in the game by giving you control of certain properties of those items.</Description>
-        <Version>1.4.1</Version>
+        <AssemblyName>GuysNight.LethalCompanyMod.InvincibleBridge</AssemblyName>
+        <Description>Makes the bridge invincible! It will never collapse, no matter what.</Description>
+        <Version>1.0.0</Version>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
         <Reference Include="..\libs\Assembly-CSharp.dll"/>
-        <Reference Include="..\libs\Unity.TextMeshPro.dll"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -23,4 +23,5 @@
     <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
         <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all"/>
     </ItemGroup>
+
 </Project>
