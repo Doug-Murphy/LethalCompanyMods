@@ -19,13 +19,12 @@ namespace GuysNight.LethalCompanyMods.Terminal.Cowsay {
 
 		private void Awake() {
 			Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
-			AddCommand("chuck", new CommandInfo {
-					Category = "other",
-					Description = "Displays a cow telling you a random Chuck Norris joke.",
-					DisplayTextSupplier = GetCowsayChuckNorris,
-					Title = "Cowsay"
-				},
-				"cowsay");
+			AddCommand("cowsay", new CommandInfo {
+				Category = "other",
+				Description = "Displays a cow telling you a random Chuck Norris joke.",
+				DisplayTextSupplier = GetCowsayChuckNorris,
+				Title = "Cowsay"
+			});
 		}
 
 		private string GetCowsayChuckNorris() {
