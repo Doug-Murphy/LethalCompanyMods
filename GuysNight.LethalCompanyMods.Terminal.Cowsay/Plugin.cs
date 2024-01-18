@@ -15,7 +15,7 @@ namespace GuysNight.LethalCompanyMods.Terminal.Cowsay {
 	public class Plugin : BaseUnityPlugin {
 		private const string ChuckNorrisApiUrl = "https://api.chucknorris.io/jokes/random";
 		private const string CowsayApiUrl = "https://cowsay.morecode.org/say";
-		private static readonly HttpClient _httpClient = new HttpClient();
+		private static readonly HttpClient HttpClient = new HttpClient();
 
 		private void Awake() {
 			Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
@@ -28,7 +28,7 @@ namespace GuysNight.LethalCompanyMods.Terminal.Cowsay {
 		}
 
 		private string GetCowsayChuckNorris() {
-			var chuckNorrisResponse = _httpClient.GetAsync(ChuckNorrisApiUrl).GetAwaiter().GetResult();
+			var chuckNorrisResponse = HttpClient.GetAsync(ChuckNorrisApiUrl).GetAwaiter().GetResult();
 
 			if (!chuckNorrisResponse.IsSuccessStatusCode) {
 				Logger.LogWarning($"Chuck Norris API did not return a successful status code. Returned {chuckNorrisResponse.StatusCode} with content {chuckNorrisResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult()}");
@@ -47,8 +47,7 @@ namespace GuysNight.LethalCompanyMods.Terminal.Cowsay {
 
 			Logger.LogDebug($"Chuck Norris API deserialized response's value property is '{deserializedChuckNorrisResponse.value}'");
 
-
-			var cowsayRequest = _httpClient.GetAsync($"{CowsayApiUrl}?format=text&message={HttpUtility.UrlEncode(deserializedChuckNorrisResponse.value)}").GetAwaiter().GetResult();
+			var cowsayRequest = HttpClient.GetAsync($"{CowsayApiUrl}?format=text&message={HttpUtility.UrlEncode(deserializedChuckNorrisResponse.value)}").GetAwaiter().GetResult();
 
 			if (!cowsayRequest.IsSuccessStatusCode) {
 				Logger.LogWarning($"Cowsay API did not return a successful status code. Returned {cowsayRequest.StatusCode} with content {cowsayRequest.Content.ReadAsStringAsync().GetAwaiter().GetResult()}");
