@@ -2,6 +2,12 @@
 
 ## Added
 
+1. New `cowsay` terminal command.
+
 ## Changed
 
+Nothing.
+
 ## Removed
+
+Nothing.

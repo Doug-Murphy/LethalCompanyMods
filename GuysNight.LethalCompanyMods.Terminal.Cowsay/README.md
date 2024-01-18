@@ -1,15 +1,25 @@
 # Introduction
 
+Welcome to the "Terminal Cowsay" mod for Lethal Company! This mod adds a fun and entertaining feature to your terminal -
+an ASCII cow that tells you Chuck Norris jokes!
+
+# Usage
+
+Simply type `cowsay` into your terminal and hit enter. An ASCII cow will appear and tell you a Chuck Norris joke. Enjoy
+the humor and have a good laugh!
+
 # Issues / Requests
 
-If you have any feature requests, questions, or encounter any issues like item weights not being changed correctly you
-can [open an issue on GitHub](https://github.com/Doug-Murphy/LethalCompanyMods/issues).
-Before opening an issue, please search to see if your request, question, or issue already has an open issue.
-Alternatively, feel free to open up a PR to address your inquiry yourself. PRs are welcome!
+If you have any feature requests, questions, or encounter any issues you
+can [open an issue on GitHub](https://github.com/Doug-Murphy/LethalCompanyMods/issues). Before opening an issue, please
+search to see if your request, question, or issue already has an open issue. Alternatively, feel free to open up a PR to
+address your inquiry yourself. PRs are welcome!
 
 ## Known Issues / Roadmap / Oddities
 
-None.
+1. The TerminalApi mod does not support asynchronous methods for displaying text in the terminal screen. Therefore, this
+   mod freezes the game's thread while fetching the text to display. Fortunately, it should only take 1-2 seconds at
+   most so long as you have ok internet!
 
 # Legal Disclaimer
 
