@@ -39,10 +39,12 @@ restarting your session.
 The average sell value you set serves as the basis for calculating the item's minimum and maximum sell values, which
 will be +/- 20% of this average. For example, if you set the average sell value of an item to be 100, then the item's
 value when spawned will be between 80-120.
-> NOTE: Be aware that different moons in the game have different scrap multipliers, potentially resulting in actual
+> [!NOTE]
+> Be aware that different moons in the game have different scrap multipliers, potentially resulting in actual
 > in-game values being lower or higher than your specified averages.
 
-> NOTE: There are no preset overrides for item values in this mod, thus this mod simply narrows the variance between the
+> [!NOTE]
+> There are no preset overrides for item values in this mod, thus this mod simply narrows the variance between the
 > minimum and maximum values compared to standard gameplay by default, ensuring balanced gameplay without creating
 > overly easy or difficult scenarios.
 
@@ -66,10 +68,12 @@ of an item spawning. Here are a few examples to help that make sense.
 > account for 2 out of 4, they represent half of the generated scrap. The other two account for only 1 of the 4, making
 > them roughly a quarter of the generated scrap.
 
-> NOTE: Keep in mind that due to the randomness of scrap spawns, the specified values represent the relative weighting
+> [!NOTE]
+> Keep in mind that due to the randomness of scrap spawns, the specified values represent the relative weighting
 > of items for that moon, not a guaranteed outcome.
 
-> NOTE: The Apparatus doesn't spawn like regular scrap. It's part of a room generated inside the moon's building, making
+> [!NOTE]
+> The Apparatus doesn't spawn like regular scrap. It's part of a room generated inside the moon's building, making
 > its spawn rate uncontrollable.
 
 ## Selling Equipment
