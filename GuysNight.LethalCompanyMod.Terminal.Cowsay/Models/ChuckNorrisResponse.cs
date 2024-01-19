@@ -3,7 +3,7 @@
 #pragma warning disable S1104
 #pragma warning disable CS0649
 #pragma warning disable CS8618
-namespace GuysNight.LethalCompanyMods.Terminal.Cowsay.Models {
+namespace GuysNight.LethalCompanyMod.Terminal.Cowsay.Models {
 	[Serializable]
 	public class ChuckNorrisResponse {
 		public string[] categories;

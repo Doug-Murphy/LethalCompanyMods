@@ -1,6 +1,6 @@
 {
     "name": "Terminal_Cowsay",
-    "version_number": "1.0.0",
+    "version_number": "1.0.1",
     "website_url": "https://github.com/Doug-Murphy/LethalCompanyMods/tree/main/GuysNight.LethalCompanyMod.Terminal.Cowsay",
     "description": "Terminal Cowsay adds a terminal command that displays a random Chuck Norris joke being told by an ASCII cow.",
     "dependencies": [

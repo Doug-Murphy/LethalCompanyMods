@@ -1,6 +1,6 @@
 ﻿#pragma warning disable S1075
 using BepInEx;
-using GuysNight.LethalCompanyMods.Terminal.Cowsay.Models;
+using GuysNight.LethalCompanyMod.Terminal.Cowsay.Models;
 using HarmonyLib;
 using System.Net.Http;
 using System.Reflection;
@@ -9,7 +9,7 @@ using TerminalApi.Classes;
 using UnityEngine;
 using static TerminalApi.TerminalApi;
 
-namespace GuysNight.LethalCompanyMods.Terminal.Cowsay {
+namespace GuysNight.LethalCompanyMod.Terminal.Cowsay {
 	[BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
 	[BepInDependency("atomic.terminalapi", "1.5.0")]
 	public class Plugin : BaseUnityPlugin {
