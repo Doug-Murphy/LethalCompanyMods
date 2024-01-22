@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
-        <Description>Step into the thrilling world of EOD Roulette, where you hold the power to defuse deadly landmines. But tread lightly, as one wrong move could lead to an unexpected detonation!</Description>
+        <Description>Step into the thrilling world of EOD Roulette, where you hold the power to defuse deadly landmines. But tread lightly, as one wrong move could lead to an unexpected detonation! By default, you have a 69% chance of escaping successfully!</Description>
         <Version>1.0.0</Version>
         <Nullable>enable</Nullable>
     </PropertyGroup>
