@@ -16,6 +16,13 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				return;
 			}
 
+			InitializeAllItemsInItemsContainer(__instance);
+			InitializeAllLevelsInItemsContainer(__instance);
+
+			SharedComponents.ConfigFile.Save();
+		}
+
+		private static void InitializeAllItemsInItemsContainer(StartOfRound __instance) {
 			SharedComponents.Logger.LogDebug($"Found {__instance.allItemsList.itemsList.Count} items in __instance.allItemsList.itemsList.");
 			SharedComponents.ConfigFile.Reload();
 			foreach (var item in __instance.allItemsList.itemsList.OrderBy(i => i.itemName)) {
@@ -30,8 +37,14 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				ItemsContainer.SetVanillaValues(item.name, new VanillaValues(item.minValue, item.maxValue, item.weight));
 
 				ConfigUtilities.SyncConfigForItemOverrides(item);
+				if (item.name == "Key") {
+					//make the key show up on the map
+					item.isScrap = true;
+				}
 			}
+		}
 
+		private static void InitializeAllLevelsInItemsContainer(StartOfRound __instance) {
 			SharedComponents.Logger.LogDebug($"Found {__instance.levels.Length} levels.");
 
 			foreach (var level in __instance.levels) {
@@ -64,8 +77,6 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 					}
 				}
 			}
-
-			SharedComponents.ConfigFile.Save();
 		}
 
 		private static void UpdateItemRarity(string levelName, SpawnableItemWithRarity item, byte rarity) {
