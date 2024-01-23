@@ -1,0 +1,9 @@
+{
+    "name": "EOD_Roulette",
+    "version_number": "1.0.0",
+    "website_url": "https://github.com/Doug-Murphy/LethalCompanyMods/tree/main/GuysNight.LethalCompanyMod.EodRoulette",
+    "description": "Step into the thrilling world of EOD Roulette, where you hold the power to defuse deadly landmines. But tread lightly, as one wrong move could lead to an unexpected detonation! By default, you have a 69% chance of escaping successfully!",
+    "dependencies": [
+        "BepInEx-BepInExPack-5.4.2100"
+    ]
+}

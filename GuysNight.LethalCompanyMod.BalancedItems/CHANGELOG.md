@@ -1,3 +1,7 @@
+# Version 1.5.0
+
+Minor update, but a new feature nonetheless. Keys will now show up on the ship's map like all the other scrap items.
+
 # Version 1.4.1
 
 This release fixes some very serious performance issues when you have other mods that add a bunch of moons and/or scrap.

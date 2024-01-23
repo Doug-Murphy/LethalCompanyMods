@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuysNight.LethalCompanyMod.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuysNight.LethalCompanyMod.Terminal.Cowsay", "GuysNight.LethalCompanyMod.Terminal.Cowsay\GuysNight.LethalCompanyMod.Terminal.Cowsay.csproj", "{0743C15D-4083-499A-B9C5-44F17AE77137}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuysNight.LethalCompanyMod.EodRoulette", "GuysNight.LethalCompanyMod.EodRoulette\GuysNight.LethalCompanyMod.EodRoulette.csproj", "{CFEC43F1-8AFA-40BE-8207-5276FC04F945}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{0743C15D-4083-499A-B9C5-44F17AE77137}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0743C15D-4083-499A-B9C5-44F17AE77137}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0743C15D-4083-499A-B9C5-44F17AE77137}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFEC43F1-8AFA-40BE-8207-5276FC04F945}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFEC43F1-8AFA-40BE-8207-5276FC04F945}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFEC43F1-8AFA-40BE-8207-5276FC04F945}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFEC43F1-8AFA-40BE-8207-5276FC04F945}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
