@@ -2,7 +2,7 @@
     "name": "Balanced_Items",
     "version_number": "1.5.0",
     "website_url": "https://github.com/Doug-Murphy/LethalCompanyMods/tree/main/GuysNight.LethalCompanyMod.BalancedItems",
-    "description": "Balanced Items is a simple mod designed to give more realistic weights and values to all of the items in Lethal Company. This mod includes item adjustments for all scrap/loot items as well as those purchasable from the terminal.",
+    "description": "Take control of your gaming experience with the Balanced Items mod! This mod gives you the power to customize item weights, scrap values, and spawn rates - even for custom items from other mods. You can even make equipment items sellable to the company. With a unique approach to config files, you can dynamically adjust some settings as you play.",
     "dependencies": [
         "BepInEx-BepInExPack-5.4.2100"
     ]
