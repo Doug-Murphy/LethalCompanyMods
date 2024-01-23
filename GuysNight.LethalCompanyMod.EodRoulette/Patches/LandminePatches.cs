@@ -35,6 +35,8 @@ namespace GuysNight.LethalCompanyMod.EodRoulette.Patches {
 			__instance.mineAnimator.enabled = false;
 			//mark that the landmine has exploded so that the game's method does nothing.
 			__instance.hasExploded = true;
+
+			__instance.ToggleMineServerRpc(false);
 		}
 	}
 }
