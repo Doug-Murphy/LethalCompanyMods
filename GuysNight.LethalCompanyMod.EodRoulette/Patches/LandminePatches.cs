@@ -11,6 +11,7 @@ namespace GuysNight.LethalCompanyMod.EodRoulette.Patches {
 		[HarmonyPatch("TriggerMineOnLocalClientByExiting")]
 		[HarmonyPrefix]
 		public static void PotentiallyAvoidExplosion(Landmine __instance) {
+			SharedComponents.ConfigFile.Reload();
 			if (byte.TryParse(SharedComponents.ConfigFile[Constants.ConfigSectionHeader, Constants.ConfigChanceToDisableEntryKey].GetSerializedValue(), out var chanceToDisable)) {
 				SharedComponents.Logger.LogDebug($"Successfully retrieved chance to disable. Value is '{chanceToDisable}'");
 			}
