@@ -2,12 +2,13 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
-        <Version>1.5.0</Version>
+        <Version>1.5.1</Version>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 
     <ItemGroup>
         <Reference Include="..\libs\Assembly-CSharp.dll"/>
+        <Reference Include="..\libs\Unity.NetCode.Runtime.dll"/>
         <Reference Include="..\libs\Unity.TextMeshPro.dll"/>
     </ItemGroup>
 
