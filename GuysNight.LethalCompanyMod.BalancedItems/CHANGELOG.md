@@ -1,3 +1,7 @@
+# Version 1.5.1
+
+Fix issue where the apparatus sell value is not being updated based on your config.
+
 # Version 1.5.0
 
 Minor update, but a new feature nonetheless. Keys will now show up on the ship's map like all the other scrap items.
