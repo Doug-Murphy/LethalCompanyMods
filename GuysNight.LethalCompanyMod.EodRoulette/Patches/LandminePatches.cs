@@ -10,7 +10,11 @@ namespace GuysNight.LethalCompanyMod.EodRoulette.Patches {
 
 		[HarmonyPatch("TriggerMineOnLocalClientByExiting")]
 		[HarmonyPrefix]
-		public static void PotentiallyAvoidExplosion(Landmine __instance) {
+		public static bool PotentiallyAvoidExplosion(Landmine __instance) {
+			if (!__instance.isActiveAndEnabled) {
+				return true;
+			}
+
 			SharedComponents.ConfigFile.Reload();
 			if (byte.TryParse(SharedComponents.ConfigFile[Constants.ConfigSectionHeader, Constants.ConfigChanceToDisableEntryKey].GetSerializedValue(), out var chanceToDisable)) {
 				SharedComponents.Logger.LogDebug($"Successfully retrieved chance to disable. Value is '{chanceToDisable}'");
@@ -26,19 +30,20 @@ namespace GuysNight.LethalCompanyMod.EodRoulette.Patches {
 				//the random number generation landed within the range of FAILURE. So let the normal event occur
 				SharedComponents.Logger.LogDebug("The number generated resulted in a failed defusal. Letting game's code execute.");
 
-				return;
+				return true;
 			}
 
-			// the random generation landed within the range of a success
+			//the random generation landed within the range of a success
 			SharedComponents.Logger.LogDebug("The number generated resulted in a successful defusal. Doing overrides.");
 
 			//stop the landmine red light from blinking and stop the sound it makes
 			__instance.mineAnimator.enabled = false;
-			//mark that the landmine has exploded so that the game's method does nothing.
+			//mark that the landmine has exploded so that various methods from the game exit early
 			__instance.hasExploded = true;
 
-			//__instance.ToggleMineServerRpc(false);
-			__instance.ExplodeMineServerRpc();
+			__instance.ToggleMine(false);
+
+			return false;
 		}
 	}
 }
