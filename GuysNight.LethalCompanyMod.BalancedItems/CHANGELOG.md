@@ -1,8 +1,10 @@
 # Version 1.5.2
 
-Fix issue where starting a game with the moon rarity feature toggle set to OFF resulted in the round not starting
-properly. This would likely have manifested in an odd "days remaining" display on the monitor and other mods not
-loading.
+1. Fix issue where starting a game with the moon rarity feature toggle set to OFF resulted in the round not starting
+   properly. This would likely have manifested in an odd "days remaining" display on the monitor and other mods not
+   loading.
+2. Fix issue where starting a game with the weight override feature toggle set to OFF resulted in
+   some `NullReferenceException`s for items that aren't included in the `allItemsList` collection.
 
 # Version 1.5.1
 
