@@ -1,3 +1,8 @@
+# Version 1.6.0
+
+1. You can now modify the purchase price of any item bought from the terminal. Custom items from other mods are
+   supported!
+
 # Version 1.5.2
 
 1. Fix issue where starting a game with the moon rarity feature toggle set to OFF resulted in the round not starting
