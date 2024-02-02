@@ -80,7 +80,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 			var itemEntry = ItemsContainer.Items[gameItem.name];
 			itemEntry.VanillaValues ??= new VanillaValues(gameItem.minValue, gameItem.maxValue, gameItem.weight);
 			itemEntry.Overrides ??= new OverrideProperties();
-			itemEntry.VanillaValues.MoonRarities.TryAdd(level.name, (byte)gameItemRarity);
+			ItemsContainer.SetVanillaMoonRarityValues(level.name, gameItem.name, (byte)gameItemRarity);
 			SharedComponents.Logger.LogDebug($"Set itemEntry.VanillaValues.MoonRarities for item '{gameItem.name}' on level '{level.name}' to be '{gameItemRarity}'");
 			itemEntry.Overrides.MoonRarities.TryAdd(level.name, null);
 
