@@ -1,3 +1,9 @@
+# Version 1.5.2
+
+Fix issue where starting a game with the moon rarity feature toggle set to OFF resulted in the round not starting
+properly. This would likely have manifested in an odd "days remaining" display on the monitor and other mods not
+loading.
+
 # Version 1.5.1
 
 Fix issue where the apparatus sell value is not being updated based on your config.
