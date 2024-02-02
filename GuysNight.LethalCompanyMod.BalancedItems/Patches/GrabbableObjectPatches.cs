@@ -1,5 +1,6 @@
 ﻿#pragma warning disable	S1118
 
+using GuysNight.LethalCompanyMod.BalancedItems.Models;
 using GuysNight.LethalCompanyMod.BalancedItems.Utilities;
 using HarmonyLib;
 
@@ -43,7 +44,13 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				UpdateItemWeight(__instance, itemEntry.Overrides.Weight);
 			}
 			else {
-				UpdateItemWeight(__instance, itemEntry.VanillaValues.Weight);
+				if (itemEntry.VanillaValues is null) {
+					SharedComponents.Logger.LogWarning($"Vanilla values for item '{__instance.itemProperties.name}' is null. Assuming current values are vanilla.");
+					ItemsContainer.SetVanillaValues(__instance.itemProperties.name, new VanillaValues(__instance.itemProperties.minValue, __instance.itemProperties.maxValue, __instance.itemProperties.weight));
+					itemEntry = ItemsContainer.Items[__instance.itemProperties.name];
+				}
+
+				UpdateItemWeight(__instance, itemEntry.VanillaValues!.Weight);
 			}
 
 			SharedComponents.ConfigFile.Save();
