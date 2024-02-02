@@ -58,5 +58,9 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
 				_weight = NumericUtilities.NormalizeWeight(value);
 			}
 		}
+
+		public override string ToString() {
+			return $"MinValue: '{MinValue}' AvgValue: '{AverageValue}' MaxValue: '{MaxValue}' Weight:'{Weight}'";
+		}
 	}
 }

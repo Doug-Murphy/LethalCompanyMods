@@ -47,18 +47,19 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 		private static void InitializeAllLevelsInItemsContainer(StartOfRound __instance) {
 			SharedComponents.Logger.LogDebug($"Found {__instance.levels.Length} levels.");
 
+			if (bool.TryParse(SharedComponents.ConfigFile[Constants.ConfigSectionHeaderToggles, Constants.ConfigKeyToggleMoonRarity].GetSerializedValue(), out var isMoonRarityFeatureEnabled)) {
+				SharedComponents.Logger.LogDebug($"Successfully retrieved moon rarity override feature toggle. Value is '{isMoonRarityFeatureEnabled}'");
+			}
+			else {
+				SharedComponents.Logger.LogWarning("Could not retrieve moon rarity override feature toggle from config. Assuming it was set to true.");
+				isMoonRarityFeatureEnabled = true;
+			}
+
 			foreach (var level in __instance.levels) {
 				foreach (var spawnableScrap in level.spawnableScrap.OrderBy(s => s.spawnableItem.itemName)) {
 					SharedComponents.Logger.LogDebug($"On level '{level.name}' we found a spawnable scrap item with name '{spawnableScrap.spawnableItem.name}', itemName '{spawnableScrap.spawnableItem.itemName}', weight '{NumericUtilities.DenormalizeWeight(spawnableScrap.spawnableItem.weight)}' pounds, rarity '{spawnableScrap.rarity}', min value '{spawnableScrap.spawnableItem.minValue}', and max value '{spawnableScrap.spawnableItem.maxValue}'");
 					ItemsContainer.SetVanillaValues(spawnableScrap.spawnableItem.name, new VanillaValues(spawnableScrap.spawnableItem.minValue, spawnableScrap.spawnableItem.maxValue, spawnableScrap.spawnableItem.weight));
-
-					if (bool.TryParse(SharedComponents.ConfigFile[Constants.ConfigSectionHeaderToggles, Constants.ConfigKeyToggleMoonRarity].GetSerializedValue(), out var isMoonRarityFeatureEnabled)) {
-						SharedComponents.Logger.LogDebug($"Successfully retrieved moon rarity override feature toggle. Value is '{isMoonRarityFeatureEnabled}'");
-					}
-					else {
-						SharedComponents.Logger.LogWarning("Could not retrieve moon rarity override feature toggle from config. Assuming it was set to true.");
-						isMoonRarityFeatureEnabled = true;
-					}
+					ItemsContainer.SetVanillaMoonRarityValues(level.name, spawnableScrap.spawnableItem.name, (byte)spawnableScrap.rarity);
 
 					if (!ItemsContainer.Items.TryGetValue(spawnableScrap.spawnableItem.name, out var itemEntry)) {
 						//should be impossible so long we initialize the collection in StartOfRoundPatches

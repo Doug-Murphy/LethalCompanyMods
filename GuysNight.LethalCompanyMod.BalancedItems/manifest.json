@@ -1,6 +1,6 @@
 {
     "name": "Balanced_Items",
-    "version_number": "1.5.1",
+    "version_number": "1.5.2",
     "website_url": "https://github.com/Doug-Murphy/LethalCompanyMods/tree/main/GuysNight.LethalCompanyMod.BalancedItems",
     "description": "This mod gives you the power to customize item weights, scrap values, and spawn rates - even for custom items from other mods, and make equipment items sellable. With a unique approach to config files, you can dynamically adjust some settings as you play.",
     "dependencies": [
