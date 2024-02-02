@@ -59,6 +59,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				foreach (var spawnableScrap in level.spawnableScrap.OrderBy(s => s.spawnableItem.itemName)) {
 					SharedComponents.Logger.LogDebug($"On level '{level.name}' we found a spawnable scrap item with name '{spawnableScrap.spawnableItem.name}', itemName '{spawnableScrap.spawnableItem.itemName}', weight '{NumericUtilities.DenormalizeWeight(spawnableScrap.spawnableItem.weight)}' pounds, rarity '{spawnableScrap.rarity}', min value '{spawnableScrap.spawnableItem.minValue}', and max value '{spawnableScrap.spawnableItem.maxValue}'");
 					ItemsContainer.SetVanillaValues(spawnableScrap.spawnableItem.name, new VanillaValues(spawnableScrap.spawnableItem.minValue, spawnableScrap.spawnableItem.maxValue, spawnableScrap.spawnableItem.weight));
+					ItemsContainer.SetVanillaMoonRarityValues(level.name, spawnableScrap.spawnableItem.name, (byte)spawnableScrap.rarity);
 
 					if (!ItemsContainer.Items.TryGetValue(spawnableScrap.spawnableItem.name, out var itemEntry)) {
 						//should be impossible so long we initialize the collection in StartOfRoundPatches

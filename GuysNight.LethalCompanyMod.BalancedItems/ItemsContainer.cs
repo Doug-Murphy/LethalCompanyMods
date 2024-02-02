@@ -98,5 +98,20 @@ namespace GuysNight.LethalCompanyMod.BalancedItems {
 
 			return true;
 		}
+
+		public static bool SetVanillaMoonRarityValues(string moonName, string itemName, byte rarity) {
+			if (!Items.TryGetValue(itemName, out var itemEntry)) {
+				//shouldn't be possible so long as this is called after the first pass of allItemsList
+				return false;
+			}
+
+			itemEntry.VanillaValues.MoonRarities.TryAdd(moonName, rarity);
+
+			Items[itemName] = itemEntry;
+
+			SharedComponents.Logger.LogDebug($"Vanilla values have been set for item '{itemName}' to have rarity '{rarity}' on moon '{moonName}'.");
+
+			return true;
+		}
 	}
 }
