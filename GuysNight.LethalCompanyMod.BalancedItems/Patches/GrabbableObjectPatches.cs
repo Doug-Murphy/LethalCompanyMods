@@ -28,12 +28,14 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				return;
 			}
 
-			if (bool.TryParse(SharedComponents.ConfigFile[Constants.ConfigSectionHeaderToggles, Constants.ConfigKeyToggleWeights].GetSerializedValue(), out var isWeightFeatureEnabled)) {
+			var isWeightFeatureEnabled = true;
+
+			if (SharedComponents.ConfigFile.TryGetEntry<bool>(Constants.ConfigSectionHeaderToggles, Constants.ConfigKeyToggleWeights, out var featureToggleConfigEntry)) {
+				isWeightFeatureEnabled = featureToggleConfigEntry.Value;
 				SharedComponents.Logger.LogDebug($"Successfully retrieved weight override feature toggle. Value is '{isWeightFeatureEnabled}'");
 			}
 			else {
 				SharedComponents.Logger.LogWarning("Could not retrieve weight override feature toggle from config. Assuming it was set to true.");
-				isWeightFeatureEnabled = true;
 			}
 
 			if (isWeightFeatureEnabled) {
@@ -41,12 +43,12 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				SharedComponents.ConfigFile.Reload();
 				SharedComponents.Logger.LogDebug($"Begin adding config entries and setting override values for '{__instance.itemProperties.name}'");
 				itemEntry = ConfigUtilities.SyncConfigForItemOverrides(__instance.itemProperties);
-				UpdateItemWeight(__instance, itemEntry.Overrides.Weight);
+				UpdateItemWeight(__instance, itemEntry.OverrideValues.Weight);
 			}
 			else {
 				if (itemEntry.VanillaValues is null) {
 					SharedComponents.Logger.LogWarning($"Vanilla values for item '{__instance.itemProperties.name}' is null. Assuming current values are vanilla.");
-					ItemsContainer.SetVanillaValues(__instance.itemProperties.name, new VanillaValues(__instance.itemProperties.minValue, __instance.itemProperties.maxValue, __instance.itemProperties.weight));
+					ItemsContainer.SetVanillaValuesForItem(__instance.itemProperties.name, new VanillaValues(__instance.itemProperties.minValue, __instance.itemProperties.maxValue, __instance.itemProperties.weight));
 					itemEntry = ItemsContainer.Items[__instance.itemProperties.name];
 				}
 

@@ -30,18 +30,20 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 					continue;
 				}
 
-				if (bool.TryParse(SharedComponents.ConfigFile[Constants.ConfigSectionHeaderToggles, Constants.ConfigKeyToggleAverageSellValues].GetSerializedValue(), out var isSellValueFeatureEnabled)) {
+				var isSellValueFeatureEnabled = true;
+
+				if (SharedComponents.ConfigFile.TryGetEntry<bool>(Constants.ConfigSectionHeaderToggles, Constants.ConfigKeyToggleAverageSellValues, out var featureToggleConfigEntry)) {
+					isSellValueFeatureEnabled = featureToggleConfigEntry.Value;
 					SharedComponents.Logger.LogDebug($"Successfully retrieved sell value override feature toggle. Value is '{isSellValueFeatureEnabled}'");
 				}
 				else {
 					SharedComponents.Logger.LogWarning("Could not retrieve sell value override feature toggle from config. Assuming it was set to true.");
-					isSellValueFeatureEnabled = true;
 				}
 
 				if (isSellValueFeatureEnabled) {
 					//retrieve latest value from config
 					itemEntry = ConfigUtilities.SyncConfigForItemOverrides(spawnableScrap);
-					UpdateItemValue(spawnableScrap, itemEntry.Overrides.MinValue, itemEntry.Overrides.MaxValue);
+					UpdateItemValue(spawnableScrap, itemEntry.OverrideValues.MinValue, itemEntry.OverrideValues.MaxValue);
 				}
 				else {
 					UpdateItemValue(spawnableScrap, itemEntry.VanillaValues.MinValue, itemEntry.VanillaValues.MaxValue);
