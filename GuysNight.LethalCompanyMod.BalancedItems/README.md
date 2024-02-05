@@ -93,6 +93,15 @@ Are you annoyed that equipment items cannot be sold for any credits? Maybe you'r
 just that little bit more to meet it! You can now sell equipment items to the company! The average value you set in the
 config is the value that the equipment will sell for.
 
+## Terminal Item Purchase Prices
+
+The config values for terminal item purchase prices can be changed mid-game at any time and updates are reflected every
+time you start using the terminal.
+
+This feature gives you the power to set your own prices for items in the terminal. Want to adjust the cost of a weapon
+or a tool? No problem! Please note, this feature currently excludes ship decor and ship upgrades. Enjoy the freedom of
+customization!
+
 # Adjustments
 
 Below are the preset overrides set in this mod by default. Other properties are available to be overridden in your
