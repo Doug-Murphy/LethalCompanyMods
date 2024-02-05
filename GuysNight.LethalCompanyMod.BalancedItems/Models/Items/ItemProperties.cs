@@ -2,19 +2,19 @@
 	/// <summary>
 	/// The various properties that we want to work with regarding items.
 	/// </summary>
-	public class ItemProperties {
-		public ItemProperties() {
+	internal sealed class ItemProperties {
+		internal ItemProperties() {
 		}
 
-		public ItemProperties(OverrideProperties overrideValues) {
+		internal ItemProperties(OverrideProperties overrideValues) {
 			OverrideValues = overrideValues;
 		}
 
-		public ItemProperties(VanillaValues vanillaValues) {
+		internal ItemProperties(VanillaValues vanillaValues) {
 			VanillaValues = vanillaValues;
 		}
 
-		public ItemProperties(VanillaValues vanillaValues, OverrideProperties overrideValues) {
+		internal ItemProperties(VanillaValues vanillaValues, OverrideProperties overrideValues) {
 			VanillaValues = vanillaValues;
 			OverrideValues = overrideValues;
 		}
@@ -22,11 +22,11 @@
 		/// <summary>
 		/// The overrides for this item.
 		/// </summary>
-		public OverrideProperties OverrideValues { get; } = new OverrideProperties();
+		internal OverrideProperties OverrideValues { get; } = new OverrideProperties();
 
 		/// <summary>
 		/// The vanilla values for this item.
 		/// </summary>
-		public VanillaValues VanillaValues { get; set; }
+		internal VanillaValues VanillaValues { get; set; }
 	}
 }

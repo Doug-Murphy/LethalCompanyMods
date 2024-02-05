@@ -1,20 +1,20 @@
 ﻿namespace GuysNight.LethalCompanyMod.BalancedItems {
-	public static class Constants {
-		public const string ConfigSectionHeaderToggles = "Feature Toggles";
+	internal static class Constants {
+		internal const string ConfigSectionHeaderToggles = "Feature Toggles";
 
-		public const string ConfigKeyToggleAverageSellValues = "EnableAverageSellValueOverrides";
-		public const string ConfigKeyToggleSellableEquipment = "EnableSellingEquipment";
-		public const string ConfigKeyToggleMoonRarity = "EnableMoonRarityOverrides";
-		public const string ConfigKeyToggleWeights = "EnableWeightOverrides";
+		internal const string ConfigKeyToggleAverageSellValues = "EnableAverageSellValueOverrides";
+		internal const string ConfigKeyToggleSellableEquipment = "EnableSellingEquipment";
+		internal const string ConfigKeyToggleMoonRarity = "EnableMoonRarityOverrides";
+		internal const string ConfigKeyToggleWeights = "EnableWeightOverrides";
 
-		public const string ConfigSectionHeaderAverageSellValues = "Average Sell Values";
-		public const string ConfigSectionHeaderMoonRarity = "Rarities for {0}";
-		public const string ConfigSectionHeaderWeight = "Weight";
+		internal const string ConfigSectionHeaderAverageSellValues = "Average Sell Values";
+		internal const string ConfigSectionHeaderMoonRarity = "Rarities for {0}";
+		internal const string ConfigSectionHeaderWeight = "Weight";
 
-		public const string ConfigDescriptionAverageSellValues = "The average sell value for the '{0}' item. The default vanilla value is '{1}'.";
-		public const string ConfigDescriptionMoonRarity = "The rarity for the '{0}' item. The default vanilla value is '{1}'.";
-		public const string ConfigDescriptionWeight = "The weight for the '{0}' item. The default vanilla value is '{1}'.";
+		internal const string ConfigDescriptionAverageSellValues = "The average sell value for the '{0}' item. The default vanilla value is '{1}'.";
+		internal const string ConfigDescriptionMoonRarity = "The rarity for the '{0}' item. The default vanilla value is '{1}'.";
+		internal const string ConfigDescriptionWeight = "The weight for the '{0}' item. The default vanilla value is '{1}'.";
 
-		public const double SellValueVariance = 0.2;
+		internal const double SellValueVariance = 0.2;
 	}
 }

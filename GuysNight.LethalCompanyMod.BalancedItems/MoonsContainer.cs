@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace GuysNight.LethalCompanyMod.BalancedItems {
-	public static class MoonsContainer {
-		public static Dictionary<string, MoonProperties> Moons { get; } = new Dictionary<string, MoonProperties>();
+	internal static class MoonsContainer {
+		internal static Dictionary<string, MoonProperties> Moons { get; } = new Dictionary<string, MoonProperties>();
 	}
 }

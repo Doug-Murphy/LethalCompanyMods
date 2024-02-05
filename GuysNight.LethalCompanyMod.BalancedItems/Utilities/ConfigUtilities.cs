@@ -31,7 +31,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 		/// </summary>
 		/// <param name="rawEntry">The entry to sanitize.</param>
 		/// <returns></returns>
-		private static string SanitizeConfigEntry(string rawEntry) {
+		public static string SanitizeConfigEntry(string rawEntry) {
 			//replace invalid characters with '_'
 			return InvalidConfigCharsRegex.Replace(rawEntry, "_");
 		}

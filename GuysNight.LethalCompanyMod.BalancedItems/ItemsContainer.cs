@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 
 namespace GuysNight.LethalCompanyMod.BalancedItems {
-	public static class ItemsContainer {
-		public static Dictionary<string, ItemProperties> Items { get; } = new Dictionary<string, ItemProperties> {
+	internal static class ItemsContainer {
+		internal static Dictionary<string, ItemProperties> Items { get; } = new Dictionary<string, ItemProperties> {
 			//spawned scrap items
 			{ "7Ball", new ItemProperties(new OverrideProperties(0.5f)) },
 			{ "Airhorn", new ItemProperties(new OverrideProperties(1.5f)) },
@@ -78,7 +78,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems {
 			{ "ZapGun", new ItemProperties(new OverrideProperties(7f)) }
 		};
 
-		public static bool SetVanillaValuesForItem(string itemName, VanillaValues vanillaValues) {
+		internal static bool SetVanillaValuesForItem(string itemName, VanillaValues vanillaValues) {
 			if (Items.TryGetValue(itemName, out var itemEntry)) {
 				if (itemEntry.VanillaValues is null) {
 					itemEntry.VanillaValues = vanillaValues;

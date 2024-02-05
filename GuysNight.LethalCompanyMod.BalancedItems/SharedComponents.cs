@@ -2,9 +2,9 @@
 using BepInEx.Logging;
 
 namespace GuysNight.LethalCompanyMod.BalancedItems {
-	public static class SharedComponents {
-		public static ManualLogSource Logger { get; set; }
+	internal static class SharedComponents {
+		internal static ManualLogSource Logger { get; set; }
 
-		public static ConfigFile ConfigFile { get; set; }
+		internal static ConfigFile ConfigFile { get; set; }
 	}
 }
