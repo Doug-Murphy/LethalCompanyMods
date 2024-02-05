@@ -42,6 +42,8 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 					UpdateItemPriceInShop(item, vanillaPurchasePrice);
 				}
 			}
+
+			SharedComponents.ConfigFile.Save();
 		}
 
 		private static void UpdateItemPriceInShop(Item item, int price) {
