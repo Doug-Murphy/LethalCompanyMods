@@ -28,7 +28,13 @@ namespace GuysNight.LethalCompanyMod.BalancedItems {
 			SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderToggles,
 				Constants.ConfigKeyToggleMoonRarity,
 				true,
-				"Whether or not your specified moon rarity overrides should be applied. If set to false, vanilla values will be used. Changes to this value are reflected only after you restart your session."
+				"Whether or not your specified moon rarity overrides should be applied. If set to false, vanilla values will be used. Changes to this value are reflected at the start of each day."
+			);
+
+			SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderToggles,
+				Constants.ConfigKeyToggleTerminalPurchasePrice,
+				true,
+				"Whether or not your specified terminal item price overrides should be applied. If set to false, vanilla values will be used. Changes to this value are reflected every time you begin using the terminal."
 			);
 
 			SharedComponents.ConfigFile.Bind(Constants.ConfigSectionHeaderToggles,

@@ -1,6 +1,7 @@
 ﻿using BepInEx.Configuration;
 using GuysNight.LethalCompanyMod.BalancedItems.Containers;
 using GuysNight.LethalCompanyMod.BalancedItems.Models.Items;
+using GuysNight.LethalCompanyMod.BalancedItems.Models.Terminal;
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -67,6 +68,23 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 			ItemsContainer.Items[gameItem.name] = itemEntry;
 
 			return new ItemProperties(itemEntry.VanillaItemValues, itemEntry.OverrideItemValues);
+		}
+
+		internal static TerminalItemProperties SyncConfigForTerminalItemOverrides(Item gameItem) {
+			var terminalItemEntry = TerminalItemsContainer.TerminalItems[gameItem.name];
+
+			//in case the current terminal item was not in the buyableItemsList or otherwise not set during initialization, assume the current values from the game are vanilla and set them
+			terminalItemEntry.VanillaTerminalItemValues ??= new VanillaTerminalItemValues(gameItem.creditsWorth);
+
+			//if sell price is not added in the config, add it for future
+			//if sell price is added in the config, retrieve the value and set it in the overrides
+			terminalItemEntry.OverrideTerminalItemValues.PurchasePrice = SharedComponents.ConfigFile.Bind(SanitizeConfigEntry(Constants.ConfigSectionHeaderTerminalPurchasePrice),
+				SanitizeConfigEntry(gameItem.name),
+				terminalItemEntry.OverrideTerminalItemValues.PurchasePrice != default ? terminalItemEntry.OverrideTerminalItemValues.PurchasePrice : terminalItemEntry.VanillaTerminalItemValues.PurchasePrice,
+				new ConfigDescription(string.Format(Constants.ConfigDescriptionTerminalPurchasePrice, gameItem.itemName, terminalItemEntry.VanillaTerminalItemValues.PurchasePrice), new AcceptableValueRange<int>(ushort.MinValue, ushort.MaxValue))
+			).Value;
+
+			return new TerminalItemProperties(terminalItemEntry.VanillaTerminalItemValues, terminalItemEntry.OverrideTerminalItemValues);
 		}
 
 		internal static int SyncConfigForMoonItemRarity(SelectableLevel moon, SpawnableItemWithRarity gameItemWithRarity) {
