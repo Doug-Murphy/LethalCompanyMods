@@ -1,4 +1,4 @@
-﻿using GuysNight.LethalCompanyMod.BalancedItems.Models;
+﻿using GuysNight.LethalCompanyMod.BalancedItems.Models.Items;
 using System.Collections.Generic;
 
 namespace GuysNight.LethalCompanyMod.BalancedItems {

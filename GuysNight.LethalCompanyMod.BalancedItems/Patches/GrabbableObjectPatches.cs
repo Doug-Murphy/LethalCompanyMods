@@ -1,6 +1,6 @@
 ﻿#pragma warning disable	S1118
 
-using GuysNight.LethalCompanyMod.BalancedItems.Models;
+using GuysNight.LethalCompanyMod.BalancedItems.Models.Items;
 using GuysNight.LethalCompanyMod.BalancedItems.Utilities;
 using HarmonyLib;
 

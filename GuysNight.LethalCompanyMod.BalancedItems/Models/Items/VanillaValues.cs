@@ -1,4 +1,4 @@
-﻿namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
+﻿namespace GuysNight.LethalCompanyMod.BalancedItems.Models.Items {
 	public sealed class VanillaValues {
 		public VanillaValues(int minValue, int maxValue, float weight) {
 			MinValue = minValue;

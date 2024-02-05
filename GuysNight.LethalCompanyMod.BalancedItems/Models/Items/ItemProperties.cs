@@ -1,4 +1,4 @@
-﻿namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
+﻿namespace GuysNight.LethalCompanyMod.BalancedItems.Models.Items {
 	/// <summary>
 	/// The various properties that we want to work with regarding items.
 	/// </summary>

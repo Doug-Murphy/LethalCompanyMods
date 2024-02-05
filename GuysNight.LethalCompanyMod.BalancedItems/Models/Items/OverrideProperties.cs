@@ -1,7 +1,7 @@
 ﻿using GuysNight.LethalCompanyMod.BalancedItems.Utilities;
 using System;
 
-namespace GuysNight.LethalCompanyMod.BalancedItems.Models {
+namespace GuysNight.LethalCompanyMod.BalancedItems.Models.Items {
 	/// <summary>
 	/// Contains the data required for overriding various aspects of an item.
 	/// </summary>

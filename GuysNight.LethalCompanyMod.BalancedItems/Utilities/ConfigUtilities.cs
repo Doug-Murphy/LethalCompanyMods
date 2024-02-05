@@ -1,5 +1,5 @@
 ﻿using BepInEx.Configuration;
-using GuysNight.LethalCompanyMod.BalancedItems.Models;
+using GuysNight.LethalCompanyMod.BalancedItems.Models.Items;
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
