@@ -16,12 +16,14 @@ namespace GuysNight.LethalCompanyMod.EodRoulette.Patches {
 			}
 
 			SharedComponents.ConfigFile.Reload();
-			if (byte.TryParse(SharedComponents.ConfigFile[Constants.ConfigSectionHeader, Constants.ConfigChanceToDisableEntryKey].GetSerializedValue(), out var chanceToDisable)) {
+			var chanceToDisable = Constants.DefaultChanceToDisable;
+
+			if (SharedComponents.ConfigFile.TryGetEntry<byte>(Constants.ConfigSectionHeader, Constants.ConfigChanceToDisableEntryKey, out var chanceToDisableConfigEntry)) {
+				chanceToDisable = chanceToDisableConfigEntry.Value;
 				SharedComponents.Logger.LogDebug($"Successfully retrieved chance to disable. Value is '{chanceToDisable}'");
 			}
 			else {
 				SharedComponents.Logger.LogWarning($"Could not retrieve chance to disable from config. Assuming it was set to the default value of {Constants.DefaultChanceToDisable}.");
-				chanceToDisable = Constants.DefaultChanceToDisable;
 			}
 
 			var randomNumber = RandomGenerator.Next(1, 101); //generate random int between 1 and 100, inclusive

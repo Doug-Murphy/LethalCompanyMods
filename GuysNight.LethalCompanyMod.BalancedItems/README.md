@@ -27,7 +27,8 @@ config file will always take precedence over both the vanilla values and any pre
 ## Item Weights
 
 The weight of an item can be changed mid-game and be reflected at the start of the next day without restarting your
-session.
+session. The weight of the item actually updates as the item is spawned, so newly-purchased items will reflect config
+changes right away.
 
 For weight specification, simply input the desired weight of the item in pounds in the config file.
 
@@ -50,8 +51,8 @@ value when spawned will be between 80-120.
 
 ## Spawn Rarities
 
-The spawn rarity of an item on a moon can be changed mid-game but will not be reflected at the start of the next day.
-You must restart your session (but not the game) for these changes to take effect.
+The spawn rarity of an item on a moon can be changed mid-game and be reflected at the start of the next day without
+restarting your session.
 
 Lethal Company uses a relative weighting system to handle spawn rarities, making it a bit tricky to grasp the likelihood
 of an item spawning. Here are a few examples to help that make sense.

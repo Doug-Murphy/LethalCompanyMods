@@ -8,12 +8,15 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 		[HarmonyPrefix]
 		public static void MakeEquipmentOnDeskSellable(DepositItemsDesk __instance) {
 			SharedComponents.ConfigFile.Reload();
-			if (bool.TryParse(SharedComponents.ConfigFile[Constants.ConfigSectionHeaderToggles, Constants.ConfigKeyToggleSellableEquipment].GetSerializedValue(), out var isEquipmentSellFeatureEnabled)) {
+
+			var isEquipmentSellFeatureEnabled = true;
+
+			if (SharedComponents.ConfigFile.TryGetEntry<bool>(Constants.ConfigSectionHeaderToggles, Constants.ConfigKeyToggleSellableEquipment, out var featureToggleConfigEntry)) {
+				isEquipmentSellFeatureEnabled = featureToggleConfigEntry.Value;
 				SharedComponents.Logger.LogDebug($"Successfully retrieved sellable equipment feature toggle. Value is '{isEquipmentSellFeatureEnabled}'");
 			}
 			else {
 				SharedComponents.Logger.LogWarning("Could not retrieve sellable equipment feature toggle from config. Assuming it was set to true.");
-				isEquipmentSellFeatureEnabled = true;
 			}
 
 			if (!isEquipmentSellFeatureEnabled) {
@@ -32,9 +35,9 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 					continue;
 				}
 
-				SharedComponents.Logger.LogInfo($"Setting '{itemOnCounter.itemProperties.name}' to be sellable equipment for '{itemEntry.Overrides.AverageValue}' credits.");
+				SharedComponents.Logger.LogInfo($"Setting '{itemOnCounter.itemProperties.name}' to be sellable equipment for '{itemEntry.OverrideValues.AverageValue}' credits.");
 				itemOnCounter.itemProperties.isScrap = true;
-				itemOnCounter.scrapValue = itemEntry.Overrides.AverageValue;
+				itemOnCounter.scrapValue = itemEntry.OverrideValues.AverageValue;
 			}
 		}
 	}
