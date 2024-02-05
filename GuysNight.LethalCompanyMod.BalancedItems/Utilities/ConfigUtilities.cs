@@ -1,4 +1,5 @@
 ﻿using BepInEx.Configuration;
+using GuysNight.LethalCompanyMod.BalancedItems.Containers;
 using GuysNight.LethalCompanyMod.BalancedItems.Models.Items;
 using System;
 using System.Linq;

@@ -1,4 +1,5 @@
 ﻿#pragma warning disable S1118
+using GuysNight.LethalCompanyMod.BalancedItems.Containers;
 using HarmonyLib;
 using System;
 

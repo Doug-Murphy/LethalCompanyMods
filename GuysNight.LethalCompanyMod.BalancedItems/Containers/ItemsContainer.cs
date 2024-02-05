@@ -1,7 +1,7 @@
 ﻿using GuysNight.LethalCompanyMod.BalancedItems.Models.Items;
 using System.Collections.Generic;
 
-namespace GuysNight.LethalCompanyMod.BalancedItems {
+namespace GuysNight.LethalCompanyMod.BalancedItems.Containers {
 	internal static class ItemsContainer {
 		internal static Dictionary<string, ItemProperties> Items { get; } = new Dictionary<string, ItemProperties> {
 			//spawned scrap items
