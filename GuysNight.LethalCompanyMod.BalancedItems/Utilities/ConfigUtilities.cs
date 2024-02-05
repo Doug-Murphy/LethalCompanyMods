@@ -40,32 +40,32 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 			var itemEntry = ItemsContainer.Items[gameItem.name];
 
 			//in case the current item was not in the allItemsList or otherwise not set during initialization, assume the current values from the game are vanilla and set them
-			itemEntry.VanillaValues ??= new VanillaValues(gameItem.minValue, gameItem.maxValue, gameItem.weight);
+			itemEntry.VanillaItemValues ??= new VanillaItemValues(gameItem.minValue, gameItem.maxValue, gameItem.weight);
 
 			//if weight is not added in the config, add it for future
 			//if weight is added in the config, retrieve the value and set it in the overrides
-			itemEntry.OverrideValues.Weight = SharedComponents.ConfigFile.Bind(SanitizeConfigEntry(Constants.ConfigSectionHeaderWeight),
+			itemEntry.OverrideItemValues.Weight = SharedComponents.ConfigFile.Bind(SanitizeConfigEntry(Constants.ConfigSectionHeaderWeight),
 				SanitizeConfigEntry(gameItem.name),
-				NumericUtilities.DenormalizeWeight(Math.Abs(itemEntry.OverrideValues.Weight - default(float)) > 0 ? itemEntry.OverrideValues.Weight : itemEntry.VanillaValues.Weight),
-				new ConfigDescription(string.Format(Constants.ConfigDescriptionWeight, gameItem.itemName, NumericUtilities.DenormalizeWeight(itemEntry.VanillaValues.Weight)), new AcceptableValueRange<float>(0, 1_000))
+				NumericUtilities.DenormalizeWeight(Math.Abs(itemEntry.OverrideItemValues.Weight - default(float)) > 0 ? itemEntry.OverrideItemValues.Weight : itemEntry.VanillaItemValues.Weight),
+				new ConfigDescription(string.Format(Constants.ConfigDescriptionWeight, gameItem.itemName, NumericUtilities.DenormalizeWeight(itemEntry.VanillaItemValues.Weight)), new AcceptableValueRange<float>(0, 1_000))
 			).Value;
 
 			var gameItemCalculatedAverageValue = (ushort)Math.Round(new[] { gameItem.minValue, gameItem.maxValue }.Average(), MidpointRounding.AwayFromZero);
 			//if sell value is not added in the config, add it for future
 			//if sell value is added in the config, retrieve the value and set it in the overrides
-			itemEntry.OverrideValues.AverageValue = SharedComponents.ConfigFile.Bind(SanitizeConfigEntry(Constants.ConfigSectionHeaderAverageSellValues),
+			itemEntry.OverrideItemValues.AverageValue = SharedComponents.ConfigFile.Bind(SanitizeConfigEntry(Constants.ConfigSectionHeaderAverageSellValues),
 				SanitizeConfigEntry(gameItem.name),
-				itemEntry.OverrideValues.AverageValue != default ? itemEntry.OverrideValues.AverageValue : gameItemCalculatedAverageValue,
+				itemEntry.OverrideItemValues.AverageValue != default ? itemEntry.OverrideItemValues.AverageValue : gameItemCalculatedAverageValue,
 				new ConfigDescription(string.Format(Constants.ConfigDescriptionAverageSellValues, gameItem.itemName, gameItemCalculatedAverageValue), new AcceptableValueRange<ushort>(ushort.MinValue, ushort.MaxValue))
 			).Value;
 
 			SharedComponents.Logger.LogDebug($"Finish adding config entries and setting override values for '{gameItem.name}' to have " +
-			                                 $"average sell value = '{itemEntry.OverrideValues.AverageValue}', " +
-			                                 $"weight = '{NumericUtilities.DenormalizeWeight(itemEntry.OverrideValues.Weight)}'");
+			                                 $"average sell value = '{itemEntry.OverrideItemValues.AverageValue}', " +
+			                                 $"weight = '{NumericUtilities.DenormalizeWeight(itemEntry.OverrideItemValues.Weight)}'");
 
 			ItemsContainer.Items[gameItem.name] = itemEntry;
 
-			return new ItemProperties(itemEntry.VanillaValues, itemEntry.OverrideValues);
+			return new ItemProperties(itemEntry.VanillaItemValues, itemEntry.OverrideItemValues);
 		}
 
 		internal static int SyncConfigForMoonItemRarity(SelectableLevel moon, SpawnableItemWithRarity gameItemWithRarity) {

@@ -1,6 +1,6 @@
 ﻿namespace GuysNight.LethalCompanyMod.BalancedItems.Models.Items {
-	internal sealed class VanillaValues {
-		internal VanillaValues(int minValue, int maxValue, float weight) {
+	internal sealed class VanillaItemValues {
+		internal VanillaItemValues(int minValue, int maxValue, float weight) {
 			MinValue = minValue;
 			MaxValue = maxValue;
 			Weight = weight;

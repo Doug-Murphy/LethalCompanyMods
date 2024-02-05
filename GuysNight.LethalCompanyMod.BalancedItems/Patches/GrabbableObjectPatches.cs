@@ -43,16 +43,16 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				SharedComponents.ConfigFile.Reload();
 				SharedComponents.Logger.LogDebug($"Begin adding config entries and setting override values for '{__instance.itemProperties.name}'");
 				itemEntry = ConfigUtilities.SyncConfigForItemOverrides(__instance.itemProperties);
-				UpdateItemWeight(__instance, itemEntry.OverrideValues.Weight);
+				UpdateItemWeight(__instance, itemEntry.OverrideItemValues.Weight);
 			}
 			else {
-				if (itemEntry.VanillaValues is null) {
+				if (itemEntry.VanillaItemValues is null) {
 					SharedComponents.Logger.LogWarning($"Vanilla values for item '{__instance.itemProperties.name}' is null. Assuming current values are vanilla.");
-					ItemsContainer.SetVanillaValuesForItem(__instance.itemProperties.name, new VanillaValues(__instance.itemProperties.minValue, __instance.itemProperties.maxValue, __instance.itemProperties.weight));
+					ItemsContainer.SetVanillaValuesForItem(__instance.itemProperties.name, new VanillaItemValues(__instance.itemProperties.minValue, __instance.itemProperties.maxValue, __instance.itemProperties.weight));
 					itemEntry = ItemsContainer.Items[__instance.itemProperties.name];
 				}
 
-				UpdateItemWeight(__instance, itemEntry.VanillaValues!.Weight);
+				UpdateItemWeight(__instance, itemEntry.VanillaItemValues!.Weight);
 			}
 
 			SharedComponents.ConfigFile.Save();

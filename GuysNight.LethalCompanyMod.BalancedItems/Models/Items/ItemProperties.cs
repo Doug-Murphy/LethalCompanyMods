@@ -6,27 +6,27 @@
 		internal ItemProperties() {
 		}
 
-		internal ItemProperties(OverrideProperties overrideValues) {
-			OverrideValues = overrideValues;
+		internal ItemProperties(OverrideItemValues overrideItemValues) {
+			OverrideItemValues = overrideItemValues;
 		}
 
-		internal ItemProperties(VanillaValues vanillaValues) {
-			VanillaValues = vanillaValues;
+		internal ItemProperties(VanillaItemValues vanillaItemValues) {
+			VanillaItemValues = vanillaItemValues;
 		}
 
-		internal ItemProperties(VanillaValues vanillaValues, OverrideProperties overrideValues) {
-			VanillaValues = vanillaValues;
-			OverrideValues = overrideValues;
+		internal ItemProperties(VanillaItemValues vanillaItemValues, OverrideItemValues overrideItemValues) {
+			VanillaItemValues = vanillaItemValues;
+			OverrideItemValues = overrideItemValues;
 		}
 
 		/// <summary>
 		/// The overrides for this item.
 		/// </summary>
-		internal OverrideProperties OverrideValues { get; } = new OverrideProperties();
+		internal OverrideItemValues OverrideItemValues { get; } = new OverrideItemValues();
 
 		/// <summary>
 		/// The vanilla values for this item.
 		/// </summary>
-		internal VanillaValues VanillaValues { get; set; }
+		internal VanillaItemValues VanillaItemValues { get; set; }
 	}
 }

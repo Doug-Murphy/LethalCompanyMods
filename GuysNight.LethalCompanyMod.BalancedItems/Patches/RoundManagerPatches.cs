@@ -86,10 +86,10 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 			if (isSellValueFeatureEnabled) {
 				//retrieve latest value from config
 				itemEntry = ConfigUtilities.SyncConfigForItemOverrides(spawnableScrap);
-				UpdateItemValue(spawnableScrap, itemEntry.OverrideValues.MinValue, itemEntry.OverrideValues.MaxValue);
+				UpdateItemValue(spawnableScrap, itemEntry.OverrideItemValues.MinValue, itemEntry.OverrideItemValues.MaxValue);
 			}
 			else {
-				UpdateItemValue(spawnableScrap, itemEntry.VanillaValues.MinValue, itemEntry.VanillaValues.MaxValue);
+				UpdateItemValue(spawnableScrap, itemEntry.VanillaItemValues.MinValue, itemEntry.VanillaItemValues.MaxValue);
 			}
 		}
 

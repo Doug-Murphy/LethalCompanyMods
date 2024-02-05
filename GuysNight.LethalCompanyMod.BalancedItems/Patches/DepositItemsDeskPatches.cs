@@ -35,9 +35,9 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 					continue;
 				}
 
-				SharedComponents.Logger.LogInfo($"Setting '{itemOnCounter.itemProperties.name}' to be sellable equipment for '{itemEntry.OverrideValues.AverageValue}' credits.");
+				SharedComponents.Logger.LogInfo($"Setting '{itemOnCounter.itemProperties.name}' to be sellable equipment for '{itemEntry.OverrideItemValues.AverageValue}' credits.");
 				itemOnCounter.itemProperties.isScrap = true;
-				itemOnCounter.scrapValue = itemEntry.OverrideValues.AverageValue;
+				itemOnCounter.scrapValue = itemEntry.OverrideItemValues.AverageValue;
 			}
 		}
 	}

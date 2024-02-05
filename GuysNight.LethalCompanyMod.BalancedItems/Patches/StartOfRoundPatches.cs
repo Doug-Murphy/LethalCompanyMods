@@ -36,7 +36,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				                                 $"maxValue = '{item.maxValue}', " +
 				                                 $"isScrap = '{item.isScrap}'");
 
-				ItemsContainer.SetVanillaValuesForItem(item.name, new VanillaValues(item.minValue, item.maxValue, item.weight));
+				ItemsContainer.SetVanillaValuesForItem(item.name, new VanillaItemValues(item.minValue, item.maxValue, item.weight));
 
 				ConfigUtilities.SyncConfigForItemOverrides(item);
 				if (item.name == "Key") {

@@ -5,20 +5,20 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models.Items {
 	/// <summary>
 	/// Contains the data required for overriding various aspects of an item.
 	/// </summary>
-	internal sealed class OverrideProperties {
+	internal sealed class OverrideItemValues {
 		private float _weight;
 
 		/// <summary>
 		/// Default constructor for programmatically adding new overrides to our collection.
 		/// </summary>
-		internal OverrideProperties() {
+		internal OverrideItemValues() {
 		}
 
 		/// <summary>
 		/// The constructor to use when overriding only the item's weight is desired.
 		/// </summary>
 		/// <param name="weight">How much you want the item to weigh.</param>
-		internal OverrideProperties(float weight) {
+		internal OverrideItemValues(float weight) {
 			Weight = weight;
 		}
 
