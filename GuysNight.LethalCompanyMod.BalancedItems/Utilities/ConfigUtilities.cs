@@ -91,5 +91,17 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Utilities {
 
 			return moonRarityValue;
 		}
+
+		internal static int? GetItemRarityForMoon(SelectableLevel moon, SpawnableItemWithRarity gameItemWithRarity) {
+			var configSectionHeader = SanitizeConfigEntry(string.Format(Constants.ConfigSectionHeaderMoonRarity, moon.PlanetName));
+			var configKeyName = SanitizeConfigEntry(gameItemWithRarity.spawnableItem.name);
+
+			if (SharedComponents.ConfigFile.TryGetEntry<int>(configSectionHeader, configKeyName, out var moonRarityFromConfig)) {
+				//config contains an entry for the moon rarity. just return that
+				return moonRarityFromConfig.Value;
+			}
+
+			return null;
+		}
 	}
 }
