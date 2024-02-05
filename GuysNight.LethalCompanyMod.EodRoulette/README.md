@@ -7,6 +7,13 @@ On the desolate moons of Lethal Company, danger lurks everywhere - including rig
 landmines. With the EOD Roulette mod, you now have the power to defuse these lurking threats. But beware, this is not a
 task for the faint-hearted!
 
+# Support
+
+If you're enjoying my mods and would like to support my work, consider making a donation. Every bit helps me continue
+creating and improving mods for Lethal Company. Thanks for your support!
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K3K7U4ESJ)
+
 # Gameplay
 
 This mod allows players to interact with landmines in an attempt to disable them. Successful interaction will result in

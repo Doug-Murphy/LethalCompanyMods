@@ -3,6 +3,13 @@
 Welcome to the "Terminal Cowsay" mod for Lethal Company! This mod adds a fun and entertaining feature to your terminal -
 an ASCII cow that tells you Chuck Norris jokes!
 
+# Support
+
+If you're enjoying my mods and would like to support my work, consider making a donation. Every bit helps me continue
+creating and improving mods for Lethal Company. Thanks for your support!
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K3K7U4ESJ)
+
 # Usage
 
 Simply type `cowsay` into your terminal and hit enter. An ASCII cow will appear and tell you a Chuck Norris joke. Enjoy

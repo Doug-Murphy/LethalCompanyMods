@@ -14,3 +14,10 @@ So why wait? Elevate your gaming experience with the Invincible Bridge Mod. Beca
 can make all the difference!
 
 Invincible Bridge Mod - For gamers who won’t let anything stand in their way. Not even a collapsing bridge. 🌉
+
+# Support
+
+If you're enjoying my mods and would like to support my work, consider making a donation. Every bit helps me continue
+creating and improving mods for Lethal Company. Thanks for your support!
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K3K7U4ESJ)
