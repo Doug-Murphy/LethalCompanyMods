@@ -1,4 +1,5 @@
 ﻿#pragma warning disable S1118
+using GuysNight.LethalCompanyMod.BalancedItems.Containers;
 using HarmonyLib;
 using System;
 
@@ -31,7 +32,7 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Patches {
 				return;
 			}
 
-			var randomValue = RandomGenerator.Next(itemEntry.OverrideValues.MinValue, itemEntry.OverrideValues.MaxValue + 1);
+			var randomValue = RandomGenerator.Next(itemEntry.OverrideItemValues.MinValue, itemEntry.OverrideItemValues.MaxValue + 1);
 
 			__instance.SetScrapValue(randomValue);
 		}

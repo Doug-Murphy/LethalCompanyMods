@@ -8,6 +8,13 @@ added!
 This mod also fixes some bugs in the game like your current carry weight being displayed as 5% greater than your actual
 carry weight.
 
+# Support
+
+If you're enjoying my mods and would like to support my work, consider making a donation. Every bit helps me continue
+creating and improving mods for Lethal Company. Thanks for your support!
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K3K7U4ESJ)
+
 # Configuration
 
 This mod introduces a unique approach to configuration file creation. Unlike most mods that generate their config file
@@ -85,6 +92,15 @@ reflected each time you sell items.
 Are you annoyed that equipment items cannot be sold for any credits? Maybe you're only 10 credits shy of quota and need
 just that little bit more to meet it! You can now sell equipment items to the company! The average value you set in the
 config is the value that the equipment will sell for.
+
+## Terminal Item Purchase Prices
+
+The config values for terminal item purchase prices can be changed mid-game at any time and updates are reflected every
+time you start using the terminal.
+
+This feature gives you the power to set your own prices for items in the terminal. Want to adjust the cost of a weapon
+or a tool? No problem! Please note, this feature currently excludes ship decor and ship upgrades. Enjoy the freedom of
+customization!
 
 # Adjustments
 

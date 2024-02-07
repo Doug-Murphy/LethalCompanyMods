@@ -4,8 +4,8 @@ namespace GuysNight.LethalCompanyMod.BalancedItems.Models.Moons {
 	/// <summary>
 	/// Used for when we want to represent vanilla moon rarities.
 	/// </summary>
-	public class VanillaMoonRarities : IMoonRarities {
-		public VanillaMoonRarities(string moonName) {
+	internal sealed class VanillaMoonRarities : IMoonRarities {
+		internal VanillaMoonRarities(string moonName) {
 			MoonName = moonName;
 		}
 

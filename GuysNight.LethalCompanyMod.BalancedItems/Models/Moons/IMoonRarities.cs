@@ -3,7 +3,7 @@
 namespace GuysNight.LethalCompanyMod.BalancedItems.Models.Moons {
 	public interface IMoonRarities {
 		/// <summary>
-		/// The name of the moon that the rarities are for
+		/// The name of the moon that the rarities are for.
 		/// </summary>
 		public string MoonName { get; }
 
